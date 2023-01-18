@@ -9,7 +9,18 @@ import javax.persistence.metamodel.EntityType;
 //import java.util.Map;
 
 
-/*//public class Main {
+public class Main {
+
+    public static void main (String Args[]){
+
+        Project project = new Project(1,"blalASKJDSA", "PISLANDIA");
+        System.out.println(project.getProject_description());
+
+    }
+}
+
+
+
 //    private static final SessionFactory ourSessionFactory;
 
   //  static {
@@ -22,7 +33,7 @@ import javax.persistence.metamodel.EntityType;
 //            throw new ExceptionInInitializerError(ex);
 //        }
 //    }
-public static Session getSession() throws HibernateException {
+/*public static Session getSession() throws HibernateException {
         return ourSessionFactory.openSession();
     }
 

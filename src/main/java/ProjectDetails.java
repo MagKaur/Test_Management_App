@@ -4,6 +4,11 @@ public class ProjectDetails {
     private int id_device;
     private int id_project;
 
+    ProjectDetails (int id_project_details, int id_device, int id_project){
+        this.id_project_details = id_project_details;
+        this.id_device = id_device;
+        this.id_project = id_project;
+    }
     public int getId_project() {
         return id_project;
     }

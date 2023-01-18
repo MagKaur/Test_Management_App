@@ -5,6 +5,11 @@ public class Project {
     private String project_name;
 
 
+    Project (int id_project,String project_description, String project_name){
+        this.id_project = id_project;
+        this.project_description = project_description;
+        this.project_name = project_name;
+    }
     public int getId_project() {
         return id_project;
     }
@@ -28,4 +33,6 @@ public class Project {
     public void setProject_name(String project_name) {
         this.project_name = project_name;
     }
+
+
 }

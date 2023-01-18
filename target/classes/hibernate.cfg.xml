@@ -7,7 +7,8 @@
         <property name="connection.driver_class">oracle.jdbc.OracleDriver</property>
         <property name="connection.url">jdbc:oracle:thin:@//localhost:1521/ORCLCDB</property>
         <property name="connection.username">mango</property>
-        <property name="connection.password"></property>
-        <property name="dialect">org.hibernate.dialect.Oracle8iDialect</property>
+        <property name="connection.password">mango</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</property>
+        <property name="hibernate.show_sql">true</property>
     </session-factory>
 </hibernate-configuration>
