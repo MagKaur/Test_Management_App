@@ -15,6 +15,7 @@ public class Main {
 
         Project project = new Project(1,"blalASKJDSA", "PISLANDIA");
         System.out.println(project.getProject_description());
+        DeviceModel deviceModel = new DeviceModel(1,"Xiaomi","11 PRO","Q3 2022",'Y','Y','Y','N');
 
     }
 }

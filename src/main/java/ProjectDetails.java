@@ -1,8 +1,12 @@
-public class ProjectDetails {
-    private int id_project_details;
+import java.util.List;
 
-    private int id_device;
-    private int id_project;
+public class ProjectDetails {
+        private int id_project_details;
+
+        private int id_device;
+        private int id_project;
+
+
 
     ProjectDetails (int id_project_details, int id_device, int id_project){
         this.id_project_details = id_project_details;
