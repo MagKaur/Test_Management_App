@@ -1,12 +1,12 @@
 import java.util.List;
 
 public class ProjectDetailsInfo {
-
-  public Project projectObject;
+    public List<DeviceModel> deviceModelList;
+    public ProjectDetails ProjectDetailsObject;
 
   ProjectDetailsInfo (){
   }
-   public List<DeviceModel> deviceModelList;
+
 
 
 }

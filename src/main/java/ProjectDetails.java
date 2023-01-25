@@ -1,33 +1,26 @@
 import java.util.List;
 
 public class ProjectDetails {
-        private int id_project_details;
+    private int id_project_details;
 
-        private int id_device;
-        private int id_project;
+    private Project fk_id_projectProjectDetails;
+    private Application fk_id_applicationProjectDetails;
+    private DeviceModel fk_id_deviceModelProjectDetails;
 
 
-
-    ProjectDetails (int id_project_details, int id_device, int id_project){
+    ProjectDetails(int id_project_details, Project fk_id_projectProjectDetails, Application fk_id_applicationProjectDetails) {
         this.id_project_details = id_project_details;
-        this.id_device = id_device;
-        this.id_project = id_project;
-    }
-    public int getId_project() {
-        return id_project;
+        this.fk_id_projectProjectDetails = fk_id_projectProjectDetails;
+        this.fk_id_applicationProjectDetails = fk_id_applicationProjectDetails;
+
     }
 
-    public void setId_project(int id_project) {
-        this.id_project = id_project;
+    ProjectDetails(int id_project_details, Project fk_id_projectProjectDetails, DeviceModel fk_id_deviceModelProjectDetails) {
+        this.id_project_details = id_project_details;
+        this.fk_id_projectProjectDetails = fk_id_projectProjectDetails;
+        this.fk_id_deviceModelProjectDetails = fk_id_deviceModelProjectDetails;
     }
 
-    public int getId_device() {
-        return id_device;
-    }
-
-    public void setId_device(int id_device) {
-        this.id_device = id_device;
-    }
 
     public int getId_project_details() {
         return id_project_details;
@@ -36,5 +29,26 @@ public class ProjectDetails {
     public void setId_project_details(int id_project_details) {
         this.id_project_details = id_project_details;
     }
-}
 
+    public Project getFk_id_projectProjectDetails(){
+        return fk_id_projectProjectDetails;
+    }
+    public void setFk_id_projectProjectDetails(Project fk_id_projectProjectDetails){
+        this.fk_id_projectProjectDetails = fk_id_projectProjectDetails;
+    }
+
+    public Application getFk_id_applicationProjectDetails(){
+        return fk_id_applicationProjectDetails;
+    }
+    public void setFk_id_applicationProjectDetails(Application fk_id_applicationProjectDetails){
+        this.fk_id_applicationProjectDetails = fk_id_applicationProjectDetails;
+    }
+
+    public DeviceModel getFk_id_deviceModelProjectDetails(){
+        return fk_id_deviceModelProjectDetails;
+    }
+    public void setFk_id_deviceModelProjectDetails(DeviceModel fk_id_deviceModelProjectDetails){
+        this.fk_id_deviceModelProjectDetails = fk_id_deviceModelProjectDetails;
+    }
+
+}
