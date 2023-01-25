@@ -1,5 +1,9 @@
+import org.hibernate.annotations.Table;
+import org.hibernate.annotations.*;
 import java.util.List;
 
+@Entity
+@Table()
 public class Project {
 
     private int id_project;
