@@ -7,6 +7,7 @@ public class NewAppModule extends Application {
 
     NewAppModule(int id_application, String app_name, String technology_description, String functionality_description,
                     int id_app_module, String module_name, String module_destription, Application fk_id_applicationNewAppModule) {
+
         super(id_application, app_name, technology_description, functionality_description);
         this.id_app_module = id_app_module;
         this.module_name = module_name;

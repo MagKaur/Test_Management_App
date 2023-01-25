@@ -1,2 +1,80 @@
 public class Binary {
+
+    private int id_binary;
+    private String binary_description;
+    private String binary_link;
+    private Project fk_id_projectBinary;
+    private Application fk_id_applicationBinary;
+    private DeviceModel fk_id_deviceModelBinary;
+    private char accepted_status;
+
+    Binary(int id_binary, String binary_description, String binary_link, Project fk_id_projectBinary, Application fk_id_applicationBinary,
+                DeviceModel fk_id_deviceModelBinary){
+        this.id_binary = id_binary;
+        this.binary_description = binary_description;
+        this.binary_link = binary_link;
+        this.fk_id_projectBinary = fk_id_projectBinary;
+        this.fk_id_applicationBinary = fk_id_applicationBinary;
+        this.fk_id_deviceModelBinary = fk_id_deviceModelBinary;
+    }
+
+    Binary(int id_binary, String binary_description, String binary_link, Project fk_id_projectBinary, Application fk_id_applicationBinary,
+           DeviceModel fk_id_deviceModelBinary, char accepted_status){
+        this.id_binary = id_binary;
+        this.binary_description = binary_description;
+        this.binary_link = binary_link;
+        this.fk_id_projectBinary = fk_id_projectBinary;
+        this.fk_id_applicationBinary = fk_id_applicationBinary;
+        this.fk_id_deviceModelBinary = fk_id_deviceModelBinary;
+        this.accepted_status = accepted_status;
+    }
+
+    public int getId_binary(){
+        return id_binary;
+    }
+
+    public void setId_binary(int id_binary){
+        this.id_binary = id_binary;
+    }
+
+    public String getBinary_description(){
+        return binary_description;
+    }
+    public void setBinary_description(String binary_description){
+        this.binary_description = binary_description;
+    }
+    public String getBinary_link(){
+        return binary_link;
+    }
+    public void setBinary_link(String binary_link){
+        this.binary_link = binary_link;
+    }
+
+    public Project getFk_id_projectBinary(){
+        return fk_id_projectBinary;
+    }
+    public void setFk_id_projectBinary(Project fk_id_projectBinary){
+        this.fk_id_projectBinary = fk_id_projectBinary;
+    }
+    public Application getFk_id_applicationBinary(){
+        return fk_id_applicationBinary;
+    }
+    public void setFk_id_applicationBinary(Application fk_id_applicationBinary){
+        this.fk_id_applicationBinary = fk_id_applicationBinary;
+    }
+
+    public DeviceModel getFk_id_deviceModelBinary(){
+        return fk_id_deviceModelBinary;
+    }
+    public void setFk_id_deviceModelBinary(DeviceModel fk_id_deviceModelBinary){
+        this.fk_id_deviceModelBinary = fk_id_deviceModelBinary;
+    }
+
+    public char getAccepted_status(){
+        return accepted_status;
+    }
+
+    public void setAccepted_status(char accepted_status) {
+        this.accepted_status = accepted_status;
+    }
 }
