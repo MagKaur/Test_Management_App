@@ -1,23 +1,17 @@
-import org.hibernate.HibernateException;
-import org.hibernate.Metamodel;
-import org.hibernate.query.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+package Java;
 
-import javax.persistence.metamodel.EntityType;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 //import java.util.Map;
 
-
+@SpringBootApplication
 public class Main {
 
-    public static void main (String Args[]){
-
-        Project project = new Project(1,"blalASKJDSA", "PISLANDIA");
+    public static void main (String[] Args){
+        SpringApplication.run(Main.class, Args);
+        /*Project project = new Project(1,"blalASKJDSA", "PISLANDIA");
         System.out.println(project.getProject_description());
-        DeviceModel deviceModel = new DeviceModel(1,"Xiaomi","11 PRO","Q3 2022",'Y','Y','Y','N');
-
-
+        DeviceModel deviceModel = new DeviceModel(1,"Xiaomi","11 PRO","Q3 2022",'Y','Y','Y','N');*/
     }
 }
 

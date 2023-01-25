@@ -1,3 +1,5 @@
+package Java;
+
 public class DeviceModel {
 
     private int id_device;

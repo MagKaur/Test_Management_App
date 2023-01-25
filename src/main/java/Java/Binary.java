@@ -1,3 +1,5 @@
+package Java;
+
 public class Binary {
 
     private int id_binary;

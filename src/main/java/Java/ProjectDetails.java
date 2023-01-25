@@ -1,4 +1,4 @@
-import java.util.List;
+package Java;
 
 public class ProjectDetails {
     private int id_project_details;

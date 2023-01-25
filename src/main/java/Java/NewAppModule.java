@@ -1,3 +1,5 @@
+package Java;
+
 public class NewAppModule extends Application {
 
     private int id_app_module;

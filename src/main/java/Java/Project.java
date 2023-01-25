@@ -1,9 +1,6 @@
-import org.hibernate.annotations.Table;
-import org.hibernate.annotations.*;
-import java.util.List;
+package Java;
 
-@Entity
-@Table()
+
 public class Project {
 
     private int id_project;
@@ -16,6 +13,11 @@ public class Project {
         this.project_description = project_description;
         this.project_name = project_name;
     }
+
+    public Project() {
+    }
+
+
     public int getId_project() {
         return id_project;
     }
