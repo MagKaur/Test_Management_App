@@ -2,16 +2,16 @@ public class NewAppModule extends Application {
 
     private int id_app_module;
     private String module_name;
-    private String module_destription;
+    private String module_description;
     private Application fk_id_applicationNewAppModule;
 
     NewAppModule(int id_application, String app_name, String technology_description, String functionality_description,
-                    int id_app_module, String module_name, String module_destription, Application fk_id_applicationNewAppModule) {
+                    int id_app_module, String module_name, String module_description, Application fk_id_applicationNewAppModule) {
 
         super(id_application, app_name, technology_description, functionality_description);
         this.id_app_module = id_app_module;
         this.module_name = module_name;
-        this.module_destription = module_destription;
+        this.module_description = module_description;
         this.fk_id_applicationNewAppModule = fk_id_applicationNewAppModule;
     }
 
@@ -30,10 +30,10 @@ public class NewAppModule extends Application {
     }
 
     public String getModule_description(){
-        return module_destription;
+        return module_description;
     }
     public void setModule_destription(String module_destription){
-        this.module_destription = module_destription;
+        this.module_description = module_destription;
     }
 
     public Application getFk_id_applicationNewAppModule(){
