@@ -3,10 +3,17 @@ package Java;
 import java.util.List;
 
 public class ProjectDetailsInfo {
-    public List<DeviceModel> deviceModelList;
-    public ProjectDetails ProjectDetailsObject;
 
+    private Project projectProjectDetailsInfo;
+    private Application applicationProjectDetailsInfo;
+    private DeviceModel deviceModelProjectDetailsInfo;
+
+
+
+
+    new Project
   ProjectDetailsInfo (){
+
   }
 
 

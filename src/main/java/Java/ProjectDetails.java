@@ -1,5 +1,6 @@
 package Java;
 
+
 public class ProjectDetails {
     private int id_project_details;
 
@@ -18,6 +19,14 @@ public class ProjectDetails {
     ProjectDetails(int id_project_details, Project fk_id_projectProjectDetails, DeviceModel fk_id_deviceModelProjectDetails) {
         this.id_project_details = id_project_details;
         this.fk_id_projectProjectDetails = fk_id_projectProjectDetails;
+        this.fk_id_deviceModelProjectDetails = fk_id_deviceModelProjectDetails;
+    }
+
+    ProjectDetails(int id_project_details, Project fk_id_projectProjectDetails, Application fk_id_applicationProjectDetails,
+                   DeviceModel fk_id_deviceModelProjectDetails){
+        this.id_project_details = id_project_details;
+        this.fk_id_projectProjectDetails = fk_id_projectProjectDetails;
+        this.fk_id_applicationProjectDetails = fk_id_applicationProjectDetails;
         this.fk_id_deviceModelProjectDetails = fk_id_deviceModelProjectDetails;
     }
 

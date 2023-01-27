@@ -1,6 +1,10 @@
 package Java;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "PROJECT")
 public class Project {
 
     private int id_project;
