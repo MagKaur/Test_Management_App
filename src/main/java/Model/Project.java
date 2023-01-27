@@ -1,4 +1,4 @@
-package TestManagementApp;
+package Model;
 
 public class Project {
 
