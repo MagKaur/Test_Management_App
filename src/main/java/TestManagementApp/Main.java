@@ -1,4 +1,4 @@
-package Java;
+package TestManagementApp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package Java;
+package TestManagementApp;
 
 public class DeviceModel {
 
