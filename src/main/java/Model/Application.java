@@ -1,12 +1,19 @@
 package Model;
 
-public class Application {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "APPLICATION")
+public class Application {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_application;
     private String app_name;
     private String technology_description;
     private String functionality_description;
 
+    //do not let me go further without no args constructor.
+    protected Application (){}
 
     Application (int id_application, String app_name, String technology_description, String functionality_description){
         this.id_application = id_application;

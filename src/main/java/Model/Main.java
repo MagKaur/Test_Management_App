@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Main {
 
+    //TODO change path to ojdbc from C:/ to variable
+    //TODO if table "test_task_statuses" is needed? or status row placed in
+
     public static void main (String[] Args){
         SpringApplication.run(Main.class, Args);
         /*Project project = new Project(1,"blalASKJDSA", "PISLANDIA");
