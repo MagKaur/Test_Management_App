@@ -1,17 +1,35 @@
 package Model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "device_models", schema = "mango")
 public class DeviceModel {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_device")
     private int id_device;
+    @Column(name = "producer_name")
     private String producer_name;
+    @Column(name = "model_name")
     private String model_name;
+    @Column(name = "premiere_quarter")
     private String premiere_quarter;
+    @Column(name = "volte")
     private char VoLTE;
+    @Column(name = "vowifi")
     private char VoWiFi;
+    @Column(name = "sa_nsa_5g")
     private char SA_NSA_5G;
+    @Column(name = "e_sim")
     private char e_sim;
+    @Column(name = "RCS")
     private char RCS;
+    @Column(name = "accepted_status")
     private char accepted_status;
+
+    protected DeviceModel(){};
 
     DeviceModel (int id_device, String producer_name, String model_name, String premiere_quarter, char VoLTE,
                  char VoWiFi,char SA_NSA_5G, char RCS, char accepted_status){

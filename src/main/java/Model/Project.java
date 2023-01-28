@@ -1,12 +1,23 @@
 package Model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "projects", schema = "mango")
 public class Project {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_project")
     private int id_project;
+    @Column(name = "project_description")
     private String project_description;
+    @Column(name = "project_name")
     private String project_name;
 
+
+    protected Project() {
+    }
 
     Project (int id_project,String project_description, String project_name){
         this.id_project = id_project;
@@ -14,8 +25,6 @@ public class Project {
         this.project_name = project_name;
     }
 
-    public Project() {
-    }
 
 
     public int getId_project() {

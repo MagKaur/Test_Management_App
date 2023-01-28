@@ -1,14 +1,37 @@
 package Model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "BINARIES", schema = "mango")
 public class Binary {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_binary")
     private int id_binary;
+    @Column(name = "binary_description")
     private String binary_description;
+    @Column(name = "binary_link")
     private String binary_link;
+
+    @ManyToOne
+    @JoinColumn(name = "id_project", nullable = false)
+    @Column(name = "id_project")
     private Project fk_id_projectBinary;
+    @ManyToOne
+    @JoinColumn(name = "id_application")
+    @Column(name = "id_application")
     private Application fk_id_applicationBinary;
+    @ManyToOne
+    @JoinColumn(name = "id_device")
+    @Column(name = "id_device")
     private DeviceModel fk_id_deviceModelBinary;
-    private char accepted_status;
+    @Column(name = "accepted_status")
+    private boolean accepted_status;
+
+
+    protected Binary(){};
 
     Binary(int id_binary, String binary_description, String binary_link, Project fk_id_projectBinary, Application fk_id_applicationBinary,
                 DeviceModel fk_id_deviceModelBinary){
@@ -21,7 +44,7 @@ public class Binary {
     }
 
     Binary(int id_binary, String binary_description, String binary_link, Project fk_id_projectBinary, Application fk_id_applicationBinary,
-           DeviceModel fk_id_deviceModelBinary, char accepted_status){
+           DeviceModel fk_id_deviceModelBinary, boolean accepted_status){
         this.id_binary = id_binary;
         this.binary_description = binary_description;
         this.binary_link = binary_link;
@@ -72,11 +95,11 @@ public class Binary {
         this.fk_id_deviceModelBinary = fk_id_deviceModelBinary;
     }
 
-    public char getAccepted_status(){
+    public boolean getAccepted_status(){
         return accepted_status;
     }
 
-    public void setAccepted_status(char accepted_status) {
+    public void setAccepted_status(boolean accepted_status) {
         this.accepted_status = accepted_status;
     }
 }

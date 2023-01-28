@@ -3,13 +3,17 @@ package Model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "APPLICATION")
+@Table(name = "applications", schema = "mango")
 public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_application")
     private int id_application;
+    @Column(name = "app_name")
     private String app_name;
+    @Column(name = "technology_description")
     private String technology_description;
+    @Column(name = "functionality_description")
     private String functionality_description;
 
     //do not let me go further without no args constructor.
