@@ -5,7 +5,7 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "new_app_modules", schema = "mango") //TODO indeksy jednak w bazie danych tylko.
+@Table(name = "new_app_modules", schema = "mango")
 //TODO widok dla device models+ binaries stworzony w bazie
 public class NewAppModule {
     @Id
