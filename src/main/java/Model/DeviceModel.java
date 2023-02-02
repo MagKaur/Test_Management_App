@@ -72,6 +72,34 @@ public class DeviceModel {
         this.SA_NSA_5G = SA_NSA_5G;
         this.RCS = RCS;
     }
+
+    DeviceModel (int id_device, String producer_name, String model_name, String premiere_quarter, char VoLTE,
+                 char VoWiFi,char SA_NSA_5G, char RCS, ArrayList<Binary> binaries){
+        this.id_device = id_device;
+        this.producer_name = producer_name;
+        this.model_name = model_name;
+        this.premiere_quarter = premiere_quarter;
+        this.VoLTE = VoLTE;
+        this.VoWiFi = VoWiFi;
+        this.SA_NSA_5G = SA_NSA_5G;
+        this.RCS = RCS;
+        this.binaries = binaries;
+    }
+
+    DeviceModel (int id_device, String producer_name, String model_name, String premiere_quarter, char VoLTE,
+                 char VoWiFi,char SA_NSA_5G, char RCS, ArrayList<Binary> binaries, ArrayList<ProjectDetails> projectDetails){
+        this.id_device = id_device;
+        this.producer_name = producer_name;
+        this.model_name = model_name;
+        this.premiere_quarter = premiere_quarter;
+        this.VoLTE = VoLTE;
+        this.VoWiFi = VoWiFi;
+        this.SA_NSA_5G = SA_NSA_5G;
+        this.RCS = RCS;
+        this.binaries = binaries;
+        this.projectDetails = projectDetails;
+    }
+
     public char getAccepted_status() {
         return accepted_status;
     }
