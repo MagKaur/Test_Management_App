@@ -1,5 +1,7 @@
 package Model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,23 +11,29 @@ public class Binary {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_binary")
+    @NotNull
     private int id_binary;
     @Column(name = "binary_description")
+    @NotNull
     private String binary_description;
     @Column(name = "binary_link")
+    @NotNull
     private String binary_link;
 
     @ManyToOne
     @JoinColumn(name = "id_project", nullable = false)
     @Column(name = "id_project")
+    @NotNull //TODO a czy tutaj adnotacje tez?
     private Project fk_id_projectBinary;
     @ManyToOne
     @JoinColumn(name = "id_application")
     @Column(name = "id_application")
+    @NotNull
     private Application fk_id_applicationBinary;
     @ManyToOne
     @JoinColumn(name = "id_device")
     @Column(name = "id_device")
+    @NotNull
     private DeviceModel fk_id_deviceModelBinary;
     @Column(name = "accepted_status")
     private boolean accepted_status;

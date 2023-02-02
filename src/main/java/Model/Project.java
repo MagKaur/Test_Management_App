@@ -1,5 +1,7 @@
 package Model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 
@@ -10,10 +12,13 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_project")
+    @NotNull
     private int id_project;
     @Column(name = "project_description")
+    @NotNull
     private String project_description;
     @Column(name = "project_name")
+    @NotNull
     private String project_name;
 
     @OneToMany(mappedBy = "fk_id_projectProjectDetails", cascade = CascadeType.ALL)

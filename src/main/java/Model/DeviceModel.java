@@ -1,5 +1,7 @@
 package Model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 
@@ -10,22 +12,31 @@ public class DeviceModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_device")
+    @NotNull
     private int id_device;
     @Column(name = "producer_name")
+    @NotNull
     private String producer_name;
     @Column(name = "model_name")
+    @NotNull
     private String model_name;
     @Column(name = "premiere_quarter")
+    @NotNull
     private String premiere_quarter;
     @Column(name = "volte")
+    @NotNull
     private char VoLTE;
     @Column(name = "vowifi")
+    @NotNull
     private char VoWiFi;
     @Column(name = "sa_nsa_5g")
+    @NotNull
     private char SA_NSA_5G;
     @Column(name = "e_sim")
+    @NotNull
     private char e_sim;
     @Column(name = "RCS")
+    @NotNull
     private char RCS;
     @Column(name = "accepted_status")
     private char accepted_status;

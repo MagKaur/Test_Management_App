@@ -1,5 +1,8 @@
 package Model;
 
+import com.sun.istack.NotNull;
+import org.springframework.lang.NonNull;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,15 +13,20 @@ public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_application")
+    @NotNull
     private int id_application;
     @Column(name = "app_name")
+    @NotNull
     private String app_name;
     @Column(name = "technology_description")
+    @NotNull
     private String technology_description;
     @Column(name = "functionality_description")
+    @NotNull
     private String functionality_description;
 
     @OneToMany(mappedBy = "fk_id_applicationNewAppModule", cascade = CascadeType.ALL)
+    //TODO Czy tu też NOT NULLE sie przydadzą?
     private ArrayList<NewAppModule> newAppModules = new ArrayList<>();
 
     @OneToMany(mappedBy = "fk_id_applicationProjectDetails", cascade = CascadeType.ALL)
@@ -27,7 +35,6 @@ public class Application {
     @OneToMany(mappedBy = "fk_id_applicationBinary", cascade = CascadeType.ALL)
     private ArrayList<Binary> binaries = new ArrayList<>();
 //TODO dodawanie,usuwanie elementów z listy (dla wszystkich class) w oddzielnej klasie service
-    //TODO dodac adnotacje NOT NULL wszedzie
     //TODO dodać kolumne ze timestamp + dodać annotacje @CreationTimestamp
     protected Application (){}
 

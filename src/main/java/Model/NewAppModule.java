@@ -1,23 +1,28 @@
 package Model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "new_app_modules", schema = "mango") //TODO indeksy jednak w bazie danych tylko.
-//TODO widok dla device models+ biaries stworzony w bazie
+//TODO widok dla device models+ binaries stworzony w bazie
 public class NewAppModule {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_app_module")
+    @NotNull
     private int id_app_module;
     @Column(name = "module_name")
+    @NotNull
     private String module_name;
     @Column(name = "module_description")
+    @NotNull
     private String module_description;
     @ManyToOne
     @JoinColumn(name = "id_application")
     @Column(name = "id_application")
+    @NotNull
     private Application fk_id_applicationNewAppModule;
 
     protected NewAppModule(){};

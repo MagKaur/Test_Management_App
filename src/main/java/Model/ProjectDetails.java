@@ -1,5 +1,7 @@
 package Model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,18 +11,20 @@ public class ProjectDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_project_details")
+    @NotNull
     private int id_project_details;
 
     @ManyToOne
-    @JoinColumn(name = "id_project", nullable = false)
+    @JoinColumn(name = "id_project")
     @Column(name = "id_project")
+    @NotNull
     private Project fk_id_projectProjectDetails;
     @ManyToOne
-    @JoinColumn(name = "id_application", nullable = false)
+    @JoinColumn(name = "id_application")
     @Column(name = "id_application")
     private Application fk_id_applicationProjectDetails;
     @ManyToOne
-    @JoinColumn(name = "id_device", nullable = false )
+    @JoinColumn(name = "id_device")
     @Column(name = "id_device")
     private DeviceModel fk_id_deviceModelProjectDetails;
 
