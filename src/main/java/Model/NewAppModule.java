@@ -3,7 +3,8 @@ package Model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "new_app_modules") //TODO do I need index here? hymmm
+@Table(name = "new_app_modules", schema = "mango") //TODO indeksy jednak w bazie danych tylko.
+//TODO widok dla device models+ biaries stworzony w bazie
 public class NewAppModule {
 
     @Id

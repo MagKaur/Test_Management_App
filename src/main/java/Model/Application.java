@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "applications", schema = "mango", indexes = @Index(columnList = "app_name"))
+@Table(name = "applications", schema = "mango")
 public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,9 @@ public class Application {
 
     @OneToMany(mappedBy = "fk_id_applicationBinary", cascade = CascadeType.ALL)
     private ArrayList<Binary> binaries = new ArrayList<>();
-
+//TODO dodawanie,usuwanie elementów z listy (dla wszystkich class) w oddzielnej klasie service
+    //TODO dodac adnotacje NOT NULL wszedzie
+    //TODO dodać kolumne ze timestamp + dodać annotacje @CreationTimestamp
     protected Application (){}
 
     Application (int id_application, String app_name, String technology_description, String functionality_description){
@@ -36,8 +38,8 @@ public class Application {
         this.functionality_description = functionality_description;
     }
 
-    //TODO IS it necesary to create additional constructor which inludes List<NewAppModule>?
 
+    //TODO konstruktory z listami
     public int getId_application(){
         return id_application;
     }

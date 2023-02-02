@@ -8,5 +8,6 @@ public class TestManagementAppINTEGRATION {
     @Test
     void contextLoads(){
 
+        //TODO testy jednostkowe w aplikacji spring + hibernate
     }
 }

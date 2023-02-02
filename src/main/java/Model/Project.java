@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
-@Table(name = "projects", schema = "mango", indexes = @Index(columnList = "project_name"))
+@Table(name = "projects", schema = "mango")
 public class Project {
 
     @Id
@@ -20,8 +20,8 @@ public class Project {
     private ArrayList<ProjectDetails> projectDetails = new ArrayList<>();
     @OneToMany(mappedBy = "fk_id_projectBinary", cascade = CascadeType.ALL)
     private ArrayList<Binary> binaries = new ArrayList<>();
- //TODO is getters and setters are needed for mapped by?
-    //TODO jackson annotations - do I need them - need to rethink logic
+    //TODO jackson annotations - I need them too + ignore obmyslic logike
+    //ArrayList or Set is better?
 
     protected Project() {
     }

@@ -4,8 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
-@Table(name = "device_models", schema = "mango",
-        indexes = @Index(columnList = "producer_name, model_name"))
+@Table(name = "device_models", schema = "mango")
 public class DeviceModel {
 
     @Id
