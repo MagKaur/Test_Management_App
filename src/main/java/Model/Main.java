@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Main {
 
     //TODO change path to ojdbc from C:/ to variable
-    // Indexes also programmed in oracle?
 
 
     public static void main (String[] Args){

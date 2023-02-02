@@ -36,7 +36,7 @@ public class Application {
     @OneToMany(mappedBy = "fk_id_applicationBinary", cascade = CascadeType.ALL)
     private ArrayList<Binary> binaries = new ArrayList<>();
 //TODO dodawanie,usuwanie elementów z listy (dla wszystkich class) w oddzielnej klasie service
-    //TODO dodać kolumne ze timestamp + dodać annotacje @CreationTimestamp
+    // TODO dodać kolumne ze timestamp + dodać annotacje @CreationTimestamp ??? Zastanowic się czy będę potrzebowac?
     protected Application (){}
 
     Application (int id_application, String app_name, String technology_description, String functionality_description){
