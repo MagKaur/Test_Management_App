@@ -1,9 +1,11 @@
 package Model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "applications", schema = "mango")
+@Table(name = "applications", schema = "mango", indexes = @Index(columnList = "app_name"))
 public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +18,15 @@ public class Application {
     @Column(name = "functionality_description")
     private String functionality_description;
 
-    //do not let me go further without no args constructor.
+    @OneToMany(mappedBy = "fk_id_applicationNewAppModule", cascade = CascadeType.ALL)
+    private ArrayList<NewAppModule> newAppModules = new ArrayList<>();
+
+    @OneToMany(mappedBy = "fk_id_applicationProjectDetails", cascade = CascadeType.ALL)
+    private ArrayList<ProjectDetails> projectDetails = new ArrayList<>();
+
+    @OneToMany(mappedBy = "fk_id_applicationBinary", cascade = CascadeType.ALL)
+    private ArrayList<Binary> binaries = new ArrayList<>();
+
     protected Application (){}
 
     Application (int id_application, String app_name, String technology_description, String functionality_description){
@@ -25,6 +35,8 @@ public class Application {
         this.technology_description = technology_description;
         this.functionality_description = functionality_description;
     }
+
+    //TODO IS it necesary to create additional constructor which inludes List<NewAppModule>?
 
     public int getId_application(){
         return id_application;
@@ -52,5 +64,28 @@ public class Application {
     }
     public void setFunctionality_description(String functionality_description){
         this.functionality_description = functionality_description;
+    }
+
+    public ArrayList<NewAppModule> getNewAppModules() {
+        return newAppModules;
+    }
+    public void setNewAppModules (ArrayList<NewAppModule> newAppModules){
+        this.newAppModules = newAppModules;
+    }
+
+    public ArrayList<ProjectDetails> getProjectDetails(){
+        return projectDetails;
+    }
+
+    public void setProjectDetails (ArrayList<ProjectDetails> projectDetails){
+        this.projectDetails = projectDetails;
+    }
+
+    public ArrayList<Binary> getBinaries(){
+       return binaries;
+    }
+
+    public void setBinaries(ArrayList<Binary> binaries) {
+        this.binaries = binaries;
     }
 }

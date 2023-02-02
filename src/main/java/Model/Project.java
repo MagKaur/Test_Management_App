@@ -1,9 +1,10 @@
 package Model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 @Entity
-@Table(name = "projects", schema = "mango")
+@Table(name = "projects", schema = "mango", indexes = @Index(columnList = "project_name"))
 public class Project {
 
     @Id
@@ -15,6 +16,12 @@ public class Project {
     @Column(name = "project_name")
     private String project_name;
 
+    @OneToMany(mappedBy = "fk_id_projectProjectDetails", cascade = CascadeType.ALL)
+    private ArrayList<ProjectDetails> projectDetails = new ArrayList<>();
+    @OneToMany(mappedBy = "fk_id_projectBinary", cascade = CascadeType.ALL)
+    private ArrayList<Binary> binaries = new ArrayList<>();
+ //TODO is getters and setters are needed for mapped by?
+    //TODO jackson annotations - do I need them - need to rethink logic
 
     protected Project() {
     }
@@ -52,4 +59,20 @@ public class Project {
     }
 
 
+
+    public ArrayList<ProjectDetails> getProjectDetails(){
+        return projectDetails;
+    }
+
+    public void setProjectDetails(ArrayList<ProjectDetails> projectDetails){
+        this.projectDetails = projectDetails;
+    }
+
+    public ArrayList<Binary> getBinaries(){
+        return binaries = binaries;
+    }
+
+    public void setBinaries(ArrayList<Binary> binaries) {
+        this.binaries = binaries;
+    }
 }

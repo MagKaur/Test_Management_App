@@ -1,11 +1,25 @@
 package Model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "new_app_modules") //TODO do I need index here? hymmm
 public class NewAppModule {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_app_module")
     private int id_app_module;
+    @Column(name = "module_name")
     private String module_name;
+    @Column(name = "module_description")
     private String module_description;
+    @ManyToOne
+    @JoinColumn(name = "id_application")
+    @Column(name = "id_application")
     private Application fk_id_applicationNewAppModule;
+
+    protected NewAppModule(){};
 
     NewAppModule(int id_app_module, String module_name, String module_description, Application fk_id_applicationNewAppModule) {
 

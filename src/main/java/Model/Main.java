@@ -8,7 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Main {
 
     //TODO change path to ojdbc from C:/ to variable
-    //TODO if table "test_task_statuses" is needed? or status row placed in
+    // Indexes also programmed in oracle?
+
 
     public static void main (String[] Args){
         SpringApplication.run(Main.class, Args);

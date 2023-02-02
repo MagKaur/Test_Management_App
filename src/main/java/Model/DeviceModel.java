@@ -1,9 +1,11 @@
 package Model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 @Entity
-@Table(name = "device_models", schema = "mango")
+@Table(name = "device_models", schema = "mango",
+        indexes = @Index(columnList = "producer_name, model_name"))
 public class DeviceModel {
 
     @Id
@@ -28,6 +30,11 @@ public class DeviceModel {
     private char RCS;
     @Column(name = "accepted_status")
     private char accepted_status;
+
+    @OneToMany(mappedBy = "fk_id_deviceModelProjectDetails", cascade = CascadeType.ALL)
+    private ArrayList<ProjectDetails> projectDetails = new ArrayList<>();
+    @OneToMany(mappedBy = "fk_id_deviceModelBinary", cascade = CascadeType.ALL)
+    private ArrayList<Binary> binaries = new ArrayList<>();
 
     protected DeviceModel(){};
 
@@ -133,6 +140,20 @@ public class DeviceModel {
 
     public void setProducer_name(String producer_name) {
         this.producer_name = producer_name;
+    }
+
+    public ArrayList<ProjectDetails> getProjectDetails(){
+        return projectDetails;
+    }
+    public void setProjectDetails(ArrayList<ProjectDetails> projectDetails){
+        this.projectDetails = projectDetails;
+    }
+
+    public ArrayList<Binary> getBinaries(){
+        return binaries;
+    }
+    public void setBinaries(ArrayList<Binary> binaries){
+        this.binaries = binaries;
     }
 }
 
