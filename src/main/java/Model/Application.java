@@ -1,14 +1,16 @@
 package Model;
 
 import com.sun.istack.NotNull;
-import org.springframework.lang.NonNull;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 @Table(name = "applications", schema = "mango")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +40,7 @@ public class Application {
     @JsonBackReference
     private ArrayList<Binary> binaries = new ArrayList<>();
 //TODO dodawanie,usuwanie elementów z listy (dla wszystkich class) w oddzielnej klasie service
-    // TODO dodać kolumne ze timestamp + dodać annotacje @CreationTimestamp ??? Zastanowic się czy będę potrzebowac?
+    // TODO dodać kolumne ze timestamp + dodać annotacje @CreationTimestamp ??? Zastanowic się czy będę potrzebowac np do obliczania deadline test tasku?
     protected Application (){}
 
     Application (int id_application, String app_name, String technology_description, String functionality_description){

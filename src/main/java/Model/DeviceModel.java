@@ -1,12 +1,15 @@
 package Model;
 
 import com.sun.istack.NotNull;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
 @Table(name = "device_models", schema = "mango")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class DeviceModel {
 
     @Id

@@ -1,13 +1,15 @@
 package Model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.*;
 import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
 @Table(name = "projects", schema = "mango")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Project {
 
     @Id
@@ -28,7 +30,7 @@ public class Project {
     @OneToMany(mappedBy = "fk_id_projectBinary", cascade = CascadeType.ALL)
     @JsonBackReference
     private ArrayList<Binary> binaries = new ArrayList<>();
-    //TODO jackson annotations - I need them too + ignore obmyslic logike
+      //TODO jackson -> 4. Use @JsonIdentityInfo to both classes? from https://www.baeldung.com/jackson-bidirectional-relationships-and-infinite-recursion#json-identity-info zamiast ignore
 
 
     protected Project() {

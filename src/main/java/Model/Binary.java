@@ -1,11 +1,14 @@
 package Model;
 
 import com.sun.istack.NotNull;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "BINARIES", schema = "mango")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Binary {
 
     @Id

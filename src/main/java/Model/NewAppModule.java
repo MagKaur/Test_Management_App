@@ -3,11 +3,14 @@ package Model;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 
 @Entity
 @Table(name = "new_app_modules", schema = "mango")
-//TODO wykorzystac widok test_plan w kodzie
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
+//TODO wykorzystac widok test_plan w kodzie, Read only? czy nie
 public class NewAppModule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
