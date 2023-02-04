@@ -1,7 +1,7 @@
 package Model;
 
 import com.sun.istack.NotNull;
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 
 @Entity
@@ -17,15 +17,18 @@ public class ProjectDetails {
     @ManyToOne
     @JoinColumn(name = "id_project")
     @Column(name = "id_project")
+    @JsonManagedReference
     @NotNull
     private Project fk_id_projectProjectDetails;
     @ManyToOne
     @JoinColumn(name = "id_application")
     @Column(name = "id_application")
+    @JsonManagedReference
     private Application fk_id_applicationProjectDetails;
     @ManyToOne
     @JoinColumn(name = "id_device")
     @Column(name = "id_device")
+    @JsonManagedReference
     private DeviceModel fk_id_deviceModelProjectDetails;
 
 

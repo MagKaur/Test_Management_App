@@ -1,7 +1,7 @@
 package Model;
 
 import com.sun.istack.NotNull;
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 
 @Entity
@@ -23,16 +23,19 @@ public class Binary {
     @ManyToOne
     @JoinColumn(name = "id_project", nullable = false)
     @Column(name = "id_project")
+    @JsonManagedReference
     @NotNull //TODO a czy tutaj adnotacje tez?
     private Project fk_id_projectBinary;
     @ManyToOne
     @JoinColumn(name = "id_application")
     @Column(name = "id_application")
+    @JsonManagedReference
     @NotNull
     private Application fk_id_applicationBinary;
     @ManyToOne
     @JoinColumn(name = "id_device")
     @Column(name = "id_device")
+    @JsonManagedReference
     @NotNull
     private DeviceModel fk_id_deviceModelBinary;
     @Column(name = "accepted_status")

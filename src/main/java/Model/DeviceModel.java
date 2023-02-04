@@ -1,7 +1,7 @@
 package Model;
 
 import com.sun.istack.NotNull;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 import java.util.ArrayList;
 
@@ -42,8 +42,10 @@ public class DeviceModel {
     private char accepted_status;
 
     @OneToMany(mappedBy = "fk_id_deviceModelProjectDetails", cascade = CascadeType.ALL)
+    @JsonBackReference
     private ArrayList<ProjectDetails> projectDetails = new ArrayList<>();
     @OneToMany(mappedBy = "fk_id_deviceModelBinary", cascade = CascadeType.ALL)
+    @JsonBackReference
     private ArrayList<Binary> binaries = new ArrayList<>();
 
     protected DeviceModel(){};

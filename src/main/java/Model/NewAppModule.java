@@ -3,6 +3,7 @@ package Model;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "new_app_modules", schema = "mango")
@@ -22,6 +23,7 @@ public class NewAppModule {
     @ManyToOne
     @JoinColumn(name = "id_application")
     @Column(name = "id_application")
+    @JsonManagedReference
     @NotNull
     private Application fk_id_applicationNewAppModule;
 

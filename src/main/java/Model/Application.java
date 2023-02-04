@@ -2,7 +2,7 @@ package Model;
 
 import com.sun.istack.NotNull;
 import org.springframework.lang.NonNull;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,13 +27,15 @@ public class Application {
 
     @OneToMany(mappedBy = "fk_id_applicationNewAppModule", cascade = CascadeType.ALL)
     //TODO Czy tu też NOT NULLE sie przydadzą?
+    @JsonBackReference
     private ArrayList<NewAppModule> newAppModules = new ArrayList<>();
 
     @OneToMany(mappedBy = "fk_id_applicationProjectDetails", cascade = CascadeType.ALL)
+    @JsonBackReference
     private ArrayList<ProjectDetails> projectDetails = new ArrayList<>();
 
-
     @OneToMany(mappedBy = "fk_id_applicationBinary", cascade = CascadeType.ALL)
+    @JsonBackReference
     private ArrayList<Binary> binaries = new ArrayList<>();
 //TODO dodawanie,usuwanie elementów z listy (dla wszystkich class) w oddzielnej klasie service
     // TODO dodać kolumne ze timestamp + dodać annotacje @CreationTimestamp ??? Zastanowic się czy będę potrzebowac?

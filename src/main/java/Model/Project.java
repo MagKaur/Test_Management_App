@@ -1,5 +1,6 @@
 package Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -22,8 +23,10 @@ public class Project {
     private String project_name;
 
     @OneToMany(mappedBy = "fk_id_projectProjectDetails", cascade = CascadeType.ALL)
+    @JsonBackReference
     private ArrayList<ProjectDetails> projectDetails = new ArrayList<>();
     @OneToMany(mappedBy = "fk_id_projectBinary", cascade = CascadeType.ALL)
+    @JsonBackReference
     private ArrayList<Binary> binaries = new ArrayList<>();
     //TODO jackson annotations - I need them too + ignore obmyslic logike
 
