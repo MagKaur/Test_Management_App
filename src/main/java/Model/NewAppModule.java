@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "new_app_modules", schema = "mango")
-//TODO widok dla device models+ binaries stworzony w bazie
+//TODO wykorzystac widok test_plan w kodzie
 public class NewAppModule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
