@@ -23,19 +23,20 @@ public class NewAppModule implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_app_module")
-    //@TODO dodac @NOT NULL dodatkowo do stringów.
     private int id_app_module;
     @Column(name = "module_name")
+    @NotNull(message = "Module Name must not be null")
     @NotBlank(message = "Module Name must not be empty")
     private String module_name;
     @Column(name = "module_description")
+    @NotNull(message = "Module Description must not be null")
     @NotBlank(message = "Module Description must not be empty")
     private String module_description;
     @ManyToOne
     @JoinColumn(name = "id_application")
     @Column(name = "id_application")
     @JsonManagedReference
-    @NotNull
+    @NotNull(message = "Application indication must not be null")
     private Application fk_id_applicationNewAppModule;
 
     protected NewAppModule(){};

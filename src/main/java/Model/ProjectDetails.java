@@ -21,7 +21,7 @@ public class ProjectDetails implements Serializable {
     @JoinColumn(name = "id_project")
     @Column(name = "id_project")
     @JsonManagedReference
-    @NotNull
+    @NotNull(message = "Project indication must not be null")
     private Project fk_id_projectProjectDetails;
     @ManyToOne
     @JoinColumn(name = "id_application")

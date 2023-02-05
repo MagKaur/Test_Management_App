@@ -18,9 +18,11 @@ public class Binary implements Serializable {
     @Column(name = "id_binary")
     private int id_binary;
     @Column(name = "binary_description")
+    @NotNull(message = "Binary description must not be null")
     @NotBlank(message = "Binary Description must not be empty")
     private String binary_description;
     @Column(name = "binary_link")
+    @NotNull(message = "Binary Link must not be null")
     @NotBlank(message = "Binary Link must not be empty")
     private String binary_link;
 
@@ -28,24 +30,23 @@ public class Binary implements Serializable {
     @JoinColumn(name = "id_project", nullable = false)
     @Column(name = "id_project")
     @JsonManagedReference
-    @NotNull //TODO tutaj tez dodac NOT NULLE
+    @NotNull (message = "Project indication must not be null")
     private Project fk_id_projectBinary;
     @ManyToOne
     @JoinColumn(name = "id_application")
     @Column(name = "id_application")
     @JsonManagedReference
-    @NotNull
     private Application fk_id_applicationBinary;
     @ManyToOne
     @JoinColumn(name = "id_device")
     @Column(name = "id_device")
     @JsonManagedReference
-    @NotNull
     private DeviceModel fk_id_deviceModelBinary;
     @Column(name = "accepted_status")
     private boolean accepted_status;
 
     @Column(name = "binary_status")
+    @NotNull
     @NotBlank (message = "Binary Status must not be empty")
     @Enumerated
     private BinaryStatusType binary_status; //TODO dodać wszedzie gdzie enumy + pozmieniac w konstruktorach

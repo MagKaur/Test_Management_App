@@ -20,29 +20,38 @@ public class DeviceModel implements Serializable {
     @Column(name = "id_device")
     private int id_device;
     @Column(name = "producer_name")
+    @NotNull (message = "Producer name must not be null")
     @NotBlank(message = "Producer name must not be empty")
     private String producer_name;
     @Column(name = "model_name")
+    @NotNull(message = "Model name must not be null")
     @NotBlank(message = "Model name must not be empty")
     private String model_name;
     @Column(name = "premiere_quarter")
+    @NotNull(message = "Premiere Quarter must not be null")
     @NotBlank(message = "Premiere Quarter must not be empty")
     private String premiere_quarter;
     @Column(name = "volte")
-    @NotNull //TODO Not Null i Not Blank na char dopisac
-    private char VoLTE;
+    @NotNull(message = "VoLTE indication must not be null")
+    @NotBlank(message = "VoLTE indication must not be empty")
+    //TODO czy do tych charów nie lepiej takze dodac enum?
+    private char volte;
     @Column(name = "vowifi")
-    @NotNull
-    private char VoWiFi;
+    @NotNull(message = "VoWiFi indication must not be null")
+    @NotBlank(message = "VoWiFi indication must not be empty")
+    private char vowifi;
     @Column(name = "sa_nsa_5g")
-    @NotNull
-    private char SA_NSA_5G;
+    @NotNull(message = "sa_nsa_5G indication must not be null")
+    @NotBlank(message = "sa_nsa_5G indication must not be empty")
+    private char sa_nsa_5g;
     @Column(name = "e_sim")
-    @NotNull
+    @NotNull(message = "e-sim indication must not be null")
+    @NotBlank(message = "e-sim indication must not be empty")
     private char e_sim;
-    @Column(name = "RCS")
-    @NotNull
-    private char RCS;
+    @Column(name = "rcs")
+    @NotNull(message = "rcs indication must not be null")
+    @NotBlank(message = "rcs indication must not be empty")
+    private char rcs;
     @Column(name = "accepted_status")
     private char accepted_status;
 
@@ -55,54 +64,54 @@ public class DeviceModel implements Serializable {
 
     protected DeviceModel(){};
 
-    DeviceModel (int id_device, String producer_name, String model_name, String premiere_quarter, char VoLTE,
-                 char VoWiFi,char SA_NSA_5G, char RCS, char accepted_status){
+    DeviceModel (int id_device, String producer_name, String model_name, String premiere_quarter, char volte,
+                 char vowifi,char sa_nsa_5g, char rcs, char accepted_status){
         this.id_device = id_device;
         this.producer_name = producer_name;
         this.model_name = model_name;
         this.premiere_quarter = premiere_quarter;
-        this.VoLTE = VoLTE;
-        this.VoWiFi = VoWiFi;
-        this.SA_NSA_5G = SA_NSA_5G;
-        this.RCS = RCS;
+        this.volte = volte;
+        this.vowifi = vowifi;
+        this.sa_nsa_5g = sa_nsa_5g;
+        this.rcs = rcs;
         this. accepted_status = accepted_status;
     }
 
-    DeviceModel (int id_device, String producer_name, String model_name, String premiere_quarter, char VoLTE,
-                 char VoWiFi,char SA_NSA_5G, char RCS){
+    DeviceModel (int id_device, String producer_name, String model_name, String premiere_quarter, char volte,
+                 char vowifi,char sa_nsa_5g, char rcs){
         this.id_device = id_device;
         this.producer_name = producer_name;
         this.model_name = model_name;
         this.premiere_quarter = premiere_quarter;
-        this.VoLTE = VoLTE;
-        this.VoWiFi = VoWiFi;
-        this.SA_NSA_5G = SA_NSA_5G;
-        this.RCS = RCS;
+        this.volte = volte;
+        this.vowifi = vowifi;
+        this.sa_nsa_5g = sa_nsa_5g;
+        this.rcs = rcs;
     }
 
-    DeviceModel (int id_device, String producer_name, String model_name, String premiere_quarter, char VoLTE,
-                 char VoWiFi,char SA_NSA_5G, char RCS, ArrayList<Binary> binaries){
+    DeviceModel (int id_device, String producer_name, String model_name, String premiere_quarter, char volte,
+                 char vowifi,char sa_nsa_5g, char rcs, ArrayList<Binary> binaries){
         this.id_device = id_device;
         this.producer_name = producer_name;
         this.model_name = model_name;
         this.premiere_quarter = premiere_quarter;
-        this.VoLTE = VoLTE;
-        this.VoWiFi = VoWiFi;
-        this.SA_NSA_5G = SA_NSA_5G;
-        this.RCS = RCS;
+        this.volte = volte;
+        this.vowifi = vowifi;
+        this.sa_nsa_5g = sa_nsa_5g;
+        this.rcs = rcs;
         this.binaries = binaries;
     }
 
-    DeviceModel (int id_device, String producer_name, String model_name, String premiere_quarter, char VoLTE,
-                 char VoWiFi,char SA_NSA_5G, char RCS, ArrayList<Binary> binaries, ArrayList<ProjectDetails> projectDetails){
+    DeviceModel (int id_device, String producer_name, String model_name, String premiere_quarter, char volte,
+                 char vowifi,char sa_nsa_5g, char rcs, ArrayList<Binary> binaries, ArrayList<ProjectDetails> projectDetails){
         this.id_device = id_device;
         this.producer_name = producer_name;
         this.model_name = model_name;
         this.premiere_quarter = premiere_quarter;
-        this.VoLTE = VoLTE;
-        this.VoWiFi = VoWiFi;
-        this.SA_NSA_5G = SA_NSA_5G;
-        this.RCS = RCS;
+        this.volte = volte;
+        this.vowifi = vowifi;
+        this.sa_nsa_5g = sa_nsa_5g;
+        this.rcs = rcs;
         this.binaries = binaries;
         this.projectDetails = projectDetails;
     }
@@ -123,36 +132,36 @@ public class DeviceModel implements Serializable {
         this.e_sim = e_sim;
     }
 
-    public char getRCS() {
-        return RCS;
+    public char getRcs() {
+        return rcs;
     }
 
-    public void setRCS(char RCS) {
-        this.RCS = RCS;
+    public void setRcs(char rcs) {
+        this.rcs = rcs;
     }
 
-    public char getSA_NSA_5G() {
-        return SA_NSA_5G;
+    public char getSa_nsa_5g() {
+        return sa_nsa_5g;
     }
 
-    public void setSA_NSA_5G(char SA_NSA_5G) {
-        this.SA_NSA_5G = SA_NSA_5G;
+    public void setSa_nsa_5g(char sa_nsa_5g) {
+        this.sa_nsa_5g = sa_nsa_5g;
     }
 
-    public char getVoLTE() {
-        return VoLTE;
+    public char getVolte() {
+        return volte;
     }
 
-    public void setVoLTE(char voLTE) {
-        VoLTE = voLTE;
+    public void setVolte(char volte) {
+        this.volte = volte;
     }
 
-    public char getVoWiFi() {
-        return VoWiFi;
+    public char getVowifi() {
+        return vowifi;
     }
 
-    public void setVoWiFi(char voWiFi) {
-        VoWiFi = voWiFi;
+    public void setVowifi(char vowifi) {
+        this.vowifi = vowifi;
     }
 
     public int getId_device() {

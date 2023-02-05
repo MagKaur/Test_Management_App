@@ -13,22 +13,24 @@ import java.util.ArrayList;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class Project implements Serializable { //TODO implements serializable?
-    //TODO jak wykorzystać stworzone enumy?
+public class Project implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_project")
     private int id_project;
     @Column(name = "project_description")
+    @NotNull(message = "Project Description must not be null")
     @NotBlank(message = "Project Description must not be empty")
     private String project_description;
     @Column(name = "project_name")
+    @NotNull(message = "Project Name must not be null")
     @NotBlank(message = "Project Name must not be empty")
     private String project_name;
 
     @Column(name = "project_status")
-    @NotBlank(message = "Project_status must not be empty")
+    @NotNull(message = "Project Status must not be null")
+    @NotBlank(message = "Project Status must not be empty")
     private String project_status;
 
     @OneToMany(mappedBy = "fk_id_projectProjectDetails", cascade = CascadeType.ALL)

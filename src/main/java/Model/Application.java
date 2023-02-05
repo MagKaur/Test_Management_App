@@ -19,13 +19,15 @@ public class Application implements Serializable {
     @Column(name = "id_application")
     private int id_application;
     @Column(name = "app_name")
+    @NotNull(message = "App Name must not be null")
     @NotBlank(message = "App Name must not be empty")
-    @NotNull
     private String app_name;
     @Column(name = "technology_description")
+    @NotNull(message = "Technology description must not be null")
     @NotBlank(message = "Technology description must not be empty")
     private String technology_description;
     @Column(name = "functionality_description")
+    @NotNull(message = "Functionality description must not be null")
     @NotBlank(message = "Functionality description must not be empty")
     private String functionality_description;
 
