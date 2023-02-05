@@ -31,7 +31,7 @@ public class Project implements Serializable {
     @Column(name = "project_status")
     @NotNull(message = "Project Status must not be null")
     @NotBlank(message = "Project Status must not be empty")
-    private String project_status;
+    private ProjectStatusType project_status;
 
     @OneToMany(mappedBy = "fk_id_projectProjectDetails", cascade = CascadeType.ALL)
     @JsonBackReference
@@ -45,7 +45,7 @@ public class Project implements Serializable {
     protected Project() {
     }
 
-    Project (int id_project,String project_description, String project_name, String project_status){
+    Project (int id_project,String project_description, String project_name, ProjectStatusType project_status){
         this.id_project = id_project;
         this.project_description = project_description;
         this.project_name = project_name;
@@ -53,7 +53,7 @@ public class Project implements Serializable {
     }
 
     Project (int id_project,String project_description, String project_name, ArrayList<ProjectDetails> projectDetails,
-             ArrayList<Binary> binaries, String project_status){
+             ArrayList<Binary> binaries, ProjectStatusType project_status){
         this.id_project = id_project;
         this.project_description = project_description;
         this.project_name = project_name;
@@ -99,18 +99,18 @@ public class Project implements Serializable {
     }
 
     public ArrayList<Binary> getBinaries(){
-        return binaries = binaries;
+        return binaries;
     }
 
     public void setBinaries(ArrayList<Binary> binaries) {
         this.binaries = binaries;
     }
 
-    public String getProject_status(){
-        return project_status = project_status;
+    public ProjectStatusType getProject_status(){
+        return project_status;
     }
 
-    public void setProject_status(){
+    public void setProject_status(ProjectStatusType project_status){
         this.project_status = project_status;
     }
 }

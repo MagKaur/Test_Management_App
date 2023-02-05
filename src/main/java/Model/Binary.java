@@ -49,7 +49,7 @@ public class Binary implements Serializable {
     @NotNull
     @NotBlank (message = "Binary Status must not be empty")
     @Enumerated
-    private BinaryStatusType binary_status; //TODO dodać wszedzie gdzie enumy + pozmieniac w konstruktorach
+    private BinaryStatusType binary_status;
 
     protected Binary(){};
 
