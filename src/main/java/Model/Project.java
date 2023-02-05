@@ -19,7 +19,6 @@ public class Project implements Serializable { //TODO implements serializable?
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_project")
-    @NotNull
     private int id_project;
     @Column(name = "project_description")
     @NotBlank(message = "Project Description must not be empty")

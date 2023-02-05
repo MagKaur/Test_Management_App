@@ -15,7 +15,6 @@ public class ProjectDetails implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_project_details")
-    @NotNull
     private int id_project_details;
 
     @ManyToOne

@@ -18,7 +18,6 @@ public class DeviceModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_device")
-    @NotNull
     private int id_device;
     @Column(name = "producer_name")
     @NotBlank(message = "Producer name must not be empty")

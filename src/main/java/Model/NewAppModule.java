@@ -23,7 +23,6 @@ public class NewAppModule implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_app_module")
-    @NotNull //TODO nie dodawac do IDkow
     //@TODO dodac @NOT NULL dodatkowo do stringów.
     private int id_app_module;
     @Column(name = "module_name")

@@ -30,7 +30,6 @@ public class Application implements Serializable {
     private String functionality_description;
 
     @OneToMany(mappedBy = "fk_id_applicationNewAppModule", cascade = CascadeType.ALL)
-    //TODO Usunac @Not Null z IDków
     @JsonBackReference
     private ArrayList<NewAppModule> newAppModules = new ArrayList<>();
 

@@ -16,7 +16,6 @@ public class Binary implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_binary")
-    @NotNull
     private int id_binary;
     @Column(name = "binary_description")
     @NotBlank(message = "Binary Description must not be empty")
