@@ -28,7 +28,7 @@ public class Binary {
     @JoinColumn(name = "id_project", nullable = false)
     @Column(name = "id_project")
     @JsonManagedReference
-    @NotNull //TODO a czy tutaj adnotacje tez?
+    @NotNull //TODO a czy tutaj adnotacje NOT NULL tez?
     private Project fk_id_projectBinary;
     @ManyToOne
     @JoinColumn(name = "id_application")
@@ -45,21 +45,25 @@ public class Binary {
     @Column(name = "accepted_status")
     private boolean accepted_status;
 
+    @Column(name = "binary_status")
+    @NotBlank (message = "Binary Status must not be empty")
+    private String binary_status;
 
     protected Binary(){};
 
     Binary(int id_binary, String binary_description, String binary_link, Project fk_id_projectBinary, Application fk_id_applicationBinary,
-                DeviceModel fk_id_deviceModelBinary){
+                DeviceModel fk_id_deviceModelBinary, String binary_status){
         this.id_binary = id_binary;
         this.binary_description = binary_description;
         this.binary_link = binary_link;
         this.fk_id_projectBinary = fk_id_projectBinary;
         this.fk_id_applicationBinary = fk_id_applicationBinary;
         this.fk_id_deviceModelBinary = fk_id_deviceModelBinary;
+        this.binary_status = binary_status;
     }
 
     Binary(int id_binary, String binary_description, String binary_link, Project fk_id_projectBinary, Application fk_id_applicationBinary,
-           DeviceModel fk_id_deviceModelBinary, boolean accepted_status){
+           DeviceModel fk_id_deviceModelBinary, boolean accepted_status, String binary_status){
         this.id_binary = id_binary;
         this.binary_description = binary_description;
         this.binary_link = binary_link;
@@ -67,6 +71,7 @@ public class Binary {
         this.fk_id_applicationBinary = fk_id_applicationBinary;
         this.fk_id_deviceModelBinary = fk_id_deviceModelBinary;
         this.accepted_status = accepted_status;
+        this.binary_status = binary_status;
     }
 
     public int getId_binary(){
@@ -116,5 +121,13 @@ public class Binary {
 
     public void setAccepted_status(boolean accepted_status) {
         this.accepted_status = accepted_status;
+    }
+
+    public String getBinary_status(){
+        return binary_status;
+    }
+
+    public void setBinary_status(String binary_status) {
+        this.binary_status = binary_status;
     }
 }

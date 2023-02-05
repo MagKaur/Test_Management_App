@@ -11,7 +11,8 @@ import java.util.ArrayList;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class DeviceModel {
+public class DeviceModel { //TODO czy do device model czy Application lub application module dodawac enum?
+    //TODO Czy do Project Details dodawać w respository blokade usuniecia jak np w binary czy Project?
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

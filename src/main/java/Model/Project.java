@@ -12,7 +12,8 @@ import java.util.ArrayList;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class Project {
+public class Project { //TODO implements serializable?
+    //TODO jak wykorzystać stworzone enumy?
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +27,10 @@ public class Project {
     @NotBlank(message = "Project Name must not be empty")
     private String project_name;
 
+    @Column(name = "project_status")
+    @NotBlank(message = "Project_status must not be empty")
+    private String project_status;
+
     @OneToMany(mappedBy = "fk_id_projectProjectDetails", cascade = CascadeType.ALL)
     @JsonBackReference
     private ArrayList<ProjectDetails> projectDetails = new ArrayList<>();
@@ -38,19 +43,21 @@ public class Project {
     protected Project() {
     }
 
-    Project (int id_project,String project_description, String project_name){
+    Project (int id_project,String project_description, String project_name, String project_status){
         this.id_project = id_project;
         this.project_description = project_description;
         this.project_name = project_name;
+        this.project_status = project_status;
     }
 
     Project (int id_project,String project_description, String project_name, ArrayList<ProjectDetails> projectDetails,
-             ArrayList<Binary> binaries){
+             ArrayList<Binary> binaries, String project_status){
         this.id_project = id_project;
         this.project_description = project_description;
         this.project_name = project_name;
         this.projectDetails = projectDetails;
         this.binaries = binaries;
+        this.project_status = project_status;
     }
 
 
@@ -95,5 +102,13 @@ public class Project {
 
     public void setBinaries(ArrayList<Binary> binaries) {
         this.binaries = binaries;
+    }
+
+    public String getProject_status(){
+        return project_status = project_status;
+    }
+
+    public void setProject_status(){
+        this.project_status = project_status;
     }
 }
