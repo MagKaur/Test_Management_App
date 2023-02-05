@@ -14,7 +14,7 @@ import java.util.ArrayList;
         property = "id")
 public class DeviceModel implements Serializable {
     //TODO Do Project Details tez w respository blokade usuniecia
-    //TODO Przeniesc accepted device model status do project details enum.
+    //TODO Przeniesc accepted device model status do project details i usunąc zmienne z kodu
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_device")
