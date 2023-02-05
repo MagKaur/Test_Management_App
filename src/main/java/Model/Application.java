@@ -4,6 +4,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -12,14 +13,14 @@ import java.util.ArrayList;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class Application {
+public class Application implements Serializable { //TODO dodac serializable do wszystkich class modelu
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_application")
-    @NotNull
     private int id_application;
     @Column(name = "app_name")
     @NotBlank(message = "App Name must not be empty")
+    @NotNull
     private String app_name;
     @Column(name = "technology_description")
     @NotBlank(message = "Technology description must not be empty")
@@ -29,7 +30,7 @@ public class Application {
     private String functionality_description;
 
     @OneToMany(mappedBy = "fk_id_applicationNewAppModule", cascade = CascadeType.ALL)
-    //TODO Czy tu też NOT NULLE sie przydadzą?
+    //TODO Usunac @Not Null z IDków
     @JsonBackReference
     private ArrayList<NewAppModule> newAppModules = new ArrayList<>();
 

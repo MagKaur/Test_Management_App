@@ -11,9 +11,9 @@ import java.util.ArrayList;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class DeviceModel { //TODO czy do device model czy Application lub application module dodawac enum?
-    //TODO Czy do Project Details dodawać w respository blokade usuniecia jak np w binary czy Project?
-
+public class DeviceModel {
+    //TODO Do Project Details tez w respository blokade usuniecia
+    //TODO Przeniesc accepted device model status do project details enum.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_device")
@@ -29,7 +29,7 @@ public class DeviceModel { //TODO czy do device model czy Application lub applic
     @NotBlank(message = "Premiere Quarter must not be empty")
     private String premiere_quarter;
     @Column(name = "volte")
-    @NotNull //TODO Not Null na char?
+    @NotNull //TODO Not Null i Not Blank na char dopisac
     private char VoLTE;
     @Column(name = "vowifi")
     @NotNull

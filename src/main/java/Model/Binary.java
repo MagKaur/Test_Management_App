@@ -28,7 +28,7 @@ public class Binary {
     @JoinColumn(name = "id_project", nullable = false)
     @Column(name = "id_project")
     @JsonManagedReference
-    @NotNull //TODO a czy tutaj adnotacje NOT NULL tez?
+    @NotNull //TODO tutaj tez dodac NOT NULLE
     private Project fk_id_projectBinary;
     @ManyToOne
     @JoinColumn(name = "id_application")
@@ -47,12 +47,13 @@ public class Binary {
 
     @Column(name = "binary_status")
     @NotBlank (message = "Binary Status must not be empty")
-    private String binary_status;
+    @Enumerated
+    private BinaryStatusType binary_status; //TODO dodać wszedzie gdzie enumy + pozmieniac w konstruktorach
 
     protected Binary(){};
 
     Binary(int id_binary, String binary_description, String binary_link, Project fk_id_projectBinary, Application fk_id_applicationBinary,
-                DeviceModel fk_id_deviceModelBinary, String binary_status){
+                DeviceModel fk_id_deviceModelBinary, BinaryStatusType binary_status){
         this.id_binary = id_binary;
         this.binary_description = binary_description;
         this.binary_link = binary_link;
@@ -63,7 +64,7 @@ public class Binary {
     }
 
     Binary(int id_binary, String binary_description, String binary_link, Project fk_id_projectBinary, Application fk_id_applicationBinary,
-           DeviceModel fk_id_deviceModelBinary, boolean accepted_status, String binary_status){
+           DeviceModel fk_id_deviceModelBinary, boolean accepted_status, BinaryStatusType binary_status){
         this.id_binary = id_binary;
         this.binary_description = binary_description;
         this.binary_link = binary_link;
@@ -123,11 +124,11 @@ public class Binary {
         this.accepted_status = accepted_status;
     }
 
-    public String getBinary_status(){
+    public BinaryStatusType getBinary_status(){
         return binary_status;
     }
 
-    public void setBinary_status(String binary_status) {
+    public void setBinary_status(BinaryStatusType binary_status) {
         this.binary_status = binary_status;
     }
 }

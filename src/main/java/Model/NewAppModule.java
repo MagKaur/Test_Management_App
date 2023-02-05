@@ -14,13 +14,15 @@ import com.fasterxml.jackson.annotation.*;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-//TODO wykorzystac widok test_plan w kodzie, Read only? czy nie
-//TODO dokończyć walidacje @NOT NULL javax a nie sun z exception handlerem
+//TODO wykorzystac widok test_plan w kodzie, z mozliwymi updatami danych
+//TODO usunąć widok i zmienić zmienne w where stworzyc na nowo
+
 public class NewAppModule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_app_module")
-    @NotNull //TODO czy NOT Null również dodawać przy ID?
+    @NotNull //TODO nie dodawac do IDkow
+    //@TODO dodac @NOT NULL dodatkowo do stringów.
     private int id_app_module;
     @Column(name = "module_name")
     @NotBlank(message = "Module Name must not be empty")
