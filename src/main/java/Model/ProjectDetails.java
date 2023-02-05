@@ -1,6 +1,6 @@
 package Model;
 
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
 

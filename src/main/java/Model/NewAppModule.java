@@ -1,8 +1,12 @@
 package Model;
 
-import com.sun.istack.NotNull;
+
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.*;
 
 @Entity
@@ -11,17 +15,18 @@ import com.fasterxml.jackson.annotation.*;
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 //TODO wykorzystac widok test_plan w kodzie, Read only? czy nie
+//TODO dokończyć walidacje @NOT NULL javax a nie sun z exception handlerem
 public class NewAppModule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_app_module")
-    @NotNull
+    @NotNull //TODO czy NOT Null również dodawać przy ID?
     private int id_app_module;
     @Column(name = "module_name")
-    @NotNull
+    @NotBlank(message = "Module Name must be not null")
     private String module_name;
     @Column(name = "module_description")
-    @NotNull
+    @NotBlank(message = "Module Description must be not null")
     private String module_description;
     @ManyToOne
     @JoinColumn(name = "id_application")

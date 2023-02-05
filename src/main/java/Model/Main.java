@@ -2,19 +2,30 @@ package Model;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-//import java.util.Map;
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.rest.core.event.ValidatingRepositoryEventListener;
+import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
+import org.springframework.validation.Validator;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+
 
 @SpringBootApplication
-public class Main {
+public class Main implements RepositoryRestConfigurer {
 
     //TODO change path to ojdbc from C:/ to variable
-
-
     public static void main (String[] Args){
         SpringApplication.run(Main.class, Args);
-        /*Project project = new Project(1,"blalASKJDSA", "PISLANDIA");
-        System.out.println(project.getProject_description());
-        DeviceModel deviceModel = new DeviceModel(1,"Xiaomi","11 PRO","Q3 2022",'Y','Y','Y','N');*/
+    }
+
+
+    @Bean
+    Validator validator(){
+        return new LocalValidatorFactoryBean();
+    }
+    @Override
+    public void configureValidatingRepositoryEventListener(ValidatingRepositoryEventListener validatingListener) {
+        validatingListener.addValidator("beforeCreate", validator());
+        validatingListener.addValidator("beforeSave", validator());
     }
 }
 

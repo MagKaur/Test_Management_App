@@ -1,6 +1,7 @@
 package Model;
 
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,13 +19,13 @@ public class Application {
     @NotNull
     private int id_application;
     @Column(name = "app_name")
-    @NotNull
+    @NotBlank(message = "App Name must be not null")
     private String app_name;
     @Column(name = "technology_description")
-    @NotNull
+    @NotBlank(message = "Technology description must be not null")
     private String technology_description;
     @Column(name = "functionality_description")
-    @NotNull
+    @NotBlank(message = "Functionality description must be not null")
     private String functionality_description;
 
     @OneToMany(mappedBy = "fk_id_applicationNewAppModule", cascade = CascadeType.ALL)

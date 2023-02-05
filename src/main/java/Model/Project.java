@@ -1,7 +1,9 @@
 package Model;
 
 import com.fasterxml.jackson.annotation.*;
-import com.sun.istack.NotNull;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.persistence.*;
 import java.util.ArrayList;
 
@@ -18,10 +20,10 @@ public class Project {
     @NotNull
     private int id_project;
     @Column(name = "project_description")
-    @NotNull
+    @NotBlank(message = "Project Description must be not null")
     private String project_description;
     @Column(name = "project_name")
-    @NotNull
+    @NotBlank(message = "Project Name must be not null")
     private String project_name;
 
     @OneToMany(mappedBy = "fk_id_projectProjectDetails", cascade = CascadeType.ALL)
@@ -30,7 +32,7 @@ public class Project {
     @OneToMany(mappedBy = "fk_id_projectBinary", cascade = CascadeType.ALL)
     @JsonBackReference
     private ArrayList<Binary> binaries = new ArrayList<>();
-      //TODO jackson -> 4. Use @JsonIdentityInfo to both classes? from https://www.baeldung.com/jackson-bidirectional-relationships-and-infinite-recursion#json-identity-info zamiast ignore
+
 
 
     protected Project() {

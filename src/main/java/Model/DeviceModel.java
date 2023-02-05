@@ -1,6 +1,7 @@
 package Model;
 
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,16 +19,16 @@ public class DeviceModel {
     @NotNull
     private int id_device;
     @Column(name = "producer_name")
-    @NotNull
+    @NotBlank(message = "Producer name must be not null")
     private String producer_name;
     @Column(name = "model_name")
-    @NotNull
+    @NotBlank(message = "Model name must be not null")
     private String model_name;
     @Column(name = "premiere_quarter")
-    @NotNull
+    @NotBlank(message = "Premiere Quarter must be not null")
     private String premiere_quarter;
     @Column(name = "volte")
-    @NotNull
+    @NotNull //TODO Not Null na char?
     private char VoLTE;
     @Column(name = "vowifi")
     @NotNull

@@ -1,6 +1,7 @@
 package Model;
 
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
 
@@ -17,10 +18,10 @@ public class Binary {
     @NotNull
     private int id_binary;
     @Column(name = "binary_description")
-    @NotNull
+    @NotBlank(message = "Binary Description must be not null")
     private String binary_description;
     @Column(name = "binary_link")
-    @NotNull
+    @NotBlank(message = "Binary Link must be not null")
     private String binary_link;
 
     @ManyToOne
