@@ -18,10 +18,10 @@ public class Binary {
     @NotNull
     private int id_binary;
     @Column(name = "binary_description")
-    @NotBlank(message = "Binary Description must be not null")
+    @NotBlank(message = "Binary Description must not be empty")
     private String binary_description;
     @Column(name = "binary_link")
-    @NotBlank(message = "Binary Link must be not null")
+    @NotBlank(message = "Binary Link must not be empty")
     private String binary_link;
 
     @ManyToOne

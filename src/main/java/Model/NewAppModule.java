@@ -23,10 +23,10 @@ public class NewAppModule {
     @NotNull //TODO czy NOT Null również dodawać przy ID?
     private int id_app_module;
     @Column(name = "module_name")
-    @NotBlank(message = "Module Name must be not null")
+    @NotBlank(message = "Module Name must not be empty")
     private String module_name;
     @Column(name = "module_description")
-    @NotBlank(message = "Module Description must be not null")
+    @NotBlank(message = "Module Description must not be empty")
     private String module_description;
     @ManyToOne
     @JoinColumn(name = "id_application")

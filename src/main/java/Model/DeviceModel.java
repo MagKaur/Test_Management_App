@@ -19,13 +19,13 @@ public class DeviceModel {
     @NotNull
     private int id_device;
     @Column(name = "producer_name")
-    @NotBlank(message = "Producer name must be not null")
+    @NotBlank(message = "Producer name must not be empty")
     private String producer_name;
     @Column(name = "model_name")
-    @NotBlank(message = "Model name must be not null")
+    @NotBlank(message = "Model name must not be empty")
     private String model_name;
     @Column(name = "premiere_quarter")
-    @NotBlank(message = "Premiere Quarter must be not null")
+    @NotBlank(message = "Premiere Quarter must not be empty")
     private String premiere_quarter;
     @Column(name = "volte")
     @NotNull //TODO Not Null na char?

@@ -19,13 +19,13 @@ public class Application {
     @NotNull
     private int id_application;
     @Column(name = "app_name")
-    @NotBlank(message = "App Name must be not null")
+    @NotBlank(message = "App Name must not be empty")
     private String app_name;
     @Column(name = "technology_description")
-    @NotBlank(message = "Technology description must be not null")
+    @NotBlank(message = "Technology description must not be empty")
     private String technology_description;
     @Column(name = "functionality_description")
-    @NotBlank(message = "Functionality description must be not null")
+    @NotBlank(message = "Functionality description must not be empty")
     private String functionality_description;
 
     @OneToMany(mappedBy = "fk_id_applicationNewAppModule", cascade = CascadeType.ALL)

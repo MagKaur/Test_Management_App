@@ -20,10 +20,10 @@ public class Project {
     @NotNull
     private int id_project;
     @Column(name = "project_description")
-    @NotBlank(message = "Project Description must be not null")
+    @NotBlank(message = "Project Description must not be empty")
     private String project_description;
     @Column(name = "project_name")
-    @NotBlank(message = "Project Name must be not null")
+    @NotBlank(message = "Project Name must not be empty")
     private String project_name;
 
     @OneToMany(mappedBy = "fk_id_projectProjectDetails", cascade = CascadeType.ALL)
