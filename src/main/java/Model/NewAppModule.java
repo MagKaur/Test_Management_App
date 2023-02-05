@@ -9,6 +9,8 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "new_app_modules", schema = "mango")
 @JsonIdentityInfo(
@@ -17,7 +19,7 @@ import com.fasterxml.jackson.annotation.*;
 //TODO wykorzystac widok test_plan w kodzie, z mozliwymi updatami danych
 //TODO usunąć widok i zmienić zmienne w where stworzyc na nowo
 
-public class NewAppModule {
+public class NewAppModule implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_app_module")

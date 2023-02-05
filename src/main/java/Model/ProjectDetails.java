@@ -3,13 +3,14 @@ package Model;
 import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "project_details", schema = "mango")
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class ProjectDetails {
+public class ProjectDetails implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

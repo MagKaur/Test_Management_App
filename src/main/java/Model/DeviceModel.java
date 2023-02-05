@@ -4,6 +4,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 @Entity
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class DeviceModel {
+public class DeviceModel implements Serializable {
     //TODO Do Project Details tez w respository blokade usuniecia
     //TODO Przeniesc accepted device model status do project details enum.
     @Id

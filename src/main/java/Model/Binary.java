@@ -4,13 +4,14 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "BINARIES", schema = "mango")
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class Binary {
+public class Binary implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

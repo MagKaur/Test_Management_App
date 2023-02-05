@@ -13,7 +13,7 @@ import java.util.ArrayList;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class Application implements Serializable { //TODO dodac serializable do wszystkich class modelu
+public class Application implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_application")

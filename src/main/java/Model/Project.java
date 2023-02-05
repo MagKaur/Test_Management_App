@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 @Entity
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class Project { //TODO implements serializable?
+public class Project implements Serializable { //TODO implements serializable?
     //TODO jak wykorzystać stworzone enumy?
 
     @Id
