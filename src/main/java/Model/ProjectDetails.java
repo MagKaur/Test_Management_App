@@ -35,7 +35,8 @@ public class ProjectDetails implements Serializable {
     private DeviceModel fkIdDeviceModelProjectDetails;
 
     @Column(name = "accepted_status_device")
-    private char acceptedStatusDevice;
+    @Enumerated(EnumType.ORDINAL)
+    private AcceptedStatusDevice acceptedStatusDevice;
 
 
     protected ProjectDetails(){};
@@ -54,7 +55,7 @@ public class ProjectDetails implements Serializable {
     }
 
     ProjectDetails(int idProjectDetails, Project fkIdProjectProjectDetails,
-                   DeviceModel fkIdDeviceModelProjectDetails, char acceptedStatusDevice){
+                   DeviceModel fkIdDeviceModelProjectDetails, AcceptedStatusDevice acceptedStatusDevice){
         this.idProjectDetails = idProjectDetails;
         this.fkIdProjectProjectDetails = fkIdProjectProjectDetails;
         this.fkIdDeviceModelProjectDetails = fkIdDeviceModelProjectDetails;
@@ -91,11 +92,11 @@ public class ProjectDetails implements Serializable {
         this.fkIdDeviceModelProjectDetails = fkIdDeviceModelProjectDetails;
     }
 
-    public char getAcceptedStatusDevice() {
+    public AcceptedStatusDevice getAcceptedStatusDevice() {
         return acceptedStatusDevice;
     }
 
-    public void setAcceptedStatusDevice(char acceptedStatusDevice) {
+    public void setAcceptedStatusDevice(AcceptedStatusDevice acceptedStatusDevice) {
         this.acceptedStatusDevice = acceptedStatusDevice;
     }
 }

@@ -33,24 +33,28 @@ public class DeviceModel implements Serializable {
     @Column(name = "volte")
     @NotNull(message = "VoLTE indication must not be null")
     @NotBlank(message = "VoLTE indication must not be empty")
-    //TODO czy do tych charów nie lepiej takze dodac enum czy lepiej boolean?
-    private char volte;
+    @Enumerated(EnumType.ORDINAL)
+    private VoLTEstatus volte;
     @Column(name = "vowifi")
     @NotNull(message = "VoWiFi indication must not be null")
     @NotBlank(message = "VoWiFi indication must not be empty")
-    private char vowifi;
+    @Enumerated(EnumType.ORDINAL)
+    private VoWiFistatus vowifi;
     @Column(name = "sa_nsa_5g")
     @NotNull(message = "sa_nsa_5G indication must not be null")
     @NotBlank(message = "sa_nsa_5G indication must not be empty")
-    private char saNsa5g;
+    @Enumerated(EnumType.ORDINAL)
+    private SaNsa5gStatus saNsa5g;
     @Column(name = "e_sim")
     @NotNull(message = "e-sim indication must not be null")
     @NotBlank(message = "e-sim indication must not be empty")
-    private char eSim;
+    @Enumerated(EnumType.ORDINAL)
+    private EsimStatus eSim;
     @Column(name = "rcs")
     @NotNull(message = "rcs indication must not be null")
     @NotBlank(message = "rcs indication must not be empty")
-    private char rcs;
+    @Enumerated(EnumType.ORDINAL)
+    private RcsStatus rcs;
 
     @OneToMany(mappedBy = "fkIdDeviceModelProjectDetails", cascade = CascadeType.ALL)
     @JsonBackReference
@@ -61,8 +65,8 @@ public class DeviceModel implements Serializable {
 
     protected DeviceModel(){};
 
-    DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, char volte,
-                 char vowifi,char saNsa5g, char rcs){
+    DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, VoLTEstatus volte,
+                 VoWiFistatus vowifi,SaNsa5gStatus saNsa5g, EsimStatus eSim, RcsStatus rcs){
         this.idDevice = idDevice;
         this.producerName = producerName;
         this.modelName = modelName;
@@ -70,11 +74,12 @@ public class DeviceModel implements Serializable {
         this.volte = volte;
         this.vowifi = vowifi;
         this.saNsa5g = saNsa5g;
+        this.eSim = eSim;
         this.rcs = rcs;
     }
 
-    DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, char volte,
-                 char vowifi,char saNsa5g, char rcs, ArrayList<Binary> binaries){
+    DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, VoLTEstatus volte,
+                 VoWiFistatus vowifi,SaNsa5gStatus saNsa5g, EsimStatus eSim, RcsStatus rcs, ArrayList<Binary> binaries){
         this.idDevice = idDevice;
         this.producerName = producerName;
         this.modelName = modelName;
@@ -82,12 +87,13 @@ public class DeviceModel implements Serializable {
         this.volte = volte;
         this.vowifi = vowifi;
         this.saNsa5g = saNsa5g;
+        this.eSim = eSim;
         this.rcs = rcs;
         this.binaries = binaries;
     }
 
-    DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, char volte,
-                 char vowifi,char saNsa5g, char rcs, ArrayList<Binary> binaries, ArrayList<ProjectDetails> projectDetails){
+    DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, VoLTEstatus volte,
+                 VoWiFistatus vowifi,SaNsa5gStatus saNsa5g, EsimStatus eSim, RcsStatus rcs, ArrayList<Binary> binaries, ArrayList<ProjectDetails> projectDetails){
         this.idDevice = idDevice;
         this.producerName = producerName;
         this.modelName = modelName;
@@ -95,6 +101,7 @@ public class DeviceModel implements Serializable {
         this.volte = volte;
         this.vowifi = vowifi;
         this.saNsa5g = saNsa5g;
+        this.eSim = eSim;
         this.rcs = rcs;
         this.binaries = binaries;
         this.projectDetails = projectDetails;
@@ -102,43 +109,43 @@ public class DeviceModel implements Serializable {
 
 
 
-    public char getEsim() {
+    public EsimStatus getEsim() {
         return eSim;
     }
 
-    public void setEsim(char eSim) {
+    public void setEsim(EsimStatus eSim) {
         this.eSim = eSim;
     }
 
-    public char getRcs() {
+    public RcsStatus getRcs() {
         return rcs;
     }
 
-    public void setRcs(char rcs) {
+    public void setRcs(RcsStatus rcs) {
         this.rcs = rcs;
     }
 
-    public char getSaNsa5g() {
+    public SaNsa5gStatus getSaNsa5g() {
         return saNsa5g;
     }
 
-    public void setSaNsa5g(char saNsa5g) {
+    public void setSaNsa5g(SaNsa5gStatus saNsa5g) {
         this.saNsa5g = saNsa5g;
     }
 
-    public char getVolte() {
+    public VoLTEstatus getVolte() {
         return volte;
     }
 
-    public void setVolte(char volte) {
+    public void setVolte(VoLTEstatus volte) {
         this.volte = volte;
     }
 
-    public char getVowifi() {
+    public VoWiFistatus getVowifi() {
         return vowifi;
     }
 
-    public void setVowifi(char vowifi) {
+    public void setVowifi(VoWiFistatus vowifi) {
         this.vowifi = vowifi;
     }
 

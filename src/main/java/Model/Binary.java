@@ -43,7 +43,8 @@ public class Binary implements Serializable {
     @JsonManagedReference
     private DeviceModel fkIdDeviceModelBinary;
     @Column(name = "accepted_status")
-    private boolean acceptedStatus;
+    @Enumerated(EnumType.ORDINAL)
+    private AcceptedStatusBinary acceptedStatus;
 
     @Column(name = "BINARY_STATUS_TYPE")
     @NotNull(message = "Binary Status must not be null" )
@@ -65,7 +66,7 @@ public class Binary implements Serializable {
     }
 
     Binary(int idBinary, String binaryDescription, String binaryLink, Project fkIdProjectBinary, Application fkIdApplicationBinary,
-           DeviceModel fkIdDeviceModelBinary, boolean acceptedStatus, BinaryStatusType binaryStatus){
+           DeviceModel fkIdDeviceModelBinary, AcceptedStatusBinary acceptedStatus, BinaryStatusType binaryStatus){
         this.idBinary = idBinary;
         this.binaryDescription = binaryDescription;
         this.binaryLink = binaryLink;
@@ -117,11 +118,11 @@ public class Binary implements Serializable {
         this.fkIdDeviceModelBinary = fkIdDeviceModelBinary;
     }
 
-    public boolean getAcceptedStatus(){
+    public AcceptedStatusBinary getAcceptedStatus(){
         return acceptedStatus;
     }
 
-    public void setAcceptedStatus(boolean acceptedStatus) {
+    public void setAcceptedStatus(AcceptedStatusBinary acceptedStatus) {
         this.acceptedStatus = acceptedStatus;
     }
 
