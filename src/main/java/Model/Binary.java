@@ -46,7 +46,7 @@ public class Binary implements Serializable {
     private boolean acceptedStatus;
 
     @Column(name = "BINARY_STATUS_TYPE")
-    @NotNull
+    @NotNull(message = "Binary Status must not be null" )
     @NotBlank (message = "Binary Status must not be empty")
     @Enumerated(EnumType.ORDINAL)
     private BinaryStatusType binaryStatus;
