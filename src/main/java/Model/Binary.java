@@ -45,10 +45,10 @@ public class Binary implements Serializable {
     @Column(name = "accepted_status")
     private boolean acceptedStatus;
 
-    @Column(name = "binary_status")
+    @Column(name = "BINARY_STATUS_TYPE")
     @NotNull
     @NotBlank (message = "Binary Status must not be empty")
-    @Enumerated
+    @Enumerated(EnumType.ORDINAL)
     private BinaryStatusType binaryStatus;
 
     protected Binary(){};

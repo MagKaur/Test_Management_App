@@ -28,9 +28,10 @@ public class Project implements Serializable {
     @NotBlank(message = "Project Name must not be empty")
     private String projectName;
 
-    @Column(name = "project_status")
+    @Column(name = "PROJECT_STATUS_TYPE")
     @NotNull(message = "Project Status must not be null")
     @NotBlank(message = "Project Status must not be empty")
+    @Enumerated(EnumType.ORDINAL)
     private ProjectStatusType projectStatus;
 
     @OneToMany(mappedBy = "fkIdProjectProjectDetails", cascade = CascadeType.ALL)

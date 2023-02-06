@@ -20,5 +20,5 @@ public interface BinaryRepository extends JpaRepository<Binary, Integer> {
     List<Binary> findByBinaryStatus(@NonNull BinaryStatusType binaryStatus);
     List<Binary> findByAcceptedStatusIsTrue();
     List<Binary> findByAcceptedStatusIsFalse();
-    List<Binary> findByAcceptedStatusIsTrueAndAcceptedStatusIsFalse(); //TODO czy to tak się robi?
+    List<Binary> findByAcceptedStatusIsTrueAndAcceptedStatusIsFalse();
 }
