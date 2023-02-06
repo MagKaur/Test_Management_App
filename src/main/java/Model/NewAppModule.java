@@ -16,8 +16,7 @@ import java.io.Serializable;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-//TODO wykorzystac widok test_plan w kodzie, z mozliwymi updatami danych
-//TODO usunąć widok i zmienić zmienne w where stworzyc na nowo
+//TODO wykorzystac widok test_plan w kodzie
 
 public class NewAppModule implements Serializable {
     @Id

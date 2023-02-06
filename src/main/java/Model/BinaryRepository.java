@@ -1,6 +1,7 @@
 package Model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.lang.NonNull;
@@ -21,4 +22,8 @@ public interface BinaryRepository extends JpaRepository<Binary, Integer> {
     List<Binary> findByAcceptedStatusIsTrue();
     List<Binary> findByAcceptedStatusIsFalse();
     List<Binary> findByAcceptedStatusIsTrueAndAcceptedStatusIsFalse();
+
+    @Query(nativeQuery = true, value = "SELECT * FROM tests_ongoing ORDER BY Project_Name")
+    List<TESTS_ONGOINGview> getTESTS_ONGOING();
+
 }
