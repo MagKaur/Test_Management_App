@@ -16,7 +16,7 @@ import java.io.Serializable;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-//TODO wykorzystac widok test_plan w kodzie
+
 
 public class NewAppModule implements Serializable {
     @Id
