@@ -16,120 +16,120 @@ public class Binary implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_binary")
-    private int id_binary;
+    private int idBinary;
     @Column(name = "binary_description")
     @NotNull(message = "Binary description must not be null")
     @NotBlank(message = "Binary Description must not be empty")
-    private String binary_description;
+    private String binaryDescription;
     @Column(name = "binary_link")
     @NotNull(message = "Binary Link must not be null")
     @NotBlank(message = "Binary Link must not be empty")
-    private String binary_link;
+    private String binaryLink;
 
     @ManyToOne
     @JoinColumn(name = "id_project", nullable = false)
     @Column(name = "id_project")
     @JsonManagedReference
     @NotNull (message = "Project indication must not be null")
-    private Project fk_id_projectBinary;
+    private Project fkIdProjectBinary;
     @ManyToOne
     @JoinColumn(name = "id_application")
     @Column(name = "id_application")
     @JsonManagedReference
-    private Application fk_id_applicationBinary;
+    private Application fkIdApplicationBinary;
     @ManyToOne
     @JoinColumn(name = "id_device")
     @Column(name = "id_device")
     @JsonManagedReference
-    private DeviceModel fk_id_deviceModelBinary;
+    private DeviceModel fkIdDeviceModelBinary;
     @Column(name = "accepted_status")
-    private boolean accepted_status;
+    private boolean acceptedStatus;
 
     @Column(name = "binary_status")
     @NotNull
     @NotBlank (message = "Binary Status must not be empty")
     @Enumerated
-    private BinaryStatusType binary_status;
+    private BinaryStatusType binaryStatus;
 
     protected Binary(){};
 
-    Binary(int id_binary, String binary_description, String binary_link, Project fk_id_projectBinary, Application fk_id_applicationBinary,
-                DeviceModel fk_id_deviceModelBinary, BinaryStatusType binary_status){
-        this.id_binary = id_binary;
-        this.binary_description = binary_description;
-        this.binary_link = binary_link;
-        this.fk_id_projectBinary = fk_id_projectBinary;
-        this.fk_id_applicationBinary = fk_id_applicationBinary;
-        this.fk_id_deviceModelBinary = fk_id_deviceModelBinary;
-        this.binary_status = binary_status;
+    Binary(int idBinary, String binaryDescription, String binaryLink, Project fkIdProjectBinary, Application fkIdApplicationBinary,
+                DeviceModel fkIdDeviceModelBinary, BinaryStatusType binaryStatus){
+        this.idBinary = idBinary;
+        this.binaryDescription = binaryDescription;
+        this.binaryLink = binaryLink;
+        this.fkIdProjectBinary = fkIdProjectBinary;
+        this.fkIdApplicationBinary = fkIdApplicationBinary;
+        this.fkIdDeviceModelBinary = fkIdDeviceModelBinary;
+        this.binaryStatus = binaryStatus;
     }
 
-    Binary(int id_binary, String binary_description, String binary_link, Project fk_id_projectBinary, Application fk_id_applicationBinary,
-           DeviceModel fk_id_deviceModelBinary, boolean accepted_status, BinaryStatusType binary_status){
-        this.id_binary = id_binary;
-        this.binary_description = binary_description;
-        this.binary_link = binary_link;
-        this.fk_id_projectBinary = fk_id_projectBinary;
-        this.fk_id_applicationBinary = fk_id_applicationBinary;
-        this.fk_id_deviceModelBinary = fk_id_deviceModelBinary;
-        this.accepted_status = accepted_status;
-        this.binary_status = binary_status;
+    Binary(int idBinary, String binaryDescription, String binaryLink, Project fkIdProjectBinary, Application fkIdApplicationBinary,
+           DeviceModel fkIdDeviceModelBinary, boolean acceptedStatus, BinaryStatusType binaryStatus){
+        this.idBinary = idBinary;
+        this.binaryDescription = binaryDescription;
+        this.binaryLink = binaryLink;
+        this.fkIdProjectBinary = fkIdProjectBinary;
+        this.fkIdApplicationBinary = fkIdApplicationBinary;
+        this.fkIdDeviceModelBinary = fkIdDeviceModelBinary;
+        this.acceptedStatus = acceptedStatus;
+        this.binaryStatus = binaryStatus;
     }
 
-    public int getId_binary(){
-        return id_binary;
+    public int getIdBinary(){
+        return idBinary;
     }
 
-    public void setId_binary(int id_binary){
-        this.id_binary = id_binary;
+    public void setIdBinary(int idBinary){
+        this.idBinary = idBinary;
     }
 
-    public String getBinary_description(){
-        return binary_description;
+    public String getBinaryDescription(){
+        return binaryDescription;
     }
-    public void setBinary_description(String binary_description){
-        this.binary_description = binary_description;
+    public void setBinaryDescription(String binaryDescription){
+        this.binaryDescription = binaryDescription;
     }
-    public String getBinary_link(){
-        return binary_link;
+    public String getBinaryLink(){
+        return binaryLink;
     }
-    public void setBinary_link(String binary_link){
-        this.binary_link = binary_link;
-    }
-
-    public Project getFk_id_projectBinary(){
-        return fk_id_projectBinary;
-    }
-    public void setFk_id_projectBinary(Project fk_id_projectBinary){
-        this.fk_id_projectBinary = fk_id_projectBinary;
-    }
-    public Application getFk_id_applicationBinary(){
-        return fk_id_applicationBinary;
-    }
-    public void setFk_id_applicationBinary(Application fk_id_applicationBinary){
-        this.fk_id_applicationBinary = fk_id_applicationBinary;
+    public void setBinaryLink(String binaryLink){
+        this.binaryLink = binaryLink;
     }
 
-    public DeviceModel getFk_id_deviceModelBinary(){
-        return fk_id_deviceModelBinary;
+    public Project getFkIdProjectBinary(){
+        return fkIdProjectBinary;
     }
-    public void setFk_id_deviceModelBinary(DeviceModel fk_id_deviceModelBinary){
-        this.fk_id_deviceModelBinary = fk_id_deviceModelBinary;
+    public void setFkIdProjectBinary(Project fkIdProjectBinary){
+        this.fkIdProjectBinary = fkIdProjectBinary;
     }
-
-    public boolean getAccepted_status(){
-        return accepted_status;
+    public Application getFkIdApplicationBinary(){
+        return fkIdApplicationBinary;
     }
-
-    public void setAccepted_status(boolean accepted_status) {
-        this.accepted_status = accepted_status;
+    public void setFkIdApplicationBinary(Application fkIdApplicationBinary){
+        this.fkIdApplicationBinary = fkIdApplicationBinary;
     }
 
-    public BinaryStatusType getBinary_status(){
-        return binary_status;
+    public DeviceModel getFkIdDeviceModelBinary(){
+        return fkIdDeviceModelBinary;
+    }
+    public void setFkIdDeviceModelBinary(DeviceModel fkIdDeviceModelBinary){
+        this.fkIdDeviceModelBinary = fkIdDeviceModelBinary;
     }
 
-    public void setBinary_status(BinaryStatusType binary_status) {
-        this.binary_status = binary_status;
+    public boolean getAcceptedStatus(){
+        return acceptedStatus;
+    }
+
+    public void setAcceptedStatus(boolean acceptedStatus) {
+        this.acceptedStatus = acceptedStatus;
+    }
+
+    public BinaryStatusType getBinaryStatus(){
+        return binaryStatus;
+    }
+
+    public void setBinaryStatus(BinaryStatusType binaryStatus) {
+        this.binaryStatus = binaryStatus;
     }
 }

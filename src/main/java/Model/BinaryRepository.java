@@ -17,8 +17,8 @@ public interface BinaryRepository extends JpaRepository<Binary, Integer> {
     @RestResource(exported = false)
     void deleteById(Integer integer);
 
-    List<Binary> findByBinary_status(@NonNull String binary_status); //TODO zmienić wszystkie zmienne na nazwy bez podłóg wtedy bedzie odczytywac
-    List<Binary> findByAccepted_statusIsTrue();
-    List<Binary> findByAccepted_statusIsFalse();
-    List<Binary> findByAccepted_statusIsTrueAndAccepted_statusIsFalse(); //TODO czy to tak się robi?
+    List<Binary> findByBinaryStatus(@NonNull BinaryStatusType binaryStatus);
+    List<Binary> findByAcceptedStatusIsTrue();
+    List<Binary> findByAcceptedStatusIsFalse();
+    List<Binary> findByAcceptedStatusIsTrueAndAcceptedStatusIsFalse(); //TODO czy to tak się robi?
 }

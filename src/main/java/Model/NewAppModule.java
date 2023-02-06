@@ -23,57 +23,57 @@ public class NewAppModule implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_app_module")
-    private int id_app_module;
+    private int idAppModule;
     @Column(name = "module_name")
     @NotNull(message = "Module Name must not be null")
     @NotBlank(message = "Module Name must not be empty")
-    private String module_name;
+    private String moduleName;
     @Column(name = "module_description")
     @NotNull(message = "Module Description must not be null")
     @NotBlank(message = "Module Description must not be empty")
-    private String module_description;
+    private String moduleDescription;
     @ManyToOne
     @JoinColumn(name = "id_application")
     @Column(name = "id_application")
     @JsonManagedReference
     @NotNull(message = "Application indication must not be null")
-    private Application fk_id_applicationNewAppModule;
+    private Application fkIdApplicationNewAppModule;
 
     protected NewAppModule(){};
 
-    NewAppModule(int id_app_module, String module_name, String module_description, Application fk_id_applicationNewAppModule) {
+    NewAppModule(int idAppModule, String moduleName, String moduleDescription, Application fkIdApplicationNewAppModule) {
 
-        this.id_app_module = id_app_module;
-        this.module_name = module_name;
-        this.module_description = module_description;
-        this.fk_id_applicationNewAppModule = fk_id_applicationNewAppModule;
-    }
-
-    public int getId_app_module(){
-        return id_app_module;
-    }
-    public void setId_app_module(int id_app_module){
-        this.id_app_module = id_app_module;
+        this.idAppModule = idAppModule;
+        this.moduleName = moduleName;
+        this.moduleDescription = moduleDescription;
+        this.fkIdApplicationNewAppModule = fkIdApplicationNewAppModule;
     }
 
-    public String getModule_name(){
-        return module_name;
+    public int getIdAppModule(){
+        return idAppModule;
     }
-    public void setModule_name(String module_name){
-        this.module_name = module_name;
-    }
-
-    public String getModule_description(){
-        return module_description;
-    }
-    public void setModule_destription(String module_destription){
-        this.module_description = module_destription;
+    public void setIdAppModule(int idAppModule){
+        this.idAppModule = idAppModule;
     }
 
-    public Application getFk_id_applicationNewAppModule(){
-        return fk_id_applicationNewAppModule;
+    public String getModuleName(){
+        return moduleName;
     }
-    public void setFk_id_applicationNewAppModule(Application fk_id_applicationNewAppModule){
-        this.fk_id_applicationNewAppModule = fk_id_applicationNewAppModule;
+    public void setModuleName(String moduleName){
+        this.moduleName = moduleName;
+    }
+
+    public String getModuleDescription(){
+        return moduleDescription;
+    }
+    public void setModuleDescription(String moduleDescription){
+        this.moduleDescription = moduleDescription;
+    }
+
+    public Application getFkIdApplicationNewAppModule(){
+        return fkIdApplicationNewAppModule;
+    }
+    public void setFkIdApplicationNewAppModule(Application fkIdApplicationNewAppModule){
+        this.fkIdApplicationNewAppModule = fkIdApplicationNewAppModule;
     }
 }

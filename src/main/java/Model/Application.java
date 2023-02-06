@@ -17,97 +17,97 @@ public class Application implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_application")
-    private int id_application;
+    private int idApplication;
     @Column(name = "app_name")
     @NotNull(message = "App Name must not be null")
     @NotBlank(message = "App Name must not be empty")
-    private String app_name;
+    private String appName;
     @Column(name = "technology_description")
     @NotNull(message = "Technology description must not be null")
     @NotBlank(message = "Technology description must not be empty")
-    private String technology_description;
+    private String technologyDescription;
     @Column(name = "functionality_description")
     @NotNull(message = "Functionality description must not be null")
     @NotBlank(message = "Functionality description must not be empty")
-    private String functionality_description;
+    private String functionalityDescription;
 
-    @OneToMany(mappedBy = "fk_id_applicationNewAppModule", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "fkIdApplicationNewAppModule", cascade = CascadeType.ALL)
     @JsonBackReference
     private ArrayList<NewAppModule> newAppModules = new ArrayList<>();
 
-    @OneToMany(mappedBy = "fk_id_applicationProjectDetails", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "fkIdApplicationProjectDetails", cascade = CascadeType.ALL)
     @JsonBackReference
     private ArrayList<ProjectDetails> projectDetails = new ArrayList<>();
 
-    @OneToMany(mappedBy = "fk_id_applicationBinary", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "fkIdApplicationBinary", cascade = CascadeType.ALL)
     @JsonBackReference
     private ArrayList<Binary> binaries = new ArrayList<>();
 //TODO dodawanie,usuwanie elementów z listy (dla wszystkich class) w oddzielnej klasie service
     // TODO dodać kolumne ze timestamp + dodać annotacje @CreationTimestamp ??? Zastanowic się czy będę potrzebowac np do obliczania deadline test tasku?
     protected Application (){}
 
-    Application (int id_application, String app_name, String technology_description, String functionality_description){
-        this.id_application = id_application;
-        this.app_name = app_name;
-        this.technology_description = technology_description;
-        this.functionality_description = functionality_description;
+    Application (int idApplication, String appName, String technologyDescription, String functionalityDescription){
+        this.idApplication = idApplication;
+        this.appName = appName;
+        this.technologyDescription = technologyDescription;
+        this.functionalityDescription = functionalityDescription;
     }
 
-    Application (int id_application, String app_name, String technology_description, String functionality_description,
+    Application (int idApplication, String appName, String technologyDescription, String functionalityDescription,
                  ArrayList<NewAppModule> newAppModules){
-        this.id_application = id_application;
-        this.app_name = app_name;
-        this.technology_description = technology_description;
-        this.functionality_description = functionality_description;
+        this.idApplication = idApplication;
+        this.appName = appName;
+        this.technologyDescription = technologyDescription;
+        this.functionalityDescription = functionalityDescription;
         this.newAppModules = newAppModules;
     }
-    Application (int id_application, String app_name, String technology_description, String functionality_description,
+    Application (int idApplication, String appName, String technologyDescription, String functionalityDescription,
                  ArrayList<NewAppModule> newAppModules,ArrayList<Binary> binaries){
-        this.id_application = id_application;
-        this.app_name = app_name;
-        this.technology_description = technology_description;
-        this.functionality_description = functionality_description;
+        this.idApplication = idApplication;
+        this.appName = appName;
+        this.technologyDescription = technologyDescription;
+        this.functionalityDescription = functionalityDescription;
         this.newAppModules = newAppModules;
         this.binaries = binaries;
     }
-    Application (int id_application, String app_name, String technology_description, String functionality_description,
+    Application (int idApplication, String appName, String technologyDescription, String functionalityDescription,
                  ArrayList<NewAppModule> newAppModules,ArrayList<Binary> binaries, ArrayList<ProjectDetails> projectDetails){
-        this.id_application = id_application;
-        this.app_name = app_name;
-        this.technology_description = technology_description;
-        this.functionality_description = functionality_description;
+        this.idApplication = idApplication;
+        this.appName = appName;
+        this.technologyDescription = technologyDescription;
+        this.functionalityDescription = functionalityDescription;
         this.newAppModules = newAppModules;
         this.binaries = binaries;
         this.projectDetails = projectDetails;
     }
 
 
-    public int getId_application(){
-        return id_application;
+    public int getIdApplication(){
+        return idApplication;
     }
-    public void setId_application(int id_application){
-        this.id_application = id_application;
-    }
-
-    public String getApp_name(){
-        return app_name;
-    }
-    public void setApp_name(String app_name){
-        this.app_name = app_name;
+    public void setIdApplication(int idApplication){
+        this.idApplication = idApplication;
     }
 
-    public String getTechnology_description(){
-        return technology_description;
+    public String getAppName(){
+        return appName;
     }
-    public void setTechnology_description(String technology_description){
-        this. technology_description = technology_description;
+    public void setAppName(String appName){
+        this.appName = appName;
     }
 
-    public String getFunctionality_description() {
-        return functionality_description;
+    public String getTechnologyDescription(){
+        return technologyDescription;
     }
-    public void setFunctionality_description(String functionality_description){
-        this.functionality_description = functionality_description;
+    public void setTechnologyDescription(String technologyDescription){
+        this. technologyDescription = technologyDescription;
+    }
+
+    public String getFunctionalityDescription() {
+        return functionalityDescription;
+    }
+    public void setFunctionalityDescription(String functionalityDescription){
+        this.functionalityDescription = functionalityDescription;
     }
 
     public ArrayList<NewAppModule> getNewAppModules() {

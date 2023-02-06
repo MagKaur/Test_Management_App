@@ -18,25 +18,25 @@ public class Project implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_project")
-    private int id_project;
+    private int idProject;
     @Column(name = "project_description")
     @NotNull(message = "Project Description must not be null")
     @NotBlank(message = "Project Description must not be empty")
-    private String project_description;
+    private String projectDescription;
     @Column(name = "project_name")
     @NotNull(message = "Project Name must not be null")
     @NotBlank(message = "Project Name must not be empty")
-    private String project_name;
+    private String projectName;
 
     @Column(name = "project_status")
     @NotNull(message = "Project Status must not be null")
     @NotBlank(message = "Project Status must not be empty")
-    private ProjectStatusType project_status;
+    private ProjectStatusType projectStatus;
 
-    @OneToMany(mappedBy = "fk_id_projectProjectDetails", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "fkIdProjectProjectDetails", cascade = CascadeType.ALL)
     @JsonBackReference
     private ArrayList<ProjectDetails> projectDetails = new ArrayList<>();
-    @OneToMany(mappedBy = "fk_id_projectBinary", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "fkIdProjectBinary", cascade = CascadeType.ALL)
     @JsonBackReference
     private ArrayList<Binary> binaries = new ArrayList<>();
 
@@ -45,47 +45,47 @@ public class Project implements Serializable {
     protected Project() {
     }
 
-    Project (int id_project,String project_description, String project_name, ProjectStatusType project_status){
-        this.id_project = id_project;
-        this.project_description = project_description;
-        this.project_name = project_name;
-        this.project_status = project_status;
+    Project (int idProject,String projectDescription, String projectName, ProjectStatusType projectStatus){
+        this.idProject = idProject;
+        this.projectDescription = projectDescription;
+        this.projectName = projectName;
+        this.projectStatus = projectStatus;
     }
 
-    Project (int id_project,String project_description, String project_name, ArrayList<ProjectDetails> projectDetails,
-             ArrayList<Binary> binaries, ProjectStatusType project_status){
-        this.id_project = id_project;
-        this.project_description = project_description;
-        this.project_name = project_name;
+    Project (int idProject,String projectDescription, String projectName, ArrayList<ProjectDetails> projectDetails,
+             ArrayList<Binary> binaries, ProjectStatusType projectStatus){
+        this.idProject = idProject;
+        this.projectDescription = projectDescription;
+        this.projectName = projectName;
         this.projectDetails = projectDetails;
         this.binaries = binaries;
-        this.project_status = project_status;
+        this.projectStatus = projectStatus;
     }
 
 
 
-    public int getId_project() {
-        return id_project;
+    public int getIdProject() {
+        return idProject;
     }
 
-    public void setId_project(int id_project) {
-        this.id_project = id_project;
+    public void setIdProject(int idProject) {
+        this.idProject = idProject;
     }
 
-    public String getProject_description() {
-        return project_description;
+    public String getProjectDescription() {
+        return projectDescription;
     }
 
-    public void setProject_description(String project_description) {
-        this.project_description = project_description;
+    public void setProjectDescription(String projectDescription) {
+        this.projectDescription = projectDescription;
     }
 
-    public String getProject_name() {
-        return project_name;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setProject_name(String project_name) {
-        this.project_name = project_name;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
 
@@ -106,11 +106,11 @@ public class Project implements Serializable {
         this.binaries = binaries;
     }
 
-    public ProjectStatusType getProject_status(){
-        return project_status;
+    public ProjectStatusType getProjectStatus(){
+        return projectStatus;
     }
 
-    public void setProject_status(ProjectStatusType project_status){
-        this.project_status = project_status;
+    public void setProjectStatus(ProjectStatusType projectStatus){
+        this.projectStatus = projectStatus;
     }
 }
