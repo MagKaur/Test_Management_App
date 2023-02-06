@@ -13,7 +13,7 @@ import java.util.ArrayList;
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 public class DeviceModel implements Serializable {
-    //TODO Do Project Details tez w respository blokade usuniecia
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_device")
@@ -33,7 +33,7 @@ public class DeviceModel implements Serializable {
     @Column(name = "volte")
     @NotNull(message = "VoLTE indication must not be null")
     @NotBlank(message = "VoLTE indication must not be empty")
-    //TODO czy do tych charów nie lepiej takze dodac enum?
+    //TODO czy do tych charów nie lepiej takze dodac enum czy lepiej boolean?
     private char volte;
     @Column(name = "vowifi")
     @NotNull(message = "VoWiFi indication must not be null")
