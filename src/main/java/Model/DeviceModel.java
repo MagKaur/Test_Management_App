@@ -52,8 +52,6 @@ public class DeviceModel implements Serializable {
     @NotNull(message = "rcs indication must not be null")
     @NotBlank(message = "rcs indication must not be empty")
     private char rcs;
-    @Column(name = "accepted_status")
-    private char acceptedStatus;
 
     @OneToMany(mappedBy = "fkIdDeviceModelProjectDetails", cascade = CascadeType.ALL)
     @JsonBackReference
@@ -63,19 +61,6 @@ public class DeviceModel implements Serializable {
     private ArrayList<Binary> binaries = new ArrayList<>();
 
     protected DeviceModel(){};
-
-    DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, char volte,
-                 char vowifi,char saNsa5g, char rcs, char acceptedStatus){
-        this.idDevice = idDevice;
-        this.producerName = producerName;
-        this.modelName = modelName;
-        this.premiereQuarter = premiereQuarter;
-        this.volte = volte;
-        this.vowifi = vowifi;
-        this.saNsa5g = saNsa5g;
-        this.rcs = rcs;
-        this.acceptedStatus = acceptedStatus;
-    }
 
     DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, char volte,
                  char vowifi,char saNsa5g, char rcs){
@@ -116,13 +101,7 @@ public class DeviceModel implements Serializable {
         this.projectDetails = projectDetails;
     }
 
-    public char getAcceptedStatus() {
-        return acceptedStatus;
-    }
 
-    public void setAcceptedStatus(char acceptedStatus) {
-        this.acceptedStatus = acceptedStatus;
-    }
 
     public char getEsim() {
         return eSim;

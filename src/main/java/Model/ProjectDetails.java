@@ -34,6 +34,9 @@ public class ProjectDetails implements Serializable {
     @JsonManagedReference
     private DeviceModel fkIdDeviceModelProjectDetails;
 
+    @Column(name = "accepted_status_device")
+    private char acceptedStatusDevice;
+
 
     protected ProjectDetails(){};
 
@@ -50,12 +53,12 @@ public class ProjectDetails implements Serializable {
         this.fkIdDeviceModelProjectDetails = fkIdDeviceModelProjectDetails;
     }
 
-    ProjectDetails(int idProjectDetails, Project fkIdProjectProjectDetails, Application fkIdApplicationProjectDetails,
-                   DeviceModel fkIdDeviceModelProjectDetails){
+    ProjectDetails(int idProjectDetails, Project fkIdProjectProjectDetails,
+                   DeviceModel fkIdDeviceModelProjectDetails, char acceptedStatusDevice){
         this.idProjectDetails = idProjectDetails;
         this.fkIdProjectProjectDetails = fkIdProjectProjectDetails;
-        this.fkIdApplicationProjectDetails = fkIdApplicationProjectDetails;
         this.fkIdDeviceModelProjectDetails = fkIdDeviceModelProjectDetails;
+        this.acceptedStatusDevice = acceptedStatusDevice;
     }
 
 
@@ -88,4 +91,11 @@ public class ProjectDetails implements Serializable {
         this.fkIdDeviceModelProjectDetails = fkIdDeviceModelProjectDetails;
     }
 
+    public char getAcceptedStatusDevice() {
+        return acceptedStatusDevice;
+    }
+
+    public void setAcceptedStatusDevice(char acceptedStatusDevice) {
+        this.acceptedStatusDevice = acceptedStatusDevice;
+    }
 }
