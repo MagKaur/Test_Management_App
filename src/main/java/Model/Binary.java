@@ -17,8 +17,12 @@ public class Binary implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_binary")
     private int idBinary;
+    @Column(name = "binary_name")
+    @NotNull(message = "Binary Name must not be null")
+    @NotBlank(message = "Binary Name must not be empty")
+    private String binaryName;
     @Column(name = "binary_description")
-    @NotNull(message = "Binary description must not be null")
+    @NotNull(message = "Binary Description must not be null")
     @NotBlank(message = "Binary Description must not be empty")
     private String binaryDescription;
     @Column(name = "binary_link")
@@ -42,11 +46,11 @@ public class Binary implements Serializable {
     @Column(name = "id_device")
     @JsonManagedReference
     private DeviceModel fkIdDeviceModelBinary;
-    @Column(name = "accepted_status")
+    @Column(name = "accepted_status_binary")
     @Enumerated(EnumType.ORDINAL)
     private AcceptedStatusBinary acceptedStatus;
 
-    @Column(name = "BINARY_STATUS_TYPE")
+    @Column(name = "binary_status_type")
     @NotNull(message = "Binary Status must not be null" )
     @NotBlank (message = "Binary Status must not be empty")
     @Enumerated(EnumType.ORDINAL)
