@@ -3,6 +3,9 @@ package Model;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
+import org.springframework.lang.NonNull;
+
+import java.util.List;
 
 @RepositoryRestResource
 public interface ProjectRepository extends JpaRepository<Project, Integer> {
@@ -15,4 +18,7 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
     @RestResource(exported = false)
     void deleteById(Integer integer);
 
+    List<Project>findByIdProject(@NonNull int idProject);
+    List<Project>findByProjectName(@NonNull String projectName);
+    List<Project>findByProjectStatus(@NonNull ProjectStatusType projectStatus);
 }
