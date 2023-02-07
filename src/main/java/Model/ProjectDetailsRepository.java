@@ -18,6 +18,6 @@ public interface ProjectDetailsRepository extends JpaRepository<ProjectDetails, 
     //TODO dodać do wymagań wyszukiwania stworzone w repositorach
 
     List<ProjectDetails>findByFkIdProjectProjectDetails(@NonNull Project fkIdProjectProjectDetails);
-    List<ProjectDetails>findByAcceptedStatusDevice(@NonNull AcceptedStatusDevice acceptedStatusDevice);
-    List<ProjectDetails>findByFkIdDeviceModelProjectDetailsAndAcceptedStatusDevice(DeviceModel deviceModel, AcceptedStatusDevice acceptedStatusDevice);
+    List<ProjectDetails>findByAcceptedStatusDevice(@NonNull AcceptedStatusType acceptedStatusDevice);
+    List<ProjectDetails>findByFkIdDeviceModelProjectDetailsAndAcceptedStatusDevice(DeviceModel deviceModel, AcceptedStatusType acceptedStatusDevice);
 }
