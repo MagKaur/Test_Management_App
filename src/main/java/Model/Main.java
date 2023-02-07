@@ -18,9 +18,6 @@ public class Main implements RepositoryRestConfigurer {
         SpringApplication.run(Main.class, Args);
     }
 
-    void test(){
-
-    }
 
     @Bean
     @Primary //primary to be able to autowire without qualifier
