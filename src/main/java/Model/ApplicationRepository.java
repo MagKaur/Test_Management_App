@@ -8,7 +8,7 @@ import org.springframework.lang.NonNull;
 import java.util.List;
 
 @RepositoryRestResource
-interface ApplicationRepository extends JpaRepository<Application, Integer> {
+public interface ApplicationRepository extends JpaRepository<Application, Integer> {
 
     @Override
     @RestResource(exported = false)
@@ -18,7 +18,7 @@ interface ApplicationRepository extends JpaRepository<Application, Integer> {
     @RestResource(exported = false)
     void deleteById(Integer integer);
 
-    List<Application>findByIdApplication(@NonNull int idApplication);
+
     List<Application>findByAppName(@NonNull String appName);
 
 

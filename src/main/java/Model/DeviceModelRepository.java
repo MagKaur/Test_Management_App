@@ -17,16 +17,16 @@ public interface DeviceModelRepository extends JpaRepository<DeviceModel, Intege
     void deleteById(Integer integer);
 
 
-    List<DeviceModel>findByIdDevice(@NonNull int idDevice);
+
     List<DeviceModel>findByProducerName(@NonNull String producerName);
     List<DeviceModel>findByModelName(@NonNull String modelName);
     List<DeviceModel>findByPremiereQuarter(@NonNull String premiereQuarter);
     //TODO dodać gdzieś przy mapowaniu format wpisywania QN'RR
-    List<DeviceModel>findByVolte(@NonNull VoLTEstatus volte);
-    List<DeviceModel>findByVowifi(@NonNull VoWiFistatus vowifi);
-    List<DeviceModel>findBySaNsa5g(@NonNull SaNsa5gStatus saNsa5g);
-    List<DeviceModel>findByEsim(@NonNull EsimStatus esim);
-    List<DeviceModel>findByRcs(@NonNull RcsStatus rcs);
+    List<DeviceModel>findByVolte(@NonNull DeviceModelFeaturesStatus volte);
+    List<DeviceModel>findByVowifi(@NonNull DeviceModelFeaturesStatus vowifi);
+    List<DeviceModel>findBySaNsa5g(@NonNull DeviceModelFeaturesStatus saNsa5g);
+    List<DeviceModel>findByEsim(@NonNull DeviceModelFeaturesStatus eSim);
+    List<DeviceModel>findByRcs(@NonNull DeviceModelFeaturesStatus rcs);
 
 
     //TODO jak szukać po tych co mam dodane w array? I czy w ogole szukac po tym.

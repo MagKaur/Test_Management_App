@@ -1,6 +1,6 @@
 package Model;
 
-public enum AcceptedStatusBinary {
+public enum AcceptedStatusType {
 
     YES,
     No,

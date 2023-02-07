@@ -16,7 +16,7 @@ public interface ProjectDetailsRepository extends JpaRepository<ProjectDetails, 
     @RestResource(exported = false)
     void deleteById(Integer integer);
     //TODO dodać do wymagań wyszukiwania stworzone w repositorach
-    List<ProjectDetails>findByIdProjectDetails(@NonNull int idProjectDetails);
+
     List<ProjectDetails>findByFkIdProjectProjectDetails(@NonNull Project fkIdProjectProjectDetails);
     List<ProjectDetails>findByAcceptedStatusDevice(@NonNull AcceptedStatusDevice acceptedStatusDevice);
     List<ProjectDetails>findByFkIdDeviceModelProjectDetailsAndAcceptedStatusDevice(DeviceModel deviceModel, AcceptedStatusDevice acceptedStatusDevice);

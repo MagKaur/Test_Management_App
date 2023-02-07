@@ -2,7 +2,7 @@ package Model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.lang.NonNull;
 
@@ -19,10 +19,8 @@ public interface BinaryRepository extends JpaRepository<Binary, Integer> {
     void deleteById(Integer integer);
 
     List<Binary> findByBinaryStatus(@NonNull BinaryStatusType binaryStatus);
-    List<Binary> findByAcceptedStatusIsTrue();
-    List<Binary> findByAcceptedStatusIsFalse();
-    List<Binary> findByAcceptedStatusIsTrueAndAcceptedStatusIsFalse();
-    List<Binary>findByIdBinary(@NonNull int idBinary);
+    List<Binary> findByAcceptedStatus(@Param("state") AcceptedStatusType acceptedStatusType);
+
     List<Binary>findByFkIdApplicationBinary(@NonNull Application fkIdApplicationBinary);
     List<Binary>findByFkIdProjectBinary(@NonNull Project fkIdProjectBinary);
     List<Binary>findByFkIdDeviceModelBinary (@NonNull DeviceModel fkIdDeviceModelBinary);

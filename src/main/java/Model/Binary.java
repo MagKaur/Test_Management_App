@@ -41,6 +41,13 @@ public class Binary implements Serializable {
     @Column(name = "id_application")
     @JsonManagedReference
     private Application fkIdApplicationBinary;
+
+    @ManyToOne
+    @JoinColumn(name = "id_new_app_module")
+    @Column(name = "id_new_app_module")
+    @JsonManagedReference
+    private NewAppModule newAppModule;
+
     @ManyToOne
     @JoinColumn(name = "id_device")
     @Column(name = "id_device")
@@ -48,7 +55,7 @@ public class Binary implements Serializable {
     private DeviceModel fkIdDeviceModelBinary;
     @Column(name = "accepted_status_binary")
     @Enumerated(EnumType.ORDINAL)
-    private AcceptedStatusBinary acceptedStatus;
+    private AcceptedStatusType acceptedStatus;
 
     @Column(name = "binary_status_type")
     @NotNull(message = "Binary Status must not be null" )
@@ -58,25 +65,47 @@ public class Binary implements Serializable {
 
     protected Binary(){};
 
-    Binary(int idBinary, String binaryDescription, String binaryLink, Project fkIdProjectBinary, Application fkIdApplicationBinary,
-                DeviceModel fkIdDeviceModelBinary, BinaryStatusType binaryStatus){
+    Binary(int idBinary, String binaryDescription, String binaryLink, Project fkIdProjectBinary,
+                Application fkIdApplicationBinary, BinaryStatusType binaryStatus){
         this.idBinary = idBinary;
         this.binaryDescription = binaryDescription;
         this.binaryLink = binaryLink;
         this.fkIdProjectBinary = fkIdProjectBinary;
         this.fkIdApplicationBinary = fkIdApplicationBinary;
-        this.fkIdDeviceModelBinary = fkIdDeviceModelBinary;
         this.binaryStatus = binaryStatus;
     }
 
+    Binary(int idBinary, String binaryDescription, String binaryLink, Project fkIdProjectBinary,
+           DeviceModel fkIdDeviceModelBinary, BinaryStatusType binaryStatus){
+        this.idBinary = idBinary;
+        this.binaryDescription = binaryDescription;
+        this.binaryLink = binaryLink;
+        this.fkIdProjectBinary = fkIdProjectBinary;
+        this.fkIdDeviceModelBinary = fkIdDeviceModelBinary;
+        this.binaryStatus = binaryStatus;
+    }
+//TODO update bazy dlanych na zmiennych ze statusami z char na number z enum
+    //TODO update repository Binary z new app module
+    //TODO update repository ze statusami
+
     Binary(int idBinary, String binaryDescription, String binaryLink, Project fkIdProjectBinary, Application fkIdApplicationBinary,
-           DeviceModel fkIdDeviceModelBinary, AcceptedStatusBinary acceptedStatus, BinaryStatusType binaryStatus){
+           DeviceModel fkIdDeviceModelBinary, AcceptedStatusType acceptedStatus, BinaryStatusType binaryStatus){
         this.idBinary = idBinary;
         this.binaryDescription = binaryDescription;
         this.binaryLink = binaryLink;
         this.fkIdProjectBinary = fkIdProjectBinary;
         this.fkIdApplicationBinary = fkIdApplicationBinary;
         this.fkIdDeviceModelBinary = fkIdDeviceModelBinary;
+        this.acceptedStatus = acceptedStatus;
+        this.binaryStatus = binaryStatus;
+    }
+
+    Binary(int idBinary, String binaryDescription, String binaryLink, Project fkIdProjectBinary, NewAppModule newAppModule, AcceptedStatusType acceptedStatus, BinaryStatusType binaryStatus){
+        this.idBinary = idBinary;
+        this.binaryDescription = binaryDescription;
+        this.binaryLink = binaryLink;
+        this.fkIdProjectBinary = fkIdProjectBinary;
+        this.newAppModule = newAppModule;
         this.acceptedStatus = acceptedStatus;
         this.binaryStatus = binaryStatus;
     }
@@ -122,11 +151,11 @@ public class Binary implements Serializable {
         this.fkIdDeviceModelBinary = fkIdDeviceModelBinary;
     }
 
-    public AcceptedStatusBinary getAcceptedStatus(){
+    public AcceptedStatusType getAcceptedStatus(){
         return acceptedStatus;
     }
 
-    public void setAcceptedStatus(AcceptedStatusBinary acceptedStatus) {
+    public void setAcceptedStatus(AcceptedStatusType acceptedStatus) {
         this.acceptedStatus = acceptedStatus;
     }
 

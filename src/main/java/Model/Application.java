@@ -42,10 +42,10 @@ public class Application implements Serializable {
     @OneToMany(mappedBy = "fkIdApplicationBinary", cascade = CascadeType.ALL)
     @JsonBackReference
     private ArrayList<Binary> binaries = new ArrayList<>();
-//TODO dodawanie,usuwanie elementów z listy (dla wszystkich class) w oddzielnej klasie service
+//TODO dodawanie (dla wszystkich class) w oddzielnej klasie service
     // TODO dodać kolumne ze timestamp + dodać annotacje @CreationTimestamp ??? Zastanowic się czy będę potrzebowac np do obliczania deadline test tasku?
     protected Application (){}
-
+//TODO połączyc accepted status divece z binary w jedno enum
     Application (int idApplication, String appName, String technologyDescription, String functionalityDescription){
         this.idApplication = idApplication;
         this.appName = appName;

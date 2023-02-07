@@ -34,27 +34,27 @@ public class DeviceModel implements Serializable {
     @NotNull(message = "VoLTE indication must not be null")
     @NotBlank(message = "VoLTE indication must not be empty")
     @Enumerated(EnumType.ORDINAL)
-    private VoLTEstatus volte;
+    private DeviceModelFeaturesStatus volte;
     @Column(name = "vowifi")
     @NotNull(message = "VoWiFi indication must not be null")
     @NotBlank(message = "VoWiFi indication must not be empty")
     @Enumerated(EnumType.ORDINAL)
-    private VoWiFistatus vowifi;
+    private DeviceModelFeaturesStatus vowifi;
     @Column(name = "sa_nsa_5g")
     @NotNull(message = "sa_nsa_5G indication must not be null")
     @NotBlank(message = "sa_nsa_5G indication must not be empty")
     @Enumerated(EnumType.ORDINAL)
-    private SaNsa5gStatus saNsa5g;
+    private DeviceModelFeaturesStatus saNsa5g;
     @Column(name = "e_sim")
     @NotNull(message = "e-sim indication must not be null")
     @NotBlank(message = "e-sim indication must not be empty")
     @Enumerated(EnumType.ORDINAL)
-    private EsimStatus eSim;
+    private DeviceModelFeaturesStatus eSim;
     @Column(name = "rcs")
     @NotNull(message = "rcs indication must not be null")
     @NotBlank(message = "rcs indication must not be empty")
     @Enumerated(EnumType.ORDINAL)
-    private RcsStatus rcs;
+    private DeviceModelFeaturesStatus rcs;
 
     @OneToMany(mappedBy = "fkIdDeviceModelProjectDetails", cascade = CascadeType.ALL)
     @JsonBackReference
@@ -65,8 +65,8 @@ public class DeviceModel implements Serializable {
 
     protected DeviceModel(){};
 
-    DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, VoLTEstatus volte,
-                 VoWiFistatus vowifi,SaNsa5gStatus saNsa5g, EsimStatus eSim, RcsStatus rcs){
+    DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, DeviceModelFeaturesStatus volte,
+                 DeviceModelFeaturesStatus vowifi, DeviceModelFeaturesStatus saNsa5g, DeviceModelFeaturesStatus eSim, DeviceModelFeaturesStatus rcs){
         this.idDevice = idDevice;
         this.producerName = producerName;
         this.modelName = modelName;
@@ -78,8 +78,8 @@ public class DeviceModel implements Serializable {
         this.rcs = rcs;
     }
 
-    DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, VoLTEstatus volte,
-                 VoWiFistatus vowifi,SaNsa5gStatus saNsa5g, EsimStatus eSim, RcsStatus rcs, ArrayList<Binary> binaries){
+    DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, DeviceModelFeaturesStatus volte,
+                 DeviceModelFeaturesStatus vowifi, DeviceModelFeaturesStatus saNsa5g, DeviceModelFeaturesStatus eSim, DeviceModelFeaturesStatus rcs, ArrayList<Binary> binaries){
         this.idDevice = idDevice;
         this.producerName = producerName;
         this.modelName = modelName;
@@ -92,8 +92,8 @@ public class DeviceModel implements Serializable {
         this.binaries = binaries;
     }
 
-    DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, VoLTEstatus volte,
-                 VoWiFistatus vowifi,SaNsa5gStatus saNsa5g, EsimStatus eSim, RcsStatus rcs, ArrayList<Binary> binaries, ArrayList<ProjectDetails> projectDetails){
+    DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, DeviceModelFeaturesStatus volte,
+                 DeviceModelFeaturesStatus vowifi, DeviceModelFeaturesStatus saNsa5g, DeviceModelFeaturesStatus eSim, DeviceModelFeaturesStatus rcs, ArrayList<Binary> binaries, ArrayList<ProjectDetails> projectDetails){
         this.idDevice = idDevice;
         this.producerName = producerName;
         this.modelName = modelName;
@@ -109,43 +109,43 @@ public class DeviceModel implements Serializable {
 
 
 
-    public EsimStatus getEsim() {
+    public DeviceModelFeaturesStatus getEsim() {
         return eSim;
     }
 
-    public void setEsim(EsimStatus eSim) {
+    public void setEsim(DeviceModelFeaturesStatus eSim) {
         this.eSim = eSim;
     }
 
-    public RcsStatus getRcs() {
+    public DeviceModelFeaturesStatus getRcs() {
         return rcs;
     }
 
-    public void setRcs(RcsStatus rcs) {
+    public void setRcs(DeviceModelFeaturesStatus rcs) {
         this.rcs = rcs;
     }
 
-    public SaNsa5gStatus getSaNsa5g() {
+    public DeviceModelFeaturesStatus getSaNsa5g() {
         return saNsa5g;
     }
 
-    public void setSaNsa5g(SaNsa5gStatus saNsa5g) {
+    public void setSaNsa5g(DeviceModelFeaturesStatus saNsa5g) {
         this.saNsa5g = saNsa5g;
     }
 
-    public VoLTEstatus getVolte() {
+    public DeviceModelFeaturesStatus getVolte() {
         return volte;
     }
 
-    public void setVolte(VoLTEstatus volte) {
+    public void setVolte(DeviceModelFeaturesStatus volte) {
         this.volte = volte;
     }
 
-    public VoWiFistatus getVowifi() {
+    public DeviceModelFeaturesStatus getVowifi() {
         return vowifi;
     }
 
-    public void setVowifi(VoWiFistatus vowifi) {
+    public void setVowifi(DeviceModelFeaturesStatus vowifi) {
         this.vowifi = vowifi;
     }
 

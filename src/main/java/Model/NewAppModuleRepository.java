@@ -16,7 +16,7 @@ public interface NewAppModuleRepository extends JpaRepository<NewAppModule, Inte
     void deleteById(Integer integer);
 
 
-    List<NewAppModule> findByIdAppModule(@NonNull int idAppModule);
+
     List<NewAppModule>findByModuleName(@NonNull String moduleName);
     List<NewAppModule>findByFkIdApplicationNewAppModule(@NonNull Application fkIdApplicationNewAppModule);
     //TODO czy to wystarczy by wyszukiwac new module przypisane do konkretnej APlikacji?

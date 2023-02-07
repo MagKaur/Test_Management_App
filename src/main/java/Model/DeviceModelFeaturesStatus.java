@@ -1,6 +1,7 @@
 package Model;
 
-public enum VoLTEstatus {
+public enum DeviceModelFeaturesStatus {
+
     YES,
     NO,
     NoData

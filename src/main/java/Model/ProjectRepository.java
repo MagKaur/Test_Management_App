@@ -18,7 +18,7 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
     @RestResource(exported = false)
     void deleteById(Integer integer);
 
-    List<Project>findByIdProject(@NonNull int idProject);
+
     List<Project>findByProjectName(@NonNull String projectName);
     List<Project>findByProjectStatus(@NonNull ProjectStatusType projectStatus);
 }
