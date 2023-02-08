@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -33,15 +34,15 @@ public class Application implements Serializable {
 
     @OneToMany(mappedBy = "fkIdApplicationNewAppModule", cascade = CascadeType.ALL)
     @JsonBackReference
-    private ArrayList<NewAppModule> newAppModules = new ArrayList<>();
+    private List<NewAppModule> newAppModules = new ArrayList<>();
 
     @OneToMany(mappedBy = "fkIdApplicationProjectDetails", cascade = CascadeType.ALL)
     @JsonBackReference
-    private ArrayList<ProjectDetails> projectDetails = new ArrayList<>();
-
+    private List<ProjectDetails> projectDetails = new ArrayList<>();
+//TODO tu musiałam zmienić na List, czy w konstruktorach też zmieniać na list?
     @OneToMany(mappedBy = "fkIdApplicationBinary", cascade = CascadeType.ALL)
     @JsonBackReference
-    private ArrayList<Binary> binaries = new ArrayList<>();
+    private List<Binary> binaries = new ArrayList<>();
 //TODO dodawanie (dla wszystkich class) w oddzielnej klasie service
     // TODO dodać kolumne ze timestamp + dodać annotacje @CreationTimestamp ??? Zastanowic się czy będę potrzebowac np do obliczania deadline test tasku?
     protected Application (){}
@@ -61,7 +62,7 @@ public class Application implements Serializable {
         this.newAppModules = newAppModules;
     }
     Application (int idApplication, String appName, String technologyDescription, String functionalityDescription,
-                 ArrayList<NewAppModule> newAppModules,ArrayList<Binary> binaries){
+                 ArrayList<NewAppModule> newAppModules, ArrayList<Binary> binaries){
         this.idApplication = idApplication;
         this.appName = appName;
         this.technologyDescription = technologyDescription;
@@ -109,26 +110,26 @@ public class Application implements Serializable {
         this.functionalityDescription = functionalityDescription;
     }
 
-    public ArrayList<NewAppModule> getNewAppModules() {
+    public List<NewAppModule> getNewAppModules() {
         return newAppModules;
     }
-    public void setNewAppModules (ArrayList<NewAppModule> newAppModules){
+    public void setNewAppModules (List<NewAppModule> newAppModules){
         this.newAppModules = newAppModules;
     }
 
-    public ArrayList<ProjectDetails> getProjectDetails(){
+    public List<ProjectDetails> getProjectDetails(){
         return projectDetails;
     }
 
-    public void setProjectDetails (ArrayList<ProjectDetails> projectDetails){
+    public void setProjectDetails (List<ProjectDetails> projectDetails){
         this.projectDetails = projectDetails;
     }
 
-    public ArrayList<Binary> getBinaries(){
+    public List<Binary> getBinaries(){
        return binaries;
     }
 
-    public void setBinaries(ArrayList<Binary> binaries) {
+    public void setBinaries(List<Binary> binaries) {
         this.binaries = binaries;
     }
 }

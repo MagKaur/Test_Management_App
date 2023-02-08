@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.lang.NonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface DeviceModelRepository extends JpaRepository<DeviceModel, Integer> {
@@ -25,11 +26,11 @@ public interface DeviceModelRepository extends JpaRepository<DeviceModel, Intege
     List<DeviceModel>findByVolte(@NonNull DeviceModelFeaturesStatus volte);
     List<DeviceModel>findByVowifi(@NonNull DeviceModelFeaturesStatus vowifi);
     List<DeviceModel>findBySaNsa5g(@NonNull DeviceModelFeaturesStatus saNsa5g);
-    List<DeviceModel>findByEsim(@NonNull DeviceModelFeaturesStatus eSim);
+    List<DeviceModel>findByeSim(@NonNull DeviceModelFeaturesStatus eSim);
     List<DeviceModel>findByRcs(@NonNull DeviceModelFeaturesStatus rcs);
 
 
     //TODO jak szukać po tych co mam dodane w array? I czy w ogole szukac po tym.
-    List<DeviceModel>findByProjectDetails(@NonNull ProjectDetails projectDetails);
-
+    //List<DeviceModel>findByProjectDetails(@NonNull List<ProjectDetails> projectDetails);
+//TODO jak coś takiego wyszukac?? Spring krzyczał ze potrzebuje scalar cos a w argumencie list
 }

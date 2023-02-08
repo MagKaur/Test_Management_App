@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@//localhost:1521/ORCLCDB?useSSL=false
+    username: mango
+    password: mango
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.Oracle12cDialect
+  rsocket:
+    server:
+      port: 8080
+

@@ -19,18 +19,15 @@ public class ProjectDetails implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_project")
-    @Column(name = "id_project")
     @JsonManagedReference
     @NotNull(message = "Project indication must not be null")
     private Project fkIdProjectProjectDetails;
     @ManyToOne
     @JoinColumn(name = "id_application")
-    @Column(name = "id_application")
     @JsonManagedReference
     private Application fkIdApplicationProjectDetails;
     @ManyToOne
     @JoinColumn(name = "id_device")
-    @Column(name = "id_device")
     @JsonManagedReference
     private DeviceModel fkIdDeviceModelProjectDetails;
 

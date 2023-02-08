@@ -32,25 +32,21 @@ public class Binary implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_project", nullable = false)
-    @Column(name = "id_project")
     @JsonManagedReference
     @NotNull (message = "Project indication must not be null")
     private Project fkIdProjectBinary;
     @ManyToOne
     @JoinColumn(name = "id_application")
-    @Column(name = "id_application")
     @JsonManagedReference
     private Application fkIdApplicationBinary;
 
     @ManyToOne
     @JoinColumn(name = "id_new_app_module")
-    @Column(name = "id_new_app_module")
     @JsonManagedReference
     private NewAppModule newAppModule;
 
     @ManyToOne
     @JoinColumn(name = "id_device")
-    @Column(name = "id_device")
     @JsonManagedReference
     private DeviceModel fkIdDeviceModelBinary;
     @Column(name = "accepted_status_binary")

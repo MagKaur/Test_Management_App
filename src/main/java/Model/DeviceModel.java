@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "device_models", schema = "mango")
@@ -58,10 +59,12 @@ public class DeviceModel implements Serializable {
 
     @OneToMany(mappedBy = "fkIdDeviceModelProjectDetails", cascade = CascadeType.ALL)
     @JsonBackReference
-    private ArrayList<ProjectDetails> projectDetails = new ArrayList<>();
+    private List<ProjectDetails> projectDetails = new ArrayList<>();
     @OneToMany(mappedBy = "fkIdDeviceModelBinary", cascade = CascadeType.ALL)
     @JsonBackReference
-    private ArrayList<Binary> binaries = new ArrayList<>();
+    private List<Binary> binaries = new ArrayList<>();
+
+
 
     protected DeviceModel(){};
 
@@ -79,7 +82,7 @@ public class DeviceModel implements Serializable {
     }
 
     DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, DeviceModelFeaturesStatus volte,
-                 DeviceModelFeaturesStatus vowifi, DeviceModelFeaturesStatus saNsa5g, DeviceModelFeaturesStatus eSim, DeviceModelFeaturesStatus rcs, ArrayList<Binary> binaries){
+                 DeviceModelFeaturesStatus vowifi, DeviceModelFeaturesStatus saNsa5g, DeviceModelFeaturesStatus eSim, DeviceModelFeaturesStatus rcs, List<Binary> binaries){
         this.idDevice = idDevice;
         this.producerName = producerName;
         this.modelName = modelName;
@@ -93,7 +96,7 @@ public class DeviceModel implements Serializable {
     }
 
     DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, DeviceModelFeaturesStatus volte,
-                 DeviceModelFeaturesStatus vowifi, DeviceModelFeaturesStatus saNsa5g, DeviceModelFeaturesStatus eSim, DeviceModelFeaturesStatus rcs, ArrayList<Binary> binaries, ArrayList<ProjectDetails> projectDetails){
+                 DeviceModelFeaturesStatus vowifi, DeviceModelFeaturesStatus saNsa5g, DeviceModelFeaturesStatus eSim, DeviceModelFeaturesStatus rcs, List<Binary> binaries, List<ProjectDetails> projectDetails){
         this.idDevice = idDevice;
         this.producerName = producerName;
         this.modelName = modelName;
@@ -181,14 +184,14 @@ public class DeviceModel implements Serializable {
         this.producerName = producerName;
     }
 
-    public ArrayList<ProjectDetails> getProjectDetails(){
+    public List<ProjectDetails> getProjectDetails(){
         return projectDetails;
     }
     public void setProjectDetails(ArrayList<ProjectDetails> projectDetails){
         this.projectDetails = projectDetails;
     }
 
-    public ArrayList<Binary> getBinaries(){
+    public List<Binary> getBinaries(){
         return binaries;
     }
     public void setBinaries(ArrayList<Binary> binaries){

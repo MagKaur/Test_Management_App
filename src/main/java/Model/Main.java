@@ -14,12 +14,12 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 public class Main implements RepositoryRestConfigurer {
 
     //TODO change path to ojdbc from C:/ to variable
-    public static void main (String[] Args){
+    public static void main(String[] Args) {
         SpringApplication.run(Main.class, Args);
     }
 
-
-    @Bean
+}
+  /*  @Bean
     @Primary //primary to be able to autowire without qualifier
     Validator validator(){
         return new LocalValidatorFactoryBean();

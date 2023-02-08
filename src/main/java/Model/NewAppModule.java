@@ -33,7 +33,6 @@ public class NewAppModule implements Serializable {
     private String moduleDescription;
     @ManyToOne
     @JoinColumn(name = "id_application")
-    @Column(name = "id_application")
     @JsonManagedReference
     @NotNull(message = "Application indication must not be null")
     private Application fkIdApplicationNewAppModule;

@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "projects", schema = "mango")
@@ -36,10 +37,10 @@ public class Project implements Serializable {
 
     @OneToMany(mappedBy = "fkIdProjectProjectDetails", cascade = CascadeType.ALL)
     @JsonBackReference
-    private ArrayList<ProjectDetails> projectDetails = new ArrayList<>();
+    private List<ProjectDetails> projectDetails = new ArrayList<>();
     @OneToMany(mappedBy = "fkIdProjectBinary", cascade = CascadeType.ALL)
     @JsonBackReference
-    private ArrayList<Binary> binaries = new ArrayList<>();
+    private List<Binary> binaries = new ArrayList<>();
 
 
 
@@ -91,15 +92,15 @@ public class Project implements Serializable {
 
 
 
-    public ArrayList<ProjectDetails> getProjectDetails(){
+    public List<ProjectDetails> getProjectDetails(){
         return projectDetails;
     }
 
     public void setProjectDetails(ArrayList<ProjectDetails> projectDetails){
         this.projectDetails = projectDetails;
     }
-
-    public ArrayList<Binary> getBinaries(){
+//TODO czy przy zmianie Array Lst na List tutaj tez zmieniac
+    public List<Binary> getBinaries(){
         return binaries;
     }
 
