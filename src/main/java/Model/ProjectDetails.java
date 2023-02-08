@@ -31,7 +31,7 @@ public class ProjectDetails implements Serializable {
     @JsonManagedReference
     private DeviceModel fkIdDeviceModelProjectDetails;
 
-    @Column(name = "accepted_status_device")
+    @Column(name = "accepted_status_type")
     @Enumerated(EnumType.ORDINAL)
     private AcceptedStatusType acceptedStatusDevice;
 

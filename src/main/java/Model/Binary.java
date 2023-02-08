@@ -49,7 +49,7 @@ public class Binary implements Serializable {
     @JoinColumn(name = "id_device")
     @JsonManagedReference
     private DeviceModel fkIdDeviceModelBinary;
-    @Column(name = "accepted_status_binary")
+    @Column(name = "accepted_status_type")
     @Enumerated(EnumType.ORDINAL)
     private AcceptedStatusType acceptedStatus;
 

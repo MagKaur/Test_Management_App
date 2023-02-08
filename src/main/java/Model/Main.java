@@ -18,8 +18,7 @@ public class Main implements RepositoryRestConfigurer {
         SpringApplication.run(Main.class, Args);
     }
 
-}
-  /*  @Bean
+  @Bean
     @Primary //primary to be able to autowire without qualifier
     Validator validator(){
         return new LocalValidatorFactoryBean();
