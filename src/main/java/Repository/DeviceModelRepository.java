@@ -1,5 +1,8 @@
-package Model;
+package Repository;
 
+import Model.DeviceModel;
+import Model.DeviceModelFeaturesStatus;
+import Model.ProjectDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.lang.NonNull;
@@ -31,7 +34,4 @@ public interface DeviceModelRepository extends JpaRepository<DeviceModel, Intege
     List<DeviceModel>findByRcs(@NonNull DeviceModelFeaturesStatus rcs);
 
 
-    //TODO jak szukać po tych co mam dodane w array? I czy w ogole szukac po tym.
-    List<DeviceModel>findByProjectDetailsIn(Collection<List<ProjectDetails>> projectDetails);
-//TODO czy dobrze? Ma to sens.
 }

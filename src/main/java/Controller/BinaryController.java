@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.BinaryRepository;
+import Repository.BinaryRepository;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 
 @RepositoryRestController

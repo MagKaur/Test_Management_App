@@ -14,7 +14,7 @@ import java.util.List;
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 public class DeviceModel implements Serializable {
-
+//TODO przenieść accepted status z project details do device model
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_device")
@@ -68,9 +68,8 @@ public class DeviceModel implements Serializable {
 
     protected DeviceModel(){};
 
-    DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, DeviceModelFeaturesStatus volte,
+    DeviceModel (String producerName, String modelName, String premiereQuarter, DeviceModelFeaturesStatus volte,
                  DeviceModelFeaturesStatus vowifi, DeviceModelFeaturesStatus saNsa5g, DeviceModelFeaturesStatus eSim, DeviceModelFeaturesStatus rcs){
-        this.idDevice = idDevice;
         this.producerName = producerName;
         this.modelName = modelName;
         this.premiereQuarter = premiereQuarter;
@@ -81,9 +80,8 @@ public class DeviceModel implements Serializable {
         this.rcs = rcs;
     }
 
-    DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, DeviceModelFeaturesStatus volte,
+    DeviceModel (String producerName, String modelName, String premiereQuarter, DeviceModelFeaturesStatus volte,
                  DeviceModelFeaturesStatus vowifi, DeviceModelFeaturesStatus saNsa5g, DeviceModelFeaturesStatus eSim, DeviceModelFeaturesStatus rcs, List<Binary> binaries){
-        this.idDevice = idDevice;
         this.producerName = producerName;
         this.modelName = modelName;
         this.premiereQuarter = premiereQuarter;
@@ -95,9 +93,8 @@ public class DeviceModel implements Serializable {
         this.binaries = binaries;
     }
 
-    DeviceModel (int idDevice, String producerName, String modelName, String premiereQuarter, DeviceModelFeaturesStatus volte,
+    DeviceModel (String producerName, String modelName, String premiereQuarter, DeviceModelFeaturesStatus volte,
                  DeviceModelFeaturesStatus vowifi, DeviceModelFeaturesStatus saNsa5g, DeviceModelFeaturesStatus eSim, DeviceModelFeaturesStatus rcs, List<Binary> binaries, List<ProjectDetails> projectDetails){
-        this.idDevice = idDevice;
         this.producerName = producerName;
         this.modelName = modelName;
         this.premiereQuarter = premiereQuarter;

@@ -47,16 +47,14 @@ public class Project implements Serializable {
     protected Project() {
     }
 
-    Project (int idProject,String projectDescription, String projectName, ProjectStatusType projectStatus){
-        this.idProject = idProject;
+    Project (String projectDescription, String projectName, ProjectStatusType projectStatus){
         this.projectDescription = projectDescription;
         this.projectName = projectName;
         this.projectStatus = projectStatus;
     }
 
-    Project (int idProject,String projectDescription, String projectName, ArrayList<ProjectDetails> projectDetails,
+    Project (String projectDescription, String projectName, ArrayList<ProjectDetails> projectDetails,
              ArrayList<Binary> binaries, ProjectStatusType projectStatus){
-        this.idProject = idProject;
         this.projectDescription = projectDescription;
         this.projectName = projectName;
         this.projectDetails = projectDetails;
@@ -99,7 +97,7 @@ public class Project implements Serializable {
     public void setProjectDetails(ArrayList<ProjectDetails> projectDetails){
         this.projectDetails = projectDetails;
     }
-//TODO czy przy zmianie Array Lst na List tutaj tez zmieniac
+//TODO czy przy zmianie na Array List na List tutaj tez zmieniac
     public List<Binary> getBinaries(){
         return binaries;
     }

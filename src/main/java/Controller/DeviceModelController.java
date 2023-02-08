@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.DeviceModelRepository;
+import Repository.DeviceModelRepository;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 
 @RepositoryRestController

@@ -9,6 +9,8 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "new_app_modules", schema = "mango")
@@ -36,11 +38,13 @@ public class NewAppModule implements Serializable {
     @NotNull(message = "Application indication must not be null")
     private Application fkIdApplicationNewAppModule;
 
+    @OneToMany(mappedBy = "fkIdNewAppModuleBinary", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<Binary> binaries = new ArrayList<>();
+
     protected NewAppModule(){};
 
-    NewAppModule(int idAppModule, String moduleName, String moduleDescription, Application fkIdApplicationNewAppModule) {
-
-        this.idAppModule = idAppModule;
+    NewAppModule(String moduleName, String moduleDescription, Application fkIdApplicationNewAppModule) {
         this.moduleName = moduleName;
         this.moduleDescription = moduleDescription;
         this.fkIdApplicationNewAppModule = fkIdApplicationNewAppModule;

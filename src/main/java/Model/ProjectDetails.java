@@ -38,22 +38,19 @@ public class ProjectDetails implements Serializable {
 
     protected ProjectDetails(){};
 
-    ProjectDetails(int idProjectDetails, Project fkIdProjectProjectDetails, Application fkIdApplicationProjectDetails) {
-        this.idProjectDetails = idProjectDetails;
+    ProjectDetails(Project fkIdProjectProjectDetails, Application fkIdApplicationProjectDetails) {
         this.fkIdProjectProjectDetails = fkIdProjectProjectDetails;
         this.fkIdApplicationProjectDetails = fkIdApplicationProjectDetails;
 
     }
 
-    ProjectDetails(int idProjectDetails, Project fkIdProjectProjectDetails, DeviceModel fkIdDeviceModelProjectDetails) {
-        this.idProjectDetails = idProjectDetails;
+    ProjectDetails(Project fkIdProjectProjectDetails, DeviceModel fkIdDeviceModelProjectDetails) {
         this.fkIdProjectProjectDetails = fkIdProjectProjectDetails;
         this.fkIdDeviceModelProjectDetails = fkIdDeviceModelProjectDetails;
     }
 
-    ProjectDetails(int idProjectDetails, Project fkIdProjectProjectDetails,
+    ProjectDetails(Project fkIdProjectProjectDetails,
                    DeviceModel fkIdDeviceModelProjectDetails, AcceptedStatusType acceptedStatusDevice){
-        this.idProjectDetails = idProjectDetails;
         this.fkIdProjectProjectDetails = fkIdProjectProjectDetails;
         this.fkIdDeviceModelProjectDetails = fkIdDeviceModelProjectDetails;
         this.acceptedStatusDevice = acceptedStatusDevice;

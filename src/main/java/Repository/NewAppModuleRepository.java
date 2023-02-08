@@ -1,5 +1,7 @@
-package Model;
+package Repository;
 
+import Model.Application;
+import Model.NewAppModule;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.lang.NonNull;

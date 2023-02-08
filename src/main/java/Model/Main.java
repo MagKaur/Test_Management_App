@@ -13,6 +13,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 @SpringBootApplication
 public class Main implements RepositoryRestConfigurer {
 
+
     //TODO change path to ojdbc from C:/ to variable
     public static void main(String[] Args) {
         SpringApplication.run(Main.class, Args);

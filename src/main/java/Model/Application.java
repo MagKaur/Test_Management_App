@@ -43,36 +43,33 @@ public class Application implements Serializable {
     @OneToMany(mappedBy = "fkIdApplicationBinary", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Binary> binaries = new ArrayList<>();
-//TODO dodawanie (dla wszystkich class) w oddzielnej klasie service
+
     // TODO dodać kolumne ze timestamp + dodać annotacje @CreationTimestamp ??? Zastanowic się czy będę potrzebowac np do obliczania deadline test tasku?
     protected Application (){}
-    Application (int idApplication, String appName, String technologyDescription, String functionalityDescription){
-        this.idApplication = idApplication;
+    Application (String appName, String technologyDescription, String functionalityDescription){
         this.appName = appName;
         this.technologyDescription = technologyDescription;
         this.functionalityDescription = functionalityDescription;
     }
 
-    Application (int idApplication, String appName, String technologyDescription, String functionalityDescription,
+    Application (String appName, String technologyDescription, String functionalityDescription,
                  ArrayList<NewAppModule> newAppModules){
-        this.idApplication = idApplication;
         this.appName = appName;
         this.technologyDescription = technologyDescription;
         this.functionalityDescription = functionalityDescription;
         this.newAppModules = newAppModules;
     }
-    Application (int idApplication, String appName, String technologyDescription, String functionalityDescription,
+    Application (String appName, String technologyDescription, String functionalityDescription,
                  ArrayList<NewAppModule> newAppModules, ArrayList<Binary> binaries){
-        this.idApplication = idApplication;
+
         this.appName = appName;
         this.technologyDescription = technologyDescription;
         this.functionalityDescription = functionalityDescription;
         this.newAppModules = newAppModules;
         this.binaries = binaries;
     }
-    Application (int idApplication, String appName, String technologyDescription, String functionalityDescription,
+    Application (String appName, String technologyDescription, String functionalityDescription,
                  ArrayList<NewAppModule> newAppModules,ArrayList<Binary> binaries, ArrayList<ProjectDetails> projectDetails){
-        this.idApplication = idApplication;
         this.appName = appName;
         this.technologyDescription = technologyDescription;
         this.functionalityDescription = functionalityDescription;

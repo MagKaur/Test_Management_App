@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.ProjectDetailsRepository;
+import Repository.ProjectDetailsRepository;
 public class ProjectDetailsController {
 
     private ProjectDetailsRepository projectDetailsRepository;

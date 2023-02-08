@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.ProjectRepository;
+import Repository.ProjectRepository;
 
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 
