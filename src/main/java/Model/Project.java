@@ -97,7 +97,7 @@ public class Project implements Serializable {
     public void setProjectDetails(ArrayList<ProjectDetails> projectDetails){
         this.projectDetails = projectDetails;
     }
-//TODO czy przy zmianie na Array List na List tutaj tez zmieniac
+
     public List<Binary> getBinaries(){
         return binaries;
     }

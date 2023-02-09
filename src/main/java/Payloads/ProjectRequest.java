@@ -1,6 +1,24 @@
 package Payloads;
 
+import Model.ProjectStatusType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import javax.persistence.Enumerated;
+import javax.validation.constraints.NotNull;
+
+@Data
+@AllArgsConstructor
 public class ProjectRequest {
-    //TODO Add Model Request and Service for Project
+
+    @NotNull
+    private String projectDescription;
+
+    @NotNull
+    private String projectName;
+    @NotNull
+    @Enumerated
+    private ProjectStatusType projectStatus;
+
 
 }

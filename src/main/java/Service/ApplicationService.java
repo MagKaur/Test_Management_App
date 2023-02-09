@@ -14,6 +14,7 @@ Application createApplication(ApplicationRequest applicationRequest);
 Optional<Application> updateApplication(Integer idApplication, ApplicationRequest applicationRequest);
 Application getSingleApplicationById(Integer idApplication);
 Application getSingleApplicationByName(String appName);
+
 //TODO dopisać metody z dto.
 
 

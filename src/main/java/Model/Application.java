@@ -39,7 +39,7 @@ public class Application implements Serializable {
     @OneToMany(mappedBy = "fkIdApplicationProjectDetails", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<ProjectDetails> projectDetails = new ArrayList<>();
-//TODO tu musiałam zmienić na List, czy w konstruktorach też zmieniać na list?
+
     @OneToMany(mappedBy = "fkIdApplicationBinary", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Binary> binaries = new ArrayList<>();

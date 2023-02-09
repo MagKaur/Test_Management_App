@@ -5,6 +5,7 @@ import Model.DeviceModelFeaturesStatus;
 import Payloads.DeviceModelRequest;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -15,10 +16,10 @@ public interface DeviceModelService {
 
     Binary getDeviceModelByProducerName(String producerName);
     Binary getDeviceModelByModelName(String modelName);
-    Binary getDeviceModelByPremiereQuarter(String premiereQuarter);
-    Binary getDeviceModelByVoLTE (DeviceModelFeaturesStatus volte);
-    Binary getDeviceModelByVoWiFi (DeviceModelFeaturesStatus vowifi);
-    Binary getDeviceModelBySaNsa5g(DeviceModelFeaturesStatus saNsa5g);
-    Binary getDeviceModelByeSim(DeviceModelFeaturesStatus eSim);
-    Binary getDeviceModelByRcs(DeviceModelFeaturesStatus rcs);
+    List<Binary> getDeviceModelByPremiereQuarter(String premiereQuarter);
+    List<Binary> getDeviceModelByVoLTE (DeviceModelFeaturesStatus volte);
+    List<Binary> getDeviceModelByVoWiFi (DeviceModelFeaturesStatus vowifi);
+    List<Binary> getDeviceModelBySaNsa5g(DeviceModelFeaturesStatus saNsa5g);
+    List<Binary> getDeviceModelByeSim(DeviceModelFeaturesStatus eSim);
+    List<Binary> getDeviceModelByRcs(DeviceModelFeaturesStatus rcs);
 }

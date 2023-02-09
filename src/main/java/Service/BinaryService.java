@@ -3,6 +3,7 @@ package Service;
 import Model.AcceptedStatusType;
 import Model.Binary;
 import Model.BinaryStatusType;
+import Model.TESTS_ONGOINGview;
 import Payloads.BinaryRequestApp;
 import Payloads.BinaryRequestDevice;
 import Payloads.BinaryRequestNewAppModule;
@@ -21,14 +22,16 @@ public interface BinaryService {
 
     Optional<Binary> updateBinaryApp(Integer idBinary, BinaryRequestApp binaryRequestApp);
     Optional<Binary> updateBinaryDevice(Integer idBinary, BinaryRequestDevice binaryRequestDevice);
-    Optional<Binary> updateBinaryDevice(Integer idNewAppModule, BinaryRequestNewAppModule binaryRequestNewAppModule);
+    Optional<Binary> updateBinaryNewAppModule(Integer idNewAppModule, BinaryRequestNewAppModule binaryRequestNewAppModule);
 
-    Binary getBinaryByStatus(BinaryStatusType binaryStatusType);
-    Binary getBinaryByAcceptedStatus(AcceptedStatusType acceptedStatusType);
+    List<Binary> getBinaryByStatus(BinaryStatusType binaryStatusType);
+    List<TESTS_ONGOINGview> getTESTS_ONGOING_VIEW(BinaryStatusType binaryStatusType);
+    List<Binary> getBinaryByAcceptedStatus(AcceptedStatusType acceptedStatusType);
     Binary getBinaryByIdApplication(Integer idApplication);
-    Binary getBinaryByFkIdProjectBinary(Integer idProject);
-    Binary getBinaryByFkIdDeviceModel(Integer idDeviceModel);
-    Binary getBinaryByFkIdNewAppModule(Integer idNewAppModule);
+    List<Binary> getBinaryByFkIdProjectBinary(Integer idProject);
+    List<Binary> getBinaryByFkIdDeviceModel(Integer idDeviceModel);
+    List<Binary> getBinaryByFkIdNewAppModule(Integer idNewAppModule);
+
 
 
 }

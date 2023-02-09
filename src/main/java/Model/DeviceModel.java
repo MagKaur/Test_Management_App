@@ -14,7 +14,7 @@ import java.util.List;
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 public class DeviceModel implements Serializable {
-//TODO przenieść accepted status z project details do device model
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_device")
