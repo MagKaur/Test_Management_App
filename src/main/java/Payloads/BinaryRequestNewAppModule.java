@@ -18,7 +18,7 @@ public class BinaryRequestNewAppModule {
     private String binaryLink;
     @NotNull
     private int idNewAppModule;
-    @NotNull
+
     private BinaryStatusType binaryStatus;
 
 }

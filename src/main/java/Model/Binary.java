@@ -59,7 +59,7 @@ public class Binary implements Serializable {
     @Enumerated(EnumType.ORDINAL)
     private BinaryStatusType binaryStatus;
 
-    protected Binary(){};
+    public Binary(){};
 
     Binary(String binaryName, String binaryDescription, String binaryLink, Project fkIdProjectBinary,
                 Application fkIdApplicationBinary, BinaryStatusType binaryStatus){
@@ -84,7 +84,6 @@ public class Binary implements Serializable {
 
     Binary(String binaryName, String binaryDescription, String binaryLink, Project fkIdProjectBinary, Application fkIdApplicationBinary,
            DeviceModel fkIdDeviceModelBinary, AcceptedStatusType acceptedStatus, BinaryStatusType binaryStatus){
-
         this.binaryName = binaryName;
         this.binaryDescription = binaryDescription;
         this.binaryLink = binaryLink;
@@ -111,6 +110,14 @@ public class Binary implements Serializable {
     public void setIdBinary(int idBinary){
         this.idBinary = idBinary;
     }
+
+    public String getBinaryName(){
+        return binaryName;
+    }
+    public void setBinaryName(String binaryName){
+        this.binaryName = binaryName;
+    }
+
 
     public String getBinaryDescription(){
         return binaryDescription;

@@ -1,6 +1,7 @@
 package Service;
 
 import Model.Binary;
+import Model.DeviceModel;
 import Model.DeviceModelFeaturesStatus;
 import Payloads.DeviceModelRequest;
 import org.springframework.stereotype.Component;
@@ -11,15 +12,16 @@ import java.util.Optional;
 @Component
 public interface DeviceModelService {
 
-    Binary createDeviceModel(DeviceModelRequest deviceModelRequest);
-    Optional<Binary> updateDeviceModel(Integer idDeviceModel, DeviceModelRequest deviceModelRequest);
+    DeviceModel createDeviceModel(DeviceModelRequest deviceModelRequest);
+    Optional<DeviceModel> updateDeviceModel(Integer idDeviceModel, DeviceModelRequest deviceModelRequest);
 
-    Binary getDeviceModelByProducerName(String producerName);
-    Binary getDeviceModelByModelName(String modelName);
-    List<Binary> getDeviceModelByPremiereQuarter(String premiereQuarter);
-    List<Binary> getDeviceModelByVoLTE (DeviceModelFeaturesStatus volte);
-    List<Binary> getDeviceModelByVoWiFi (DeviceModelFeaturesStatus vowifi);
-    List<Binary> getDeviceModelBySaNsa5g(DeviceModelFeaturesStatus saNsa5g);
-    List<Binary> getDeviceModelByeSim(DeviceModelFeaturesStatus eSim);
-    List<Binary> getDeviceModelByRcs(DeviceModelFeaturesStatus rcs);
+    DeviceModel getDeviceModelByProducerName(String producerName);
+    DeviceModel getDeviceModelByModelName(String modelName);
+    DeviceModel getSingleDeviceModelById(Integer idDeviceModel);
+    List<DeviceModel> getDeviceModelByPremiereQuarter(String premiereQuarter);
+    List<DeviceModel> getDeviceModelByVoLTE (DeviceModelFeaturesStatus volte);
+    List<DeviceModel> getDeviceModelByVoWiFi (DeviceModelFeaturesStatus vowifi);
+    List<DeviceModel> getDeviceModelBySaNsa5g(DeviceModelFeaturesStatus saNsa5g);
+    List<DeviceModel> getDeviceModelByeSim(DeviceModelFeaturesStatus eSim);
+    List<DeviceModel> getDeviceModelByRcs(DeviceModelFeaturesStatus rcs);
 }

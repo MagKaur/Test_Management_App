@@ -21,7 +21,6 @@ private String binaryLink;
 private int idProject;
 @NotNull
 private int idApplication;
-@NotNull
 @Enumerated
 private BinaryStatusType binaryStatus;
 

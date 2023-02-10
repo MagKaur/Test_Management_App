@@ -23,12 +23,11 @@ public interface DeviceModelRepository extends JpaRepository<DeviceModel, Intege
 
 
 
-    List<DeviceModel>findByProducerName(@NonNull String producerName);
-    List<DeviceModel>findByModelName(@NonNull String modelName);
+    DeviceModel findByProducerName(@NonNull String producerName);
+    DeviceModel findByModelName(@NonNull String modelName);
     List<DeviceModel>findByPremiereQuarter(@NonNull String premiereQuarter);
     //TODO dodać gdzieś przy mapowaniu format wpisywania QN'RR
-    //TODO services impl
-    //TODO API controllers
+
     //TODO testy jednostkowe
     List<DeviceModel>findByVolte(@NonNull DeviceModelFeaturesStatus volte);
     List<DeviceModel>findByVowifi(@NonNull DeviceModelFeaturesStatus vowifi);

@@ -22,11 +22,10 @@ public interface BinaryRepository extends JpaRepository<Binary, Integer> {
     List<Binary> findByBinaryStatus(@NonNull BinaryStatusType binaryStatus);
     List<Binary> findByAcceptedStatus(@Param("state") AcceptedStatusType acceptedStatusType);
 
-
-    List<Binary>findByFkIdApplicationBinary(@NonNull Application fkIdApplicationBinary);
-    List<Binary>findByFkIdNewAppModuleBinary(@NonNull NewAppModule fkIdNewAppModuleBinary);
-    List<Binary>findByFkIdProjectBinary(@NonNull Project fkIdProjectBinary);
-    List<Binary>findByFkIdDeviceModelBinary (@NonNull DeviceModel fkIdDeviceModelBinary);
+    List<Binary>findByFkIdApplicationBinary(@NonNull Integer idApplication);
+    List<Binary>findByFkIdNewAppModuleBinary(@NonNull Integer idNewAppModule);
+    List<Binary>findByFkIdProjectBinary(@NonNull Integer idProject);
+    List<Binary>findByFkIdDeviceModelBinary (@NonNull Integer idDeviceModel);
 
     @Query(nativeQuery = true, value = "SELECT * FROM tests_ongoing ORDER BY Project_Name")
     List<TESTS_ONGOINGview> getTESTS_ONGOING();

@@ -66,7 +66,7 @@ public class DeviceModel implements Serializable {
 
 
 
-    protected DeviceModel(){};
+    public DeviceModel(){};
 
     DeviceModel (String producerName, String modelName, String premiereQuarter, DeviceModelFeaturesStatus volte,
                  DeviceModelFeaturesStatus vowifi, DeviceModelFeaturesStatus saNsa5g, DeviceModelFeaturesStatus eSim, DeviceModelFeaturesStatus rcs){

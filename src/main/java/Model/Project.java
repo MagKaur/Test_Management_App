@@ -44,7 +44,7 @@ public class Project implements Serializable {
 
 
 
-    protected Project() {
+    public Project() {
     }
 
     Project (String projectDescription, String projectName, ProjectStatusType projectStatus){

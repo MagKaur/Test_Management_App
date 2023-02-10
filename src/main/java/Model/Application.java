@@ -45,7 +45,7 @@ public class Application implements Serializable {
     private List<Binary> binaries = new ArrayList<>();
 
     // TODO dodać kolumne ze timestamp + dodać annotacje @CreationTimestamp ??? Zastanowic się czy będę potrzebowac np do obliczania deadline test tasku?
-    protected Application (){}
+    public Application (){}
     Application (String appName, String technologyDescription, String functionalityDescription){
         this.appName = appName;
         this.technologyDescription = technologyDescription;

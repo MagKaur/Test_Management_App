@@ -21,7 +21,7 @@ public class BinaryRequestDevice{
     private int idProject;
     @NotNull
     private int idDeviceModel;
-    @NotNull
+
     @Enumerated
     private BinaryStatusType binaryStatus;
 

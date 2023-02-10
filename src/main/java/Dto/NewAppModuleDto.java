@@ -1,5 +1,6 @@
 package Dto;
 
+import Model.Application;
 import Model.Binary;
 import Model.NewAppModule;
 import lombok.AllArgsConstructor;
@@ -11,18 +12,13 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class ApplicationDto implements Serializable {
+public class NewAppModuleDto implements Serializable {
 
     @NotNull
-    private final String appName;
+    private final String moduleName;
 
-    private final String technologyDescription;
-
-    private final String functionalityDescription;
-
-    private final List<NewAppModule> newAppModules;
+    private final String moduleDescription;
 
     private final List<Binary> binaries;
-
 
 }

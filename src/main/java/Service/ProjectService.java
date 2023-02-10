@@ -3,6 +3,7 @@ package Service;
 
 import Model.AcceptedStatusType;
 import Model.Project;
+import Model.ProjectStatusType;
 import Payloads.ProjectRequest;
 import org.springframework.stereotype.Component;
 
@@ -13,9 +14,9 @@ import java.util.Optional;
 public interface ProjectService {
 
     Project createProject(ProjectRequest projectRequest);
-    Optional<ProjectRequest> updateProject(Integer idProject, ProjectRequest projectRequest);
+    Optional<Project> updateProject(Integer idProject, ProjectRequest projectRequest);
     Project getSingleProjectById(Integer idProject);
     Project getSingleProjectByName(String projectName);
 
-    List<Project> getProjectsByAcceptedStatus(AcceptedStatusType acceptedStatus);
+    List<Project> getSingleProjectByAcceptedStatus(ProjectStatusType projectStatusType);
 }

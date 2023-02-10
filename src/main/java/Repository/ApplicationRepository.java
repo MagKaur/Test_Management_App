@@ -20,7 +20,7 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
     void deleteById(Integer integer);
 
 
-    List<Application>findByAppName(@NonNull String appName);
+    Application findByAppName(@NonNull String appName);
 
 
 

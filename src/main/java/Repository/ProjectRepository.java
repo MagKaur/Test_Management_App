@@ -21,6 +21,6 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
     void deleteById(Integer integer);
 
 
-    List<Project>findByProjectName(@NonNull String projectName);
+    Project findByProjectName(@NonNull String projectName);
     List<Project>findByProjectStatus(@NonNull ProjectStatusType projectStatus);
 }

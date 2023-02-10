@@ -42,7 +42,7 @@ public class NewAppModule implements Serializable {
     @JsonBackReference
     private List<Binary> binaries = new ArrayList<>();
 
-    protected NewAppModule(){};
+    public NewAppModule(){};
 
     NewAppModule(String moduleName, String moduleDescription, Application fkIdApplicationNewAppModule) {
         this.moduleName = moduleName;

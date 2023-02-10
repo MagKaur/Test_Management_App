@@ -16,9 +16,8 @@ public class ProjectRequest {
 
     @NotNull
     private String projectName;
-    @NotNull
+
     @Enumerated
     private ProjectStatusType projectStatus;
-
 
 }

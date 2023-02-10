@@ -14,9 +14,9 @@ public class BinaryDto implements Serializable {
 
     @NotNull
     private final String binaryName;
-    @NotNull
+
     private final String binaryDescription;
-    @NotNull
+
     private final String binaryLink;
 
     private final String projectName;

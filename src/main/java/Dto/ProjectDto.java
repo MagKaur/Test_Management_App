@@ -14,7 +14,7 @@ public class ProjectDto implements Serializable {
 
     @NotNull
     private final String projectName;
-    @NotNull
+
     private final String projectDescription;
     @NotNull
     private final ProjectStatusType projectStatus;

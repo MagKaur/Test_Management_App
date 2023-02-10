@@ -15,6 +15,8 @@ Optional<Application> updateApplication(Integer idApplication, ApplicationReques
 Application getSingleApplicationById(Integer idApplication);
 Application getSingleApplicationByName(String appName);
 
+List<Application> getAllApplications();
+
 //TODO dopisać metody z dto.
 
 
