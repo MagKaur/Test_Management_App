@@ -7,21 +7,11 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.lang.NonNull;
 
 import java.util.List;
+import java.util.Optional;
 
 @RepositoryRestResource
 public interface ApplicationRepository extends JpaRepository<Application, Integer> {
 
-    @Override
-    @RestResource(exported = false)
-    void delete (Application application);
-
-    @Override
-    @RestResource(exported = false)
-    void deleteById(Integer integer);
-
-
     Application findByAppName(@NonNull String appName);
-
-
 
 }

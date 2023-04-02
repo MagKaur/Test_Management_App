@@ -9,14 +9,6 @@ import org.springframework.lang.NonNull;
 import java.util.List;
 
 public interface NewAppModuleRepository extends JpaRepository<NewAppModule, Integer> {
-    @Override
-    @RestResource(exported = false)
-    void delete (NewAppModule newAppModule);
-
-    @Override
-    @RestResource(exported = false)
-    void deleteById(Integer integer);
-
 
 
     NewAppModule findByModuleName(@NonNull String moduleName);

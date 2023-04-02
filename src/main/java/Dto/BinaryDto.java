@@ -17,8 +17,10 @@ public class BinaryDto implements Serializable {
 
     private final String binaryDescription;
 
+
     private final String binaryLink;
 
+    @NotNull
     private final String projectName;
     private final String deviceModelName;
     private final String newAppModule;

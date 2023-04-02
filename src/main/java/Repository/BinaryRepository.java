@@ -11,13 +11,6 @@ import java.util.List;
 
 public interface BinaryRepository extends JpaRepository<Binary, Integer> {
 
-    @Override
-    @RestResource(exported = false)
-    void delete(Binary binary);
-
-    @Override
-    @RestResource(exported = false)
-    void deleteById(Integer integer);
 
     List<Binary> findByBinaryStatus(@NonNull BinaryStatusType binaryStatus);
     List<Binary> findByAcceptedStatus(@Param("state") AcceptedStatusType acceptedStatusType);
@@ -27,7 +20,5 @@ public interface BinaryRepository extends JpaRepository<Binary, Integer> {
     List<Binary>findByFkIdProjectBinary(@NonNull Integer idProject);
     List<Binary>findByFkIdDeviceModelBinary (@NonNull Integer idDeviceModel);
 
-    @Query(nativeQuery = true, value = "SELECT * FROM tests_ongoing ORDER BY Project_Name")
-    List<TESTS_ONGOINGview> getTESTS_ONGOING();
 
 }

@@ -12,13 +12,6 @@ import java.util.List;
 
 public interface ProjectDetailsRepository extends JpaRepository<ProjectDetails, Integer> {
 
-    @Override
-    @RestResource(exported = false)
-    void delete (ProjectDetails projectDetails);
-
-    @Override
-    @RestResource(exported = false)
-    void deleteById(Integer integer);
 
     //TODO dodać do wymagań wyszukiwania stworzone w repositorach
     //Czy ja wogole potrzebuje repository project details?

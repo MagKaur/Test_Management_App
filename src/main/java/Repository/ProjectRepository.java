@@ -12,14 +12,6 @@ import java.util.List;
 @RepositoryRestResource
 public interface ProjectRepository extends JpaRepository<Project, Integer> {
 
-    @Override
-    @RestResource(exported = false)
-    void delete (Project project);
-
-    @Override
-    @RestResource(exported = false)
-    void deleteById(Integer integer);
-
 
     Project findByProjectName(@NonNull String projectName);
     List<Project>findByProjectStatus(@NonNull ProjectStatusType projectStatus);
