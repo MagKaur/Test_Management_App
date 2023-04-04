@@ -16,10 +16,10 @@ Optional<Application> updateApplication(Integer idApplication, ApplicationReques
 Application getSingleApplicationById(Integer idApplication);
 ApplicationDto getSingleApplicationByIdDTO(Integer idApplication);
 
-Application getSingleApplicationByName(String appName);
-ApplicationDto getSingleApplicationByNameDTO(String appName);
+List <Application> getApplicationByName(String appName);
+List <ApplicationDto> getApplicationByNameDTO(String appName);
 
-List<Application> getAllApplications();
+List <Application> getAllApplications();
 
 
 

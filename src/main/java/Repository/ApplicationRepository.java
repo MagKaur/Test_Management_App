@@ -12,6 +12,6 @@ import java.util.Optional;
 @RepositoryRestResource
 public interface ApplicationRepository extends JpaRepository<Application, Integer> {
 
-    Application findByAppName(@NonNull String appName);
+   List <Application> findByAppName(@NonNull String appName);
 
 }

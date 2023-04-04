@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityExistsException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -90,23 +91,23 @@ public class ApplicationServiceImpl implements ApplicationService{
     }
 
     @Override
-    public Application getSingleApplicationByName(String appName) {
+    public List <Application> getApplicationByName(String appName) {
         return applicationRepository.findByAppName(appName);
     }
 
     @Override
-    public  ApplicationDto getSingleApplicationByNameDTO(String appName){
-        Application app = applicationRepository.findByAppName(appName);
-        if (app.getAppName().isEmpty() || app.getAppName().isBlank()) throw new ResourceNotFoundException();
-        //TODO napisać własny typ błędu by obsłuzyć empty i blank app name i wstawić za ResourceNotFoundException();
-        else {
-            List<NewAppModule> newAppModuleList = newAppModuleRepository.findByFkIdApplicationNewAppModule(app.getIdApplication());
-            List<Binary> binariesList = binaryRepository.findByFkIdApplicationBinary(app.getIdApplication());
-            ApplicationDto AppDTO = new ApplicationDto(app.getAppName(),
-                    app.getTechnologyDescription(), app.getFunctionalityDescription(),
-                    newAppModuleList, binariesList);
-            return AppDTO;
-        }
+    public  List <ApplicationDto> getApplicationByNameDTO(String appName){
+
+        List <ApplicationDto> appDtoList = new ArrayList<>();
+
+        List <Application> appList = applicationRepository.findByAppName(appName);
+            for (int i = 0; i < appList.size(); i++) {
+                List<NewAppModule> newAppModuleList = newAppModuleRepository.findByFkIdApplicationNewAppModule(appList.get(i).getIdApplication());
+                List<Binary> binariesList = binaryRepository.findByFkIdApplicationBinary(appList.get(i).getIdApplication());
+                ApplicationDto appDto = new ApplicationDto(appList.get(i).getAppName(), appList.get(i).getTechnologyDescription(),
+                        appList.get(i).getFunctionalityDescription(), newAppModuleList, binariesList);
+            }
+            return appDtoList;
     }
 
     @Override
