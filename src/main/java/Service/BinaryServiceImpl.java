@@ -164,11 +164,6 @@ public class BinaryServiceImpl implements BinaryService {
 //TODO zbudowac kontrolery
 
     @Override
-    public List<Binary> getBinaryByAcceptedStatus(AcceptedStatusType binaryStatusType){
-        return binaryRepository.findByAcceptedStatus(binaryStatusType);
-    }
-
-    @Override
     public List<Binary> getBinaryByIdApplication(Integer idApplication){
         return binaryRepository.findByFkIdApplicationBinary(idApplication);
     }
@@ -185,10 +180,5 @@ public class BinaryServiceImpl implements BinaryService {
     @Override
     public List<Binary>getBinaryByFkIdNewAppModule(Integer idNewAppModule){
         return binaryRepository.findByFkIdNewAppModuleBinary(idNewAppModule);
-    }
-
-    @Override
-    public List<TESTS_ONGOINGview> getBinaryByView(){
-        return binaryRepository.getTESTS_ONGOING();
     }
 }

@@ -24,8 +24,6 @@ public interface BinaryService {
     Optional<Binary> updateBinaryDevice(Integer idBinary, BinaryRequestDevice binaryRequestDevice);
     Optional<Binary> updateBinaryNewAppModule(Integer idBinary, BinaryRequestNewAppModule binaryRequestNewAppModule);
     List<Binary> getBinaryByStatus(BinaryStatusType binaryStatusType);
-    List<TESTS_ONGOINGview> getBinaryByView();
-    List<Binary> getBinaryByAcceptedStatus(AcceptedStatusType acceptedStatusType);
     List<Binary> getBinaryByIdApplication(Integer idApplication);
     List<Binary> getBinaryByFkIdProjectBinary(Integer idProject);
     List<Binary> getBinaryByFkIdDeviceModel(Integer idDeviceModel);

@@ -1,5 +1,6 @@
 package Payloads;
 
+import Model.AcceptedStatusType;
 import Model.BinaryStatusType;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -13,7 +13,7 @@ public interface BinaryRepository extends JpaRepository<Binary, Integer> {
 
 
     List<Binary> findByBinaryStatus(@NonNull BinaryStatusType binaryStatus);
-    List<Binary> findByAcceptedStatus(@Param("state") AcceptedStatusType acceptedStatusType);
+    List<Binary> findByBinaryName(@NonNull String binaryName);
 
     List<Binary>findByFkIdApplicationBinary(@NonNull Integer idApplication);
     List<Binary>findByFkIdNewAppModuleBinary(@NonNull Integer idNewAppModule);

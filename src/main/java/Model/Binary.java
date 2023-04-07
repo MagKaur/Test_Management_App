@@ -49,9 +49,6 @@ public class Binary implements Serializable {
     @JoinColumn(name = "id_device")
     @JsonManagedReference
     private DeviceModel fkIdDeviceModelBinary;
-    @Column(name = "accepted_status_type")
-    @Enumerated(EnumType.ORDINAL)
-    private AcceptedStatusType acceptedStatus;
 
     @Column(name = "binary_status_type")
     @NotNull(message = "BinaryService Status must not be null" )
@@ -81,25 +78,11 @@ public class Binary implements Serializable {
         this.binaryStatus = binaryStatus;
     }
 
-
-    Binary(String binaryName, String binaryDescription, String binaryLink, Project fkIdProjectBinary, Application fkIdApplicationBinary,
-           DeviceModel fkIdDeviceModelBinary, AcceptedStatusType acceptedStatus, BinaryStatusType binaryStatus){
-        this.binaryName = binaryName;
-        this.binaryDescription = binaryDescription;
-        this.binaryLink = binaryLink;
-        this.fkIdProjectBinary = fkIdProjectBinary;
-        this.fkIdApplicationBinary = fkIdApplicationBinary;
-        this.fkIdDeviceModelBinary = fkIdDeviceModelBinary;
-        this.acceptedStatus = acceptedStatus;
-        this.binaryStatus = binaryStatus;
-    }
-
-    Binary(String binaryName, String binaryDescription, String binaryLink, NewAppModule fkIdNewAppModuleBinary, AcceptedStatusType acceptedStatus, BinaryStatusType binaryStatus){
+    Binary(String binaryName, String binaryDescription, String binaryLink, NewAppModule fkIdNewAppModuleBinary,  BinaryStatusType binaryStatus){
         this.binaryName = binaryName;
         this.binaryDescription = binaryDescription;
         this.binaryLink = binaryLink;
         this.fkIdNewAppModuleBinary = fkIdNewAppModuleBinary;
-        this.acceptedStatus = acceptedStatus;
         this.binaryStatus = binaryStatus;
     }
 
@@ -158,14 +141,6 @@ public class Binary implements Serializable {
     }
     public void setFkIdDeviceModelBinary(DeviceModel fkIdDeviceModelBinary){
         this.fkIdDeviceModelBinary = fkIdDeviceModelBinary;
-    }
-
-    public AcceptedStatusType getAcceptedStatus(){
-        return acceptedStatus;
-    }
-
-    public void setAcceptedStatus(AcceptedStatusType acceptedStatus) {
-        this.acceptedStatus = acceptedStatus;
     }
 
     public BinaryStatusType getBinaryStatus(){
