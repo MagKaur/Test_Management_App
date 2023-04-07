@@ -8,7 +8,9 @@ import Payloads.ApplicationRequest;
 import Repository.ApplicationRepository;
 import Repository.NewAppModuleRepository;
 import Repository.BinaryRepository;
+import org.apache.catalina.webresources.EmptyResource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,7 @@ import javax.persistence.EntityExistsException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import Exceptions.BlankOrEmptyFieldException;
 
 
 @Service
@@ -70,15 +73,15 @@ public class ApplicationServiceImpl implements ApplicationService{
     }
 
     @Override
-    public ApplicationDto getSingleApplicationByIdDTO(Integer idApplication) throws ResourceNotFoundException{
+    public ApplicationDto getSingleApplicationByIdDTO(Integer idApplication) throws ResourceNotFoundException, BlankOrEmptyFieldException {
         Optional <Application> app = applicationRepository.findById(idApplication);
         if (!app.isPresent()) {
             throw new ResourceNotFoundException();
         } else
         { Application application = app.get(); //get() wyciąga application z opakowania Optional (matrioszka Optional -> Application)
-                    if (application.getAppName().isEmpty() || application.getAppName().isBlank()){
-                        throw new ResourceNotFoundException();
-                    //TODO napisać własny typ błędu by obsłuzyć empty i blank app name i wstawić za ResourceNotFoundException();
+            if (application.getAppName().isEmpty() || application.getAppName().isBlank()){
+                        throw new BlankOrEmptyFieldException("Brak nazwy aplikacji");
+                        //TODO jak ogarnąć to w controlerze w API kodach???
                     } else {
                         List<NewAppModule> newAppModuleList = newAppModuleRepository.findByFkIdApplicationNewAppModule(idApplication);
                         List<Binary> binariesList = binaryRepository.findByFkIdApplicationBinary(idApplication);
