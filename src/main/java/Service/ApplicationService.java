@@ -15,10 +15,9 @@ public interface ApplicationService {
 
 Application createApplication(ApplicationRequest applicationRequest);
 Optional<Application> updateApplication(Integer idApplication, ApplicationRequest applicationRequest);
-Application getSingleApplicationById(Integer idApplication);
+
 ApplicationDto getSingleApplicationByIdDTO(Integer idApplication) throws ResourceNotFoundException, BlankOrEmptyFieldException;
 
-List <Application> getApplicationByName(String appName);
 List <ApplicationDto> getApplicationByNameDTO(String appName);
 
 List <Application> getAllApplications();

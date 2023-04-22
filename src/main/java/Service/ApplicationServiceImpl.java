@@ -67,10 +67,7 @@ public class ApplicationServiceImpl implements ApplicationService{
             return application;
         }
     }
-    @Override
-    public Application getSingleApplicationById(Integer idApplication) throws ResourceNotFoundException{
-            return applicationRepository.findById(idApplication).orElseThrow(ResourceNotFoundException::new);
-    }
+
 
     @Override
     public ApplicationDto getSingleApplicationByIdDTO(Integer idApplication) throws ResourceNotFoundException, BlankOrEmptyFieldException {
@@ -93,10 +90,6 @@ public class ApplicationServiceImpl implements ApplicationService{
         }
     }
 
-    @Override
-    public List <Application> getApplicationByName(String appName) {
-        return applicationRepository.findByAppName(appName);
-    }
 
     @Override
     public  List <ApplicationDto> getApplicationByNameDTO(String appName){
