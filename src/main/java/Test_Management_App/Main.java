@@ -1,4 +1,4 @@
-package TestManagementApp;
+package Test_Management_App;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -11,8 +11,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 @SpringBootApplication
-@EntityScan("TestManagementApp.Model")
-@EnableJpaRepositories("TestManagementApp.Repository")
+@EntityScan("Test_Management_App.Model")
+@EnableJpaRepositories("Test_Management_App.Repository")
 public class Main extends SpringBootServletInitializer implements ApplicationRunner {
 
     public static void main(String[] args) {
