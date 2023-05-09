@@ -19,7 +19,7 @@ public class ApplicationController {
         this.applicationService = applicationService;
     }
 
-    @GetMapping("/applications")
+    @GetMapping("/getAllApplications")
     public List<Application> getAllApplications() {
         return applicationService.getAllApplications();
     }

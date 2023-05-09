@@ -49,7 +49,7 @@ public class ApplicationServiceImpl  implements ApplicationService{
             application.setApp_name(applicationPartialUpdatePayload.getFunctionality_description());
         }
         if (applicationPartialUpdatePayload.getTechnology_description() != null) {
-            application.setApp_name(applicationPartialUpdatePayload.getFunctionality_description());
+            application.setApp_name(applicationPartialUpdatePayload.getTechnology_description());
         }
         final Application updateApplication = applicationRepository.save(application);
         return updateApplication;
