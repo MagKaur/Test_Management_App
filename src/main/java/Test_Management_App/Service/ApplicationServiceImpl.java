@@ -1,6 +1,7 @@
 package Test_Management_App.Service;
 
 import Test_Management_App.Model.Application;
+import Test_Management_App.Payloads.ApplicationCreatePayload;
 import Test_Management_App.Payloads.ApplicationPartialUpdatePayload;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,20 @@ public class ApplicationServiceImpl  implements ApplicationService{
 
     public  ApplicationServiceImpl(ApplicationRepository applicationRepository) {
         this.applicationRepository = applicationRepository;
+    }
+
+    @Override
+    public Application createApplication(ApplicationCreatePayload applicationCreatePayload) {
+        if (applicationCreatePayload.getApp_name() == null || applicationCreatePayload.getTechnology_description() == null || applicationCreatePayload.getFunctionality_description() == null) {
+            throw new IllegalArgumentException("One or more fields are null");
+        }else {
+
+        ApplicationCreatePayload application = new ApplicationCreatePayload();
+        application.setApp_name(applicationCreatePayload.getApp_name());
+        application.setTechnology_description(applicationCreatePayload.getTechnology_description());
+        application.setFunctionality_description(applicationCreatePayload.getFunctionality_description());
+
+        return createApplication(application);}
     }
 
     @Override

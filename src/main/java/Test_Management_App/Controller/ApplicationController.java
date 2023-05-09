@@ -1,6 +1,7 @@
 package Test_Management_App.Controller;
 
 import Test_Management_App.Model.Application;
+import Test_Management_App.Payloads.ApplicationCreatePayload;
 import Test_Management_App.Payloads.ApplicationPartialUpdatePayload;
 import Test_Management_App.Service.ApplicationService;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,11 @@ public class ApplicationController {
         this.applicationService = applicationService;
     }
 
+    @PostMapping
+    public ResponseEntity<Application> createApplication(@RequestBody ApplicationCreatePayload createPayload) {
+        Application createdApplication = applicationService. //TODO: dokończyć po dodaniu service i service impl;
+        return ResponseEntity.ok(createdApplication);
+    }
     @PatchMapping("/update/{id}")
     public ResponseEntity<Application> updateApplication(
             @PathVariable("id") int id_application,
