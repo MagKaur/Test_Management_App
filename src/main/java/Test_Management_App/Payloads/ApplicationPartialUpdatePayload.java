@@ -1,27 +1,12 @@
-package Test_Management_App.Model;
+package Test_Management_App.Payloads;
 
-import javax.persistence.*;
+public class ApplicationPartialUpdatePayload {
 
-@Entity
-@Table(name = "applications")
-public class Application {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_application;
     private String app_name;
     private String technology_description;
     private String functionality_description;
 
-    public Application() {
-    }
-
-    public int getId_application() {
-        return id_application;
-    }
-
-    public void setId_application(int id_application) {
-        this.id_application = id_application;
+    public ApplicationPartialUpdatePayload() {
     }
 
     public String getApp_name() {
