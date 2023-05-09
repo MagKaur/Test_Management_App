@@ -16,7 +16,7 @@ public class ApplicationController {
         this.applicationService = applicationService;
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/update/{id}")
     public ResponseEntity<Application> updateApplication(
             @PathVariable("id") int id_application,
             @RequestBody ApplicationPartialUpdatePayload partialUpdate) {
