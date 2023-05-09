@@ -7,6 +7,8 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import Test_Management_App.Repository.*;
 
+import java.util.List;
+
 @Service
 public class ApplicationServiceImpl  implements ApplicationService{
 
@@ -29,6 +31,11 @@ public class ApplicationServiceImpl  implements ApplicationService{
         application.setFunctionality_description(applicationCreatePayload.getFunctionality_description());
 
         return applicationRepository.save(application);
+    }
+
+    @Override
+    public List<Application> getAllApplications() {
+        return applicationRepository.findAll();
     }
 
     @Override

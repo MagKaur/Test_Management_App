@@ -7,6 +7,8 @@ import Test_Management_App.Service.ApplicationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/applications")
 public class ApplicationController {
@@ -15,6 +17,11 @@ public class ApplicationController {
 
     public ApplicationController(ApplicationService applicationService) {
         this.applicationService = applicationService;
+    }
+
+    @GetMapping("/applications")
+    public List<Application> getAllApplications() {
+        return applicationService.getAllApplications();
     }
 
    @PostMapping
