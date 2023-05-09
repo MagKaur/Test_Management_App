@@ -18,8 +18,8 @@ public class ApplicationController {
     }
 
     @PostMapping
-    public ResponseEntity<Application> createApplication(@RequestBody ApplicationCreatePayload createPayload) {
-        Application createdApplication = applicationService. //TODO: dokończyć po dodaniu service i service impl;
+    public ResponseEntity<Application> createApplication(@RequestBody ApplicationCreatePayload applicationCreatePayload) {
+        Application createdApplication = applicationService.createApplication(applicationCreatePayload); //TODO: dokończyć po dodaniu service i service impl;
         return ResponseEntity.ok(createdApplication);
     }
     @PatchMapping("/update/{id}")
