@@ -6,7 +6,6 @@ public class ApplicationCreatePayload {
     private String technology_description;
     private String functionality_description;
 
-
     public ApplicationCreatePayload() {
     }
 

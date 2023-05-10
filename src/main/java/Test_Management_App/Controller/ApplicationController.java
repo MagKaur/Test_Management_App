@@ -2,8 +2,10 @@ package Test_Management_App.Controller;
 
 import Test_Management_App.Model.Application;
 import Test_Management_App.Payloads.ApplicationCreatePayload;
-import Test_Management_App.Payloads.ApplicationPartialUpdatePayload;
+import Test_Management_App.Payloads.ApplicationUpdatePayload;
+import Test_Management_App.Repository.ApplicationRepository;
 import Test_Management_App.Service.ApplicationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,18 +15,18 @@ import java.util.List;
 @RequestMapping("/applications")
 public class ApplicationController {
 
-    private final ApplicationService applicationService;
 
-    public ApplicationController(ApplicationService applicationService) {
+    private ApplicationService applicationService;
+
+    private ApplicationRepository applicationRepository;
+
+    @Autowired
+    public ApplicationController(ApplicationService applicationService, ApplicationRepository applicationRepository) {
         this.applicationService = applicationService;
+        this.applicationRepository = applicationRepository;
     }
 
-    @GetMapping("/getAllApplications")
-    public List<Application> getAllApplications() {
-        return applicationService.getAllApplications();
-    }
-
-   @PostMapping
+   @PostMapping("/create")
     public ResponseEntity<Application> createApplication(@RequestBody ApplicationCreatePayload applicationCreatePayload) {
         Application createdApplication = applicationService.createApplication(applicationCreatePayload); //TODO: dokończyć po dodaniu service i service impl;
         return ResponseEntity.ok(createdApplication);
@@ -32,9 +34,16 @@ public class ApplicationController {
     @PatchMapping("/update/{id}")
     public ResponseEntity<Application> updateApplication(
             @PathVariable("id") int id_application,
-            @RequestBody ApplicationPartialUpdatePayload partialUpdate) {
+            @RequestBody ApplicationUpdatePayload partialUpdate) {
 
         Application updatedApplication = applicationService.partialUpdateApplication(id_application, partialUpdate);
         return ResponseEntity.ok(updatedApplication);
     }
+
+    @GetMapping("/allApplications")
+    public List<Application> getAllApplications() {
+        return applicationRepository.findAll();
+    }
+
+
 }

@@ -1,12 +1,12 @@
 package Test_Management_App.Payloads;
 
-public class ApplicationPartialUpdatePayload {
+public class ApplicationUpdatePayload {
 
     private String app_name;
     private String technology_description;
     private String functionality_description;
 
-    public ApplicationPartialUpdatePayload() {
+    public ApplicationUpdatePayload() {
     }
 
     public String getApp_name() {
