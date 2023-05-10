@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/applications")
@@ -41,9 +42,25 @@ public class ApplicationController {
     }
 
     @GetMapping("/allApplications")
-    public List<Application> getAllApplications() {
-        return applicationRepository.findAll();
+    public ResponseEntity<List<Application>> getAllApplications() {
+        List<Application> applications = applicationRepository.findAll();
+        if (!applications.isEmpty()) {
+            return ResponseEntity.ok().body(applications);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
     }
 
+    @GetMapping("/find/id/{id}")
+    public ResponseEntity<Application> getSingleAppById(@PathVariable int id) {
+        Optional<Application> optionalApplication = applicationRepository.findById(id);
+        return optionalApplication.map(application -> ResponseEntity.ok().body(application)).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/find/name/{appName}")
+    public ResponseEntity<List<Application>> getApplicationsByAppName(@PathVariable String appName) {
+        List<Application> applications = applicationRepository.findByAppName(appName);
+        return applications.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(applications);
+    }
 
 }

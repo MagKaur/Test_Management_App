@@ -9,8 +9,11 @@ public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_application;
-    private String app_name;
+    @Column(name = "app_name")
+    private String appName;
+    @Column(name = "technology_description")
     private String technology_description;
+    @Column(name = "functionality_description")
     private String functionality_description;
 
     public Application() {
@@ -25,11 +28,11 @@ public class Application {
     }
 
     public String getApp_name() {
-        return app_name;
+        return appName;
     }
 
     public void setApp_name(String app_name) {
-        this.app_name = app_name;
+        this.appName = appName;
     }
 
     public String getTechnology_description() {
