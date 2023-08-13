@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 public interface ApplicationService {
 
     Application createApplication(ApplicationCreatePayload applicationCreatePayload);
-    Application partialUpdateApplication(int id_application, ApplicationUpdatePayload applicationUpdatePayload);
+    Application partialUpdateApplication(int idApplication, ApplicationUpdatePayload applicationUpdatePayload);
+
 
 }

@@ -23,35 +23,35 @@ public class ApplicationServiceImpl  implements ApplicationService{
 
     @Override
     public Application createApplication(ApplicationCreatePayload applicationCreatePayload) {
-        if (applicationCreatePayload.getApp_name().isEmpty() || applicationCreatePayload.getApp_name().isBlank()
-                || applicationCreatePayload.getTechnology_description().isEmpty()  || applicationCreatePayload.getTechnology_description().isBlank()
-                || applicationCreatePayload.getFunctionality_description().isEmpty() || applicationCreatePayload.getFunctionality_description().isBlank() ) {
+        if (applicationCreatePayload.getAppName().isEmpty() || applicationCreatePayload.getAppName().isBlank()
+                || applicationCreatePayload.getTechnologyDescription().isEmpty()  || applicationCreatePayload.getTechnologyDescription().isBlank()
+                || applicationCreatePayload.getFunctionalityDescription().isEmpty() || applicationCreatePayload.getFunctionalityDescription().isBlank() ) {
             throw new IllegalArgumentException("One or more fields are empty or blank");
         }else {
             Application application = new Application();
-            application.setApp_name(applicationCreatePayload.getApp_name());
-            application.setTechnology_description(applicationCreatePayload.getTechnology_description());
-            application.setFunctionality_description(applicationCreatePayload.getFunctionality_description());
+            application.setAppName(applicationCreatePayload.getAppName());
+            application.setTechnologyDescription(applicationCreatePayload.getTechnologyDescription());
+            application.setFunctionalityDescription(applicationCreatePayload.getFunctionalityDescription());
 
             return applicationRepository.save(application);
         }
     }
 
     @Override
-    public Application partialUpdateApplication(int id_application, ApplicationUpdatePayload applicationUpdatePayload){
-        Optional<Application> application = applicationRepository.findById(id_application);
+    public Application partialUpdateApplication(int idApplication, ApplicationUpdatePayload applicationUpdatePayload){
+        Optional<Application> application = applicationRepository.findById(idApplication);
         if (!application.isPresent()) {
-            throw new ResourceNotFoundException("Application not found with this id ::"+ id_application);
+            throw new ResourceNotFoundException("Application not found with this id ::"+ idApplication);
         }else {
-            if (applicationUpdatePayload.getApp_name() != null) {
-                application.get().setApp_name(applicationUpdatePayload.getApp_name());
+            if (applicationUpdatePayload.getAppName() != null) {
+                application.get().setAppName(applicationUpdatePayload.getAppName());
             }
-            if (applicationUpdatePayload.getFunctionality_description() != null) {
-                application.get().setFunctionality_description(applicationUpdatePayload.getFunctionality_description());
+            if (applicationUpdatePayload.getFunctionalityDescription() != null) {
+                application.get().setFunctionalityDescription(applicationUpdatePayload.getFunctionalityDescription());
             }
 
-            if (applicationUpdatePayload.getTechnology_description() != null) {
-                application.get().setTechnology_description(applicationUpdatePayload.getTechnology_description());
+            if (applicationUpdatePayload.getTechnologyDescription() != null) {
+                application.get().setTechnologyDescription(applicationUpdatePayload.getTechnologyDescription());
             }
             return applicationRepository.save(application.get());
         }

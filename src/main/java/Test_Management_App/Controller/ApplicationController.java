@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/applications")
+@RequestMapping("/application")
 public class ApplicationController {
 
 
@@ -34,18 +34,18 @@ public class ApplicationController {
     }
     @PatchMapping("/update/{id}")
     public ResponseEntity<Application> updateApplication(
-            @PathVariable("id") int id_application,
+            @PathVariable("id") int idApplication,
             @RequestBody ApplicationUpdatePayload partialUpdate) {
 
-        Application updatedApplication = applicationService.partialUpdateApplication(id_application, partialUpdate);
+        Application updatedApplication = applicationService.partialUpdateApplication(idApplication, partialUpdate);
         return ResponseEntity.ok(updatedApplication);
     }
 
-    @GetMapping("/allApplications")
-    public ResponseEntity<List<Application>> getAllApplications() {
-        List<Application> applications = applicationRepository.findAll();
-        if (!applications.isEmpty()) {
-            return ResponseEntity.ok().body(applications);
+    @GetMapping("/allApplication")
+    public ResponseEntity<List<Application>> getAllApplication() {
+        List<Application> application = applicationRepository.findAll();
+        if (!application.isEmpty()) {
+            return ResponseEntity.ok().body(application);
         } else {
             return ResponseEntity.noContent().build();
         }
@@ -58,9 +58,13 @@ public class ApplicationController {
     }
 
     @GetMapping("/find/name/{appName}")
-    public ResponseEntity<List<Application>> getApplicationsByAppName(@PathVariable String appName) {
-        List<Application> applications = applicationRepository.findByAppName(appName);
-        return applications.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(applications);
+    public ResponseEntity<Application> getApplicationByAppName(@PathVariable String appName) {
+        Application application = applicationRepository.findByAppName(appName);
+        if (application == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(application);
+        }
     }
 
 }

@@ -3,51 +3,51 @@ package Test_Management_App.Model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "applications")
+@Table(name = "application")
 public class Application {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_application;
+    private int idApplication;
     @Column(name = "app_name")
     private String appName;
     @Column(name = "technology_description")
-    private String technology_description;
+    private String technologyDescription;
     @Column(name = "functionality_description")
-    private String functionality_description;
+    private String functionalityDescription;
 
     public Application() {
     }
 
-    public int getId_application() {
-        return id_application;
+    public int getIdApplication() {
+        return idApplication;
     }
 
-    public void setId_application(int id_application) {
-        this.id_application = id_application;
+    public void setIdApplication(int idApplication) {
+        this.idApplication = idApplication;
     }
 
-    public String getApp_name() {
+    public String getAppName() {
         return appName;
     }
 
-    public void setApp_name(String app_name) {
+    public void setAppName(String appName) {
         this.appName = appName;
     }
 
-    public String getTechnology_description() {
-        return technology_description;
+    public String getTechnologyDescription() {
+        return technologyDescription;
     }
 
-    public void setTechnology_description(String technology_description) {
-        this.technology_description = technology_description;
+    public void setTechnologyDescription(String technologyDescription) {
+        this.technologyDescription = technologyDescription;
     }
 
-    public String getFunctionality_description() {
-        return functionality_description;
+    public String getFunctionalityDescription() {
+        return functionalityDescription;
     }
 
-    public void setFunctionality_description(String functionality_description) {
-        this.functionality_description = functionality_description;
+    public void setFunctionalityDescription(String functionalityDescription) {
+        this.functionalityDescription = functionalityDescription;
     }
 }
