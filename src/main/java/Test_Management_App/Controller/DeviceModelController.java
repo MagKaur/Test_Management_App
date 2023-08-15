@@ -56,10 +56,9 @@ public class DeviceModelController {
         return ResponseEntity.ok(deviceModel);
     }
 
-    @GetMapping("/find/model/{deviceModelName}")
+    @GetMapping("/find/name/{modelName}")
     public ResponseEntity<DeviceModel> getDeviceModelByModelName(@PathVariable String modelName) {
         Optional<DeviceModel> optionalDeviceModel = Optional.ofNullable(deviceModelService.getDeviceModelByModelName(modelName));
-
         return ResponseEntity.of(optionalDeviceModel);
     }
 
