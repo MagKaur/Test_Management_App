@@ -1,7 +1,6 @@
 package Test_Management_App.Service;
 
 import Test_Management_App.Model.DeviceModel;
-import Test_Management_App.Model.DeviceModelFeatureStatus;
 import Test_Management_App.Payloads.DeviceModelCreatePayload;
 import Test_Management_App.Payloads.DeviceModelUpdatePayload;
 import org.springframework.beans.factory.annotation.Autowired;
