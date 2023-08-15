@@ -5,9 +5,13 @@ import Test_Management_App.Payloads.DeviceModelCreatePayload;
 import Test_Management_App.Payloads.DeviceModelUpdatePayload;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+
 @Component
 public interface DeviceModelService {
 
     DeviceModel createDeviceModel(DeviceModelCreatePayload deviceModelCreatePayload);
     DeviceModel partialUpdateDeviceModel(int idDeviceModel, DeviceModelUpdatePayload deviceModelUpdatePayload);
+    List<DeviceModel> getDeviceModelByProducerName(String producerName);
 }

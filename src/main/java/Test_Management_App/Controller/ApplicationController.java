@@ -29,7 +29,7 @@ public class ApplicationController {
 
    @PostMapping("/create")
     public ResponseEntity<Application> createApplication(@RequestBody ApplicationCreatePayload applicationCreatePayload) {
-        Application createdApplication = applicationService.createApplication(applicationCreatePayload); //TODO: dokończyć po dodaniu service i service impl;
+        Application createdApplication = applicationService.createApplication(applicationCreatePayload);
         return ResponseEntity.ok(createdApplication);
     }
     @PatchMapping("/update/{id}")
