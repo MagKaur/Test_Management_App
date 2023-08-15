@@ -6,7 +6,7 @@ public class DeviceModelUpdatePayload {
 
     private String producerName;
 
-    private String deviceModelName;
+    private String modelName;
 
     private String premiereQuarter;
 
@@ -33,12 +33,12 @@ public class DeviceModelUpdatePayload {
         this.producerName = producerName;
     }
 
-    public String getDeviceModelName() {
-        return deviceModelName;
+    public String getModelName() {
+        return modelName;
     }
 
-    public void setDeviceModelName(String deviceModelName) {
-        this.deviceModelName = deviceModelName;
+    public void setModelName(String modelName) {
+        this.modelName = modelName;
     }
 
     public String getPremiereQuarter() {

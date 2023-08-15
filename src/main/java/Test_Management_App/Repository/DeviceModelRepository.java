@@ -12,8 +12,7 @@ import java.util.List;
 @RepositoryRestResource
 public interface DeviceModelRepository extends JpaRepository<DeviceModel, Integer>{
 
-    //TODO wyszukiwanie po nazwie producenta
-    public DeviceModel findByDeviceModelName(String deviceModelName);
+    public DeviceModel findByModelName(String modelName);
     public List<DeviceModel> findByProducerName(String producerName);
 
 }

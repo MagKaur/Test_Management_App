@@ -43,23 +43,22 @@ public class ApplicationController {
 
     @GetMapping("/allApplication")
     public ResponseEntity<List<Application>> getAllApplication() {
-        List<Application> application = applicationRepository.findAll();
+        List<Application> application = applicationService.getAllApplication();
         if (!application.isEmpty()) {
             return ResponseEntity.ok().body(application);
         } else {
             return ResponseEntity.noContent().build();
         }
     }
-
     @GetMapping("/find/id/{id}")
     public ResponseEntity<Application> getSingleAppById(@PathVariable int id) {
-        Optional<Application> optionalApplication = applicationRepository.findById(id);
+        Optional<Application> optionalApplication = Optional.ofNullable(applicationService.getSingleAppById(id));
         return optionalApplication.map(application -> ResponseEntity.ok().body(application)).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @GetMapping("/find/name/{appName}")
     public ResponseEntity<Application> getApplicationByAppName(@PathVariable String appName) {
-        Application application = applicationRepository.findByAppName(appName);
+        Application application = applicationService.getApplicationByAppName(appName);
         if (application == null) {
             return ResponseEntity.notFound().build();
         } else {

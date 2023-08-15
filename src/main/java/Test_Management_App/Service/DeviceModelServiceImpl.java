@@ -8,6 +8,7 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import Test_Management_App.Repository.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +24,7 @@ public class DeviceModelServiceImpl implements DeviceModelService {
 
     @Override
     public DeviceModel createDeviceModel(DeviceModelCreatePayload deviceModelCreatePayload) {
-        if (isEmptyOrBlank(deviceModelCreatePayload.getProducerName()) || isEmptyOrBlank(deviceModelCreatePayload.getDeviceModelName()) || isEmptyOrBlank(deviceModelCreatePayload.getPremiereQuarter()) ||
+        if (isEmptyOrBlank(deviceModelCreatePayload.getProducerName()) || isEmptyOrBlank(deviceModelCreatePayload.getModelName()) || isEmptyOrBlank(deviceModelCreatePayload.getPremiereQuarter()) ||
                 deviceModelCreatePayload.getVolte() == null ||
                 deviceModelCreatePayload.getVowifi() == null ||
                 deviceModelCreatePayload.getSaNsa5g() == null ||
@@ -35,13 +36,13 @@ public class DeviceModelServiceImpl implements DeviceModelService {
 
         DeviceModel deviceModel = new DeviceModel();
         deviceModel.setProducerName(deviceModelCreatePayload.getProducerName());
-        deviceModel.setDeviceModelName(deviceModelCreatePayload.getDeviceModelName());
+        deviceModel.setModelName(deviceModelCreatePayload.getModelName());
         deviceModel.setPremiereQuarter(deviceModelCreatePayload.getPremiereQuarter());
         deviceModel.setVolte(deviceModelCreatePayload.getVolte());
         deviceModel.setVowifi(deviceModelCreatePayload.getVowifi());
         deviceModel.setSaNsa5g(deviceModelCreatePayload.getSaNsa5g());
         deviceModel.seteSim(deviceModelCreatePayload.geteSim());
-        deviceModel.setRcs(deviceModelCreatePayload.geteSim());
+        deviceModel.setRcs(deviceModelCreatePayload.getRcs());
 
         return deviceModelRepository.save(deviceModel);
     }
@@ -50,17 +51,19 @@ public class DeviceModelServiceImpl implements DeviceModelService {
         return value == null || value.isEmpty();
     }
 
+    //TODO czy zabezpieczyc update enum inna wartością niż enum?
     @Override
-    public DeviceModel partialUpdateDeviceModel(int idDeviceModel, DeviceModelUpdatePayload deviceModelUpdatePayload) {
-        Optional<DeviceModel> deviceModel = deviceModelRepository.findById(idDeviceModel);
+    public DeviceModel partialUpdateDeviceModel(int idDevice, DeviceModelUpdatePayload deviceModelUpdatePayload) {
+        Optional<DeviceModel> deviceModel = deviceModelRepository.findById(idDevice);
         if (!deviceModel.isPresent()) {
-            throw new ResourceNotFoundException("Application not found with this id ::" + idDeviceModel);
+            throw new ResourceNotFoundException("Application not found with this id ::" + idDevice);
         } else {
-            if (deviceModelUpdatePayload.getDeviceModelName() != null) {
-                deviceModel.get().setDeviceModelName(deviceModelUpdatePayload.getDeviceModelName());
-            }
+
             if (deviceModelUpdatePayload.getProducerName() != null){
                 deviceModel.get().setProducerName(deviceModelUpdatePayload.getProducerName());
+            }
+            if (deviceModelUpdatePayload.getModelName() != null) {
+                deviceModel.get().setModelName(deviceModelUpdatePayload.getModelName());
             }
             if (deviceModelUpdatePayload.getPremiereQuarter() != null){
                 deviceModel.get().setPremiereQuarter(deviceModelUpdatePayload.getPremiereQuarter());
@@ -82,12 +85,23 @@ public class DeviceModelServiceImpl implements DeviceModelService {
             }
             return deviceModelRepository.save(deviceModel.get());
         }
-
     }
-
+    @Override
+    public DeviceModel getDeviceModelById(int idDevice) {
+        return deviceModelRepository.findById(idDevice)
+                .orElseThrow(() -> new EntityNotFoundException("DeviceModel with id " + idDevice + " not found"));
+    }
     @Override
     public List<DeviceModel> getDeviceModelByProducerName(String producerName){
         return deviceModelRepository.findByProducerName(producerName);
+    }
+    @Override
+    public  DeviceModel getDeviceModelByModelName(String modelName){
+        return deviceModelRepository.findByModelName(modelName);
+    }
+    @Override
+    public List<DeviceModel> getAllDeviceModels() {
+        return deviceModelRepository.findAll();
     }
 }
 

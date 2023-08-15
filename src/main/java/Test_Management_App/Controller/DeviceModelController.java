@@ -1,5 +1,6 @@
 package Test_Management_App.Controller;
 
+import Test_Management_App.Model.Application;
 import Test_Management_App.Model.DeviceModel;
 import Test_Management_App.Payloads.DeviceModelCreatePayload;
 import Test_Management_App.Payloads.DeviceModelUpdatePayload;
@@ -30,28 +31,34 @@ public class DeviceModelController {
         return ResponseEntity.ok(createdDeviceModel);
     }
 
-    @PatchMapping("/update/{id}")
+    @PatchMapping("/update/id/{id}")
     public ResponseEntity<DeviceModel> updateDeviceModel(
-            @PathVariable("id") int idDeviceModel,
+            @PathVariable("id") int idDevice,
             @RequestBody DeviceModelUpdatePayload partialUpdate) {
 
-        DeviceModel updatedDeviceModel = deviceModelService.partialUpdateDeviceModel(idDeviceModel, partialUpdate);
+        DeviceModel updatedDeviceModel = deviceModelService.partialUpdateDeviceModel(idDevice, partialUpdate);
         return ResponseEntity.ok(updatedDeviceModel);
     }
 
-    @GetMapping("/allApplication")
+    @GetMapping("/allDeviceModel")
     public ResponseEntity<List<DeviceModel>> getAllDeviceModel() {
-        List<DeviceModel> deviceModel = deviceModelRepository.findAll();
-        if (!deviceModel.isEmpty()) {
-            return ResponseEntity.ok().body(deviceModel);
+        List<DeviceModel> deviceModels = deviceModelService.getAllDeviceModels();
+        if (!deviceModels.isEmpty()) {
+            return ResponseEntity.ok(deviceModels);
         } else {
             return ResponseEntity.noContent().build();
         }
     }
 
+    @GetMapping("/find/id/{id}")
+    public ResponseEntity<DeviceModel> getDeviceModelById(@PathVariable int id) {
+        DeviceModel deviceModel = deviceModelService.getDeviceModelById(id);
+        return ResponseEntity.ok(deviceModel);
+    }
+
     @GetMapping("/find/model/{deviceModelName}")
-    public ResponseEntity<DeviceModel> getSingleDeviceModelByModelName(@PathVariable String deviceModelName) {
-        Optional<DeviceModel> optionalDeviceModel = Optional.ofNullable(deviceModelRepository.findByDeviceModelName(deviceModelName));
+    public ResponseEntity<DeviceModel> getDeviceModelByModelName(@PathVariable String modelName) {
+        Optional<DeviceModel> optionalDeviceModel = Optional.ofNullable(deviceModelService.getDeviceModelByModelName(modelName));
 
         return ResponseEntity.of(optionalDeviceModel);
     }

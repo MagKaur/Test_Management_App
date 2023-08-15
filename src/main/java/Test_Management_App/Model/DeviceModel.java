@@ -8,12 +8,12 @@ public class DeviceModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idDeviceModel;
+    private int idDevice;
 
     @Column(name = "producer_name")
     private String producerName;
     @Column(name = "model_name")
-    private String deviceModelName;
+    private String modelName;
     @Column(name = "premiere_quarter")
     private String premiereQuarter;
     @Enumerated(EnumType.STRING)
@@ -34,12 +34,12 @@ public class DeviceModel {
 
     public DeviceModel(){
     }
-    public int getIdDeviceModel() {
-        return idDeviceModel;
+    public int getIdDevice() {
+        return idDevice;
     }
 
-    public void setIdDeviceModel(int idDeviceModel) {
-        this.idDeviceModel = idDeviceModel;
+    public void setIdDevice(int idDevice) {
+        this.idDevice = idDevice;
     }
 
     public String getProducerName() {
@@ -50,12 +50,12 @@ public class DeviceModel {
         this.producerName = producerName;
     }
 
-    public String getDeviceModelName() {
-        return deviceModelName;
+    public String getModelName() {
+        return modelName;
     }
 
-    public void setDeviceModelName(String deviceModelName) {
-        this.deviceModelName = deviceModelName;
+    public void setModelName(String modelName) {
+        this.modelName = modelName;
     }
 
     public String getPremiereQuarter() {

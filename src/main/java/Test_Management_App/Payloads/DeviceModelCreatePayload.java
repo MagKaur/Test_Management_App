@@ -6,12 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-public class DeviceModelCreatePayload {
+public class  DeviceModelCreatePayload {
 
 
     private String producerName;
 
-    private String deviceModelName;
+    private String modelName;
 
     private String premiereQuarter;
 
@@ -38,12 +38,12 @@ public class DeviceModelCreatePayload {
         this.producerName = producerName;
     }
 
-    public String getDeviceModelName() {
-        return deviceModelName;
+    public String getModelName() {
+        return modelName;
     }
 
     public void setDeviceModelName(String deviceModelName) {
-        this.deviceModelName = deviceModelName;
+        this.modelName = modelName;
     }
 
     public String getPremiereQuarter() {

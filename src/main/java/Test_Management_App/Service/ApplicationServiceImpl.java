@@ -1,6 +1,7 @@
 package Test_Management_App.Service;
 
 import Test_Management_App.Model.Application;
+import Test_Management_App.Model.DeviceModel;
 import Test_Management_App.Payloads.ApplicationCreatePayload;
 import Test_Management_App.Payloads.ApplicationUpdatePayload;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import Test_Management_App.Repository.*;
 
+import javax.persistence.EntityNotFoundException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,7 +23,6 @@ public class ApplicationServiceImpl  implements ApplicationService{
     public  ApplicationServiceImpl(ApplicationRepository applicationRepository) {
         this.applicationRepository = applicationRepository;
     }
-
     @Override
     public Application createApplication(ApplicationCreatePayload applicationCreatePayload) {
         if (applicationCreatePayload.getAppName().isEmpty() || applicationCreatePayload.getAppName().isBlank()
@@ -36,7 +38,6 @@ public class ApplicationServiceImpl  implements ApplicationService{
             return applicationRepository.save(application);
         }
     }
-
     @Override
     public Application partialUpdateApplication(int idApplication, ApplicationUpdatePayload applicationUpdatePayload){
         Optional<Application> application = applicationRepository.findById(idApplication);
@@ -55,6 +56,19 @@ public class ApplicationServiceImpl  implements ApplicationService{
             }
             return applicationRepository.save(application.get());
         }
+    }
+    @Override
+    public Application getSingleAppById(int idApplication) {
+        return applicationRepository.findById(idApplication)
+                .orElseThrow(() -> new EntityNotFoundException("DeviceModel with id " + idApplication + " not found"));
+    }
+    @Override
+    public Application getApplicationByAppName(String appName) {
+        return applicationRepository.findByAppName(appName);
+    }
+    @Override
+    public List<Application> getAllApplication() {
+        return applicationRepository.findAll();
     }
 
 
