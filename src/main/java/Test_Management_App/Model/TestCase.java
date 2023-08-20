@@ -17,6 +17,8 @@ public class TestCase {
     private String preconditions;
     @Column(name = "description")
     private String description;
+    @Column(name = "expected_results")
+    private String expectedResults;
 
     public TestCase(){
     }
@@ -69,6 +71,5 @@ public class TestCase {
         this.expectedResults = expectedResults;
     }
 
-    @Column(name = "expected_results")
-    private String expectedResults;
+
 }

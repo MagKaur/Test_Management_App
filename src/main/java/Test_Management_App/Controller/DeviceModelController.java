@@ -62,6 +62,7 @@ public class DeviceModelController {
         return ResponseEntity.of(optionalDeviceModel);
     }
 
+
     @GetMapping("/find/producer/{producerName}")
     public ResponseEntity<List<DeviceModel>> getDeviceModelByProducerName(@PathVariable String producerName) {
         List<DeviceModel> deviceModels = deviceModelService.getDeviceModelByProducerName(producerName);

@@ -51,7 +51,6 @@ public class DeviceModelServiceImpl implements DeviceModelService {
         return value == null || value.isEmpty();
     }
 
-    //TODO czy zabezpieczyc update enum inna wartością niż enum?
     @Override
     public DeviceModel partialUpdateDeviceModel(int idDevice, DeviceModelUpdatePayload deviceModelUpdatePayload) {
         Optional<DeviceModel> deviceModel = deviceModelRepository.findById(idDevice);

@@ -1,8 +1,6 @@
 package Test_Management_App.Payloads;
 
-import javax.persistence.Column;
-
-public class TestCaseUploadPayload {
+public class TestCaseUpdatePayload {
 
     private String signature;
 
@@ -14,7 +12,7 @@ public class TestCaseUploadPayload {
 
     private String expectedResults;
 
-    public TestCaseUploadPayload(){
+    public TestCaseUpdatePayload(){
     }
 
 
