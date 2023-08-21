@@ -70,7 +70,7 @@ public class TestCaseController {
         return ResponseEntity.of(optionalTestCase);
     }
 
-    @GetMapping("/find/name/{testCaseSignature}")
+    @GetMapping("/find/signature/{testCaseSignature}")
     public ResponseEntity<TestCase> getTestCaseBySignature(@PathVariable String testCaseSignature) {
         Optional<TestCase> optionalTestCase = Optional.ofNullable(testCaseService.getTestCaseBySignature(testCaseSignature));
         return ResponseEntity.of(optionalTestCase);
