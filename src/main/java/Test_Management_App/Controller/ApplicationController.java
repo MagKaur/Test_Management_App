@@ -1,14 +1,18 @@
 package Test_Management_App.Controller;
 
 import Test_Management_App.Model.Application;
+import Test_Management_App.Model.UserEmployee;
 import Test_Management_App.Payloads.ApplicationCreatePayload;
 import Test_Management_App.Payloads.ApplicationUpdatePayload;
 import Test_Management_App.Repository.ApplicationRepository;
 import Test_Management_App.Service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,17 +32,17 @@ public class ApplicationController {
     }
 
    @PostMapping("/create")
-    public ResponseEntity<Application> createApplication(@RequestBody ApplicationCreatePayload applicationCreatePayload) {
+    public ResponseEntity<String> createApplication(@RequestBody ApplicationCreatePayload applicationCreatePayload) {
         Application createdApplication = applicationService.createApplication(applicationCreatePayload);
-        return ResponseEntity.ok(createdApplication);
+        return ResponseEntity.ok("Application created");
     }
     @PatchMapping("/update/{id}")
-    public ResponseEntity<Application> updateApplication(
+    public ResponseEntity<String> updateApplication(
             @PathVariable("id") int idApplication,
             @RequestBody ApplicationUpdatePayload partialUpdate) {
 
         Application updatedApplication = applicationService.partialUpdateApplication(idApplication, partialUpdate);
-        return ResponseEntity.ok(updatedApplication);
+        return ResponseEntity.ok("Application updated");
     }
 
     @GetMapping("/allApplication")
@@ -50,6 +54,8 @@ public class ApplicationController {
             return ResponseEntity.noContent().build();
         }
     }
+
+
     @GetMapping("/find/id/{id}")
     public ResponseEntity<Application> getSingleAppById(@PathVariable int id) {
         Optional<Application> optionalApplication = Optional.ofNullable(applicationService.getSingleAppById(id));

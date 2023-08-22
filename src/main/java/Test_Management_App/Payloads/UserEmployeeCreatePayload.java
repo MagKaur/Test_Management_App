@@ -7,6 +7,8 @@ public class UserEmployeeCreatePayload {
     private String userName;
     private String userSurname;
     private String userLogin;
+    private String userPassword;
+
 
     public UserEmployeeCreatePayload(){}
 
@@ -41,8 +43,6 @@ public class UserEmployeeCreatePayload {
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
-
-    private String userPassword;
 
 
 }

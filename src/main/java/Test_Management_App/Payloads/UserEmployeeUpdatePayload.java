@@ -5,6 +5,8 @@ public class UserEmployeeUpdatePayload {
     private String userName;
     private String userSurname;
     private String userLogin;
+    private String userPassword;
+
 
     public UserEmployeeUpdatePayload(){}
 
@@ -40,6 +42,5 @@ public class UserEmployeeUpdatePayload {
         this.userPassword = userPassword;
     }
 
-    private String userPassword;
 
 }
