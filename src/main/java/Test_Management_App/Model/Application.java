@@ -1,6 +1,10 @@
 package Test_Management_App.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "application")
@@ -15,6 +19,10 @@ public class Application {
     private String technologyDescription;
     @Column(name = "functionality_description")
     private String functionalityDescription;
+
+    @OneToMany(mappedBy = "idApplication", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<Binary> applicationBinaries = new ArrayList<>();
 
     public Application() {
     }

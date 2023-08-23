@@ -26,18 +26,18 @@ public class DeviceModelController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<DeviceModel> createDeviceModel(@RequestBody DeviceModelCreatePayload deviceModelCreatePayload) {
+    public ResponseEntity<String> createDeviceModel(@RequestBody DeviceModelCreatePayload deviceModelCreatePayload) {
         DeviceModel createdDeviceModel = deviceModelService.createDeviceModel(deviceModelCreatePayload);
-        return ResponseEntity.ok(createdDeviceModel);
+        return ResponseEntity.ok("Device Model Created");
     }
 
     @PatchMapping("/update/id/{id}")
-    public ResponseEntity<DeviceModel> updateDeviceModel(
+    public ResponseEntity<String> updateDeviceModel(
             @PathVariable("id") int idDevice,
             @RequestBody DeviceModelUpdatePayload partialUpdate) {
 
         DeviceModel updatedDeviceModel = deviceModelService.partialUpdateDeviceModel(idDevice, partialUpdate);
-        return ResponseEntity.ok(updatedDeviceModel);
+        return ResponseEntity.ok("Device Model Updated");
     }
 
     @GetMapping("/allDeviceModel")

@@ -26,11 +26,13 @@ public class UserEmployeeServiceImpl implements UserEmployeeService {
     }
 
     public UserEmployee createUserEmployee(UserEmployeeCreatePayload userEmployeeCreatePayload) {
-        if (isEmptyOrBlank(userEmployeeCreatePayload.getUserName()) || isEmptyOrBlank(userEmployeeCreatePayload.getUserSurname()) || isEmptyOrBlank(userEmployeeCreatePayload.getUserLogin()) ||
-                userEmployeeCreatePayload.getUserPassword() == null) {
-
+        if (isEmptyOrBlank(userEmployeeCreatePayload.getUserName()) || userEmployeeCreatePayload.getUserName() == null
+                || isEmptyOrBlank(userEmployeeCreatePayload.getUserSurname()) || userEmployeeCreatePayload.getUserSurname() == null
+                || isEmptyOrBlank(userEmployeeCreatePayload.getUserLogin()) || userEmployeeCreatePayload.getUserLogin() == null
+                || isEmptyOrBlank(userEmployeeCreatePayload.getUserPassword()) ||userEmployeeCreatePayload.getUserPassword() == null)
+        {
             throw new IllegalArgumentException("One or more fields are empty or blank");
-        }
+        } else {
         UserEmployee userEmployee = new UserEmployee();
         userEmployee.setUserName(userEmployeeCreatePayload.getUserName());
         userEmployee.setUserSurname(userEmployeeCreatePayload.getUserSurname());
@@ -38,7 +40,7 @@ public class UserEmployeeServiceImpl implements UserEmployeeService {
         userEmployee.setUserPassword(userEmployeeCreatePayload.getUserPassword());
 
 
-        return userEmployeeRepository.save(userEmployee);
+        return userEmployeeRepository.save(userEmployee);}
     }
 
     private boolean isEmptyOrBlank(String value) {

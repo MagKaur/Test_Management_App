@@ -31,18 +31,18 @@ public class UserEmployeeController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<UserEmployee> createUserEmployee(@RequestBody UserEmployeeCreatePayload userEmployeeCreatePayload) {
+    public ResponseEntity<String> createUserEmployee(@RequestBody UserEmployeeCreatePayload userEmployeeCreatePayload) {
         UserEmployee createdUserEmployee = userEmployeeService.createUserEmployee(userEmployeeCreatePayload);
-        return ResponseEntity.ok(createdUserEmployee);
+        return ResponseEntity.ok("User Employee created");
     }
 
     @PatchMapping("/update/id/{id}")
-    public ResponseEntity<UserEmployee> updateTestCase(
+    public ResponseEntity<String> updateTestCase(
             @PathVariable("id") int idUserEmployee,
             @RequestBody UserEmployeeUpdatePayload partialUpdate) {
 
         UserEmployee updatedUserEmployee = userEmployeeService.partialUpdateUserEmployee(idUserEmployee, partialUpdate);
-        return ResponseEntity.ok(updatedUserEmployee);
+        return ResponseEntity.ok("User Employee updated");
     }
 
     @GetMapping("/allUserEmployee")

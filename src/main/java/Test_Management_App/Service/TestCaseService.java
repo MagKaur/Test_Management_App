@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 public interface TestCaseService {
 
-    //TODO + add TestCaseServiceImpl + TestCaseController
+
     TestCase createTestCase(TestCaseCreatePayload testCaseCreatePayload);
     TestCase partialUpdateTestCase(int idTestCase, TestCaseUpdatePayload testCaseUpdatePayload);
     TestCase getTestCaseById(int idTestCase);

@@ -34,18 +34,18 @@ public class TestCaseController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<TestCase> createTestCase(@RequestBody TestCaseCreatePayload testCaseCreatePayload) {
+    public ResponseEntity<String> createTestCase(@RequestBody TestCaseCreatePayload testCaseCreatePayload) {
         TestCase createdTestCase = testCaseService.createTestCase(testCaseCreatePayload);
-        return ResponseEntity.ok(createdTestCase);
+        return ResponseEntity.ok("Test Case Created");
     }
 
     @PatchMapping("/update/id/{id}")
-    public ResponseEntity<TestCase> updateTestCase(
+    public ResponseEntity<String> updateTestCase(
             @PathVariable("id") int idTestCase,
             @RequestBody TestCaseUpdatePayload partialUpdate) {
 
         TestCase updatedTestCase = testCaseService.partialUpdateTestCase(idTestCase, partialUpdate);
-        return ResponseEntity.ok(updatedTestCase);
+        return ResponseEntity.ok("Test Case Updated");
     }
 
     @GetMapping("/allTestCase")

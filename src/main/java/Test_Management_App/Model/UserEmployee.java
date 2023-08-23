@@ -1,5 +1,9 @@
 package Test_Management_App.Model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "user_employee")
@@ -18,6 +22,7 @@ public class UserEmployee {
 
     @Column(name = "user_password")
     private String userPassword;
+
 
     public UserEmployee(){}
 

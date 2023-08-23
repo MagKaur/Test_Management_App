@@ -24,16 +24,17 @@ public class DeviceModelServiceImpl implements DeviceModelService {
 
     @Override
     public DeviceModel createDeviceModel(DeviceModelCreatePayload deviceModelCreatePayload) {
-        if (isEmptyOrBlank(deviceModelCreatePayload.getProducerName()) || isEmptyOrBlank(deviceModelCreatePayload.getModelName()) || isEmptyOrBlank(deviceModelCreatePayload.getPremiereQuarter()) ||
-                deviceModelCreatePayload.getVolte() == null ||
-                deviceModelCreatePayload.getVowifi() == null ||
-                deviceModelCreatePayload.getSaNsa5g() == null ||
-                deviceModelCreatePayload.geteSim() == null ||
-                deviceModelCreatePayload.getRcs() == null) {
-
+        if (isEmptyOrBlank(deviceModelCreatePayload.getProducerName()) || deviceModelCreatePayload.getProducerName() == null
+                || isEmptyOrBlank(deviceModelCreatePayload.getModelName()) || deviceModelCreatePayload.getModelName() == null
+                || isEmptyOrBlank(deviceModelCreatePayload.getPremiereQuarter()) || deviceModelCreatePayload.getPremiereQuarter() == null
+                || deviceModelCreatePayload.getVolte() == null || isEmptyOrBlank(deviceModelCreatePayload.getVolte().toString())
+                || deviceModelCreatePayload.getVowifi() == null || isEmptyOrBlank(deviceModelCreatePayload.getVowifi().toString())
+                || deviceModelCreatePayload.getSaNsa5g() == null || isEmptyOrBlank(deviceModelCreatePayload.getSaNsa5g().toString())
+                || deviceModelCreatePayload.geteSim() == null ||isEmptyOrBlank(deviceModelCreatePayload.geteSim().toString())
+                || isEmptyOrBlank(deviceModelCreatePayload.getRcs().toString())|| deviceModelCreatePayload.getRcs() == null)
+        {
             throw new IllegalArgumentException("One or more fields are empty or blank");
-        }
-
+        } else {
         DeviceModel deviceModel = new DeviceModel();
         deviceModel.setProducerName(deviceModelCreatePayload.getProducerName());
         deviceModel.setModelName(deviceModelCreatePayload.getModelName());
@@ -44,7 +45,7 @@ public class DeviceModelServiceImpl implements DeviceModelService {
         deviceModel.seteSim(deviceModelCreatePayload.geteSim());
         deviceModel.setRcs(deviceModelCreatePayload.getRcs());
 
-        return deviceModelRepository.save(deviceModel);
+        return deviceModelRepository.save(deviceModel);}
     }
 
     private boolean isEmptyOrBlank(String value) {

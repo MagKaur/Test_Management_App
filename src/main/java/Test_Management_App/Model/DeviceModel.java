@@ -1,6 +1,10 @@
 package Test_Management_App.Model;
 import javax.persistence.*;
 import Test_Management_App.Model.DeviceModelFeatureStatus;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "device_model")
@@ -31,6 +35,10 @@ public class DeviceModel {
     @Enumerated(EnumType.STRING)
     @Column(name = "rcs")
     private DeviceModelFeatureStatus rcs;
+
+    @OneToMany(mappedBy = "idDevice", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<Binary> deviceModelBinaries = new ArrayList<>();
 
     public DeviceModel(){
     }

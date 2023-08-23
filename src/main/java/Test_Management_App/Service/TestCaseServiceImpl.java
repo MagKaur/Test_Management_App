@@ -24,12 +24,14 @@ public class TestCaseServiceImpl implements TestCaseService{
     }
     @Override
     public TestCase createTestCase(TestCaseCreatePayload testCaseCreatePayload) {
-        if (isEmptyOrBlank(testCaseCreatePayload.getSignature()) || isEmptyOrBlank(testCaseCreatePayload.getTestCaseName()) || isEmptyOrBlank(testCaseCreatePayload.getPreconditions()) ||
-                testCaseCreatePayload.getDescription() == null ||
-                testCaseCreatePayload.getExpectedResults() == null) {
-
+        if (isEmptyOrBlank(testCaseCreatePayload.getSignature()) || testCaseCreatePayload.getSignature() == null
+                || isEmptyOrBlank(testCaseCreatePayload.getTestCaseName()) || testCaseCreatePayload.getTestCaseName() == null
+                || isEmptyOrBlank(testCaseCreatePayload.getPreconditions()) || testCaseCreatePayload.getPreconditions() == null
+                || isEmptyOrBlank(testCaseCreatePayload.getDescription()) ||  testCaseCreatePayload.getDescription() == null
+                || isEmptyOrBlank(testCaseCreatePayload.getExpectedResults()) || testCaseCreatePayload.getExpectedResults() == null)
+        {
             throw new IllegalArgumentException("One or more fields are empty or blank");
-        }
+        } else {
 
         TestCase testCase = new TestCase();
         testCase.setSignature(testCaseCreatePayload.getSignature());
@@ -39,7 +41,7 @@ public class TestCaseServiceImpl implements TestCaseService{
         testCase.setExpectedResults(testCaseCreatePayload.getExpectedResults());
 
 
-        return testCaseRepository.save(testCase);
+        return testCaseRepository.save(testCase);}
     }
     private boolean isEmptyOrBlank(String value) {
         return value == null || value.isEmpty();

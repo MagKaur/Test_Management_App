@@ -25,26 +25,32 @@ public class ApplicationServiceImpl  implements ApplicationService{
     }
     @Override
     public Application createApplication(ApplicationCreatePayload applicationCreatePayload) {
-        if (applicationCreatePayload.getAppName().isEmpty() || applicationCreatePayload.getAppName().isBlank()
-                || applicationCreatePayload.getTechnologyDescription().isEmpty()  || applicationCreatePayload.getTechnologyDescription().isBlank()
-                || applicationCreatePayload.getFunctionalityDescription().isEmpty() || applicationCreatePayload.getFunctionalityDescription().isBlank() ) {
-            throw new IllegalArgumentException("One or more fields are empty or blank");
+        if (applicationCreatePayload.getAppName() == null || isEmptyOrBlank(applicationCreatePayload.getAppName())
+                || applicationCreatePayload.getTechnologyDescription() == null || isEmptyOrBlank(applicationCreatePayload.getAppName())
+                || applicationCreatePayload.getFunctionalityDescription() == null || isEmptyOrBlank((applicationCreatePayload.getFunctionalityDescription())))
+        {
+            throw new IllegalArgumentException("One or more fields are empty, blank or null");
         }else {
             Application application = new Application();
             application.setAppName(applicationCreatePayload.getAppName());
             application.setTechnologyDescription(applicationCreatePayload.getTechnologyDescription());
             application.setFunctionalityDescription(applicationCreatePayload.getFunctionalityDescription());
 
-            return applicationRepository.save(application);
-        }
+            return applicationRepository.save(application);}
     }
+
+    private boolean isEmptyOrBlank(String value) {
+        return value == null || value.isEmpty();
+    }
+
+
     @Override
     public Application partialUpdateApplication(int idApplication, ApplicationUpdatePayload applicationUpdatePayload){
         Optional<Application> application = applicationRepository.findById(idApplication);
         if (!application.isPresent()) {
             throw new ResourceNotFoundException("Application not found with this id ::"+ idApplication);
         }else {
-            if (applicationUpdatePayload.getAppName() != null) {
+            if (applicationUpdatePayload.getAppName() != null ) {
                 application.get().setAppName(applicationUpdatePayload.getAppName());
             }
             if (applicationUpdatePayload.getFunctionalityDescription() != null) {
