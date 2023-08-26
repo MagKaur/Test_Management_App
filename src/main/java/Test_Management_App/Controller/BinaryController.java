@@ -78,7 +78,7 @@ public class BinaryController {
         }
     }
 
-    @GetMapping("/Binary/ByApplication/{idApplication}")
+    @GetMapping("/find/byApplication/{idApplication}")
     public ResponseEntity<List<Binary>> getBinaryByIdApplication(@PathVariable Application idApplication) {
         List<Binary> binaryList = binaryService.getBinaryByIdApplication(idApplication);
         if (!binaryList.isEmpty()) {
@@ -88,7 +88,7 @@ public class BinaryController {
         }
     }
 
-    @GetMapping("/Binary/ByDeviceModel/{idDevice}")
+    @GetMapping("/find/byDeviceModel/{idDevice}")
     public ResponseEntity<List<Binary>> getBinaryByIdDevice(@PathVariable DeviceModel idDevice) {
         List<Binary> binaryList = binaryService.getBinaryByIdDevice(idDevice);
         if (!binaryList.isEmpty()) {
@@ -98,7 +98,7 @@ public class BinaryController {
         }
     }
 
-    @GetMapping("/Binary/ByBinaryStatus/{binaryStatusType}")
+    @GetMapping("/find/byBinaryStatus/{binaryStatusType}")
     public ResponseEntity<List<Binary>> getBinaryByBinaryStatusType(@PathVariable BinaryStatusType binaryStatusType) {
         List<Binary> binaryList = binaryService.getBinaryByBinaryStatusType(binaryStatusType);
         if (!binaryList.isEmpty()) {
