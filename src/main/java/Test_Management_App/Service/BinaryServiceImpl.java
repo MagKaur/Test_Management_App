@@ -11,7 +11,11 @@ import Test_Management_App.Payloads.BinaryUpdatePayload;
 import Test_Management_App.Repository.BinaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -137,6 +141,7 @@ public class BinaryServiceImpl implements BinaryService {
     public List<Binary> getBinaryByBinaryStatusType(BinaryStatusType binaryStatusType) {
         return binaryRepository.findByBinaryStatusType(binaryStatusType);
     }
+
 
 
 
