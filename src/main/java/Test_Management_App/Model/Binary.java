@@ -1,6 +1,7 @@
 package Test_Management_App.Model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -22,12 +23,12 @@ public class Binary {
 
     @ManyToOne
     @JoinColumn(name = "id_application")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idApplication")
+    @JsonIgnore
     private Application idApplication;
 
     @ManyToOne
     @JoinColumn(name = "id_device")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idDevice")
+    @JsonIgnore
     private DeviceModel idDevice;
 
     @Enumerated(EnumType.STRING)

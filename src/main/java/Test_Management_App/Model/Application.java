@@ -22,7 +22,6 @@ public class Application {
     private String functionalityDescription;
 
     @OneToMany(mappedBy = "idApplication", cascade = CascadeType.ALL)
-    @JsonIdentityReference(alwaysAsId = true)
     private List<Binary> applicationBinaries = new ArrayList<>();
 
     public Application() {
