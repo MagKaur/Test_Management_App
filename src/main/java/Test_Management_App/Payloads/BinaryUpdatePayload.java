@@ -7,23 +7,18 @@ import Test_Management_App.Model.DeviceModel;
 public class BinaryUpdatePayload {
 
 
-    public class BinaryCreatePayload {
 
         private String binaryName;
         private String binaryDescription;
         private String binaryLink;
         private Application idApplication;
         private DeviceModel idDevice;
-
         private BinaryStatusType binaryStatusType;
 
-        public BinaryCreatePayload() {
+        public BinaryUpdatePayload() {
         }
 
-        public String getBinaryName() {
-            return binaryName;
-        }
-
+        public String getBinaryName(){return binaryName;}
         public void setBinaryName(String binaryName) {
             this.binaryName = binaryName;
         }
@@ -68,4 +63,4 @@ public class BinaryUpdatePayload {
             this.binaryStatusType = binaryStatusType;
         }
     }
-}
+

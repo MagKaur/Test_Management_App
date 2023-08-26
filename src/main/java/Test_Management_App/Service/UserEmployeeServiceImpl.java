@@ -51,7 +51,7 @@ public class UserEmployeeServiceImpl implements UserEmployeeService {
     public UserEmployee partialUpdateUserEmployee(int idUserEmployee, UserEmployeeUpdatePayload userEmployeeUpdatePayload) {
         Optional<UserEmployee> userEmployee = userEmployeeRepository.findById(idUserEmployee);
         if (!userEmployee.isPresent()) {
-            throw new ResourceNotFoundException("Application not found with this id ::" + idUserEmployee);
+            throw new ResourceNotFoundException("User not found with this id ::" + idUserEmployee);
         } else {
 
             if (userEmployeeUpdatePayload.getUserName() != null) {

@@ -56,7 +56,7 @@ public class DeviceModelServiceImpl implements DeviceModelService {
     public DeviceModel partialUpdateDeviceModel(int idDevice, DeviceModelUpdatePayload deviceModelUpdatePayload) {
         Optional<DeviceModel> deviceModel = deviceModelRepository.findById(idDevice);
         if (!deviceModel.isPresent()) {
-            throw new ResourceNotFoundException("Application not found with this id ::" + idDevice);
+            throw new ResourceNotFoundException("Device Model not found with this id ::" + idDevice);
         } else {
 
             if (deviceModelUpdatePayload.getProducerName() != null){

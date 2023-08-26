@@ -15,8 +15,7 @@ import java.util.List;
 @Component
 public interface BinaryService {
     Binary createBinaryApp(BinaryCreatePayloadApp binaryCreatePayloadApp);
-    Binary createBinaryApp(int idBinary, BinaryCreatePayloadDeviceModel binaryCreatePayloadDeviceModel);
-    Binary createBinaryDevice(BinaryCreatePayloadDeviceModel binaryCreatePayloadDeviceModel);
+    Binary createBinaryDeviceModel(BinaryCreatePayloadDeviceModel binaryCreatePayloadDeviceModel);
     Binary partialUpdateBinary(int idBinary, BinaryUpdatePayload binaryUpdatePayload);
     Binary getBinaryByIdBinary(int idBinary);
     Binary getBinaryByBinaryName(String binaryName);

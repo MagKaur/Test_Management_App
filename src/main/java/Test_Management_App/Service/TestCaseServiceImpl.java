@@ -51,7 +51,7 @@ public class TestCaseServiceImpl implements TestCaseService{
     public TestCase partialUpdateTestCase(int idTestCase, TestCaseUpdatePayload testCaseUpdatePayload) {
         Optional<TestCase> testCase = testCaseRepository.findById(idTestCase);
         if (!testCase.isPresent()) {
-            throw new ResourceNotFoundException("Application not found with this id ::" + idTestCase);
+            throw new ResourceNotFoundException("Test case not found with this id ::" + idTestCase);
         } else {
 
             if (testCaseUpdatePayload.getSignature() != null){
