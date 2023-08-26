@@ -4,13 +4,13 @@ import Test_Management_App.Model.Application;
 import Test_Management_App.Model.Binary;
 import Test_Management_App.Model.BinaryStatusType;
 import Test_Management_App.Model.DeviceModel;
-import Test_Management_App.Payloads.ApplicationCreatePayload;
+
 import Test_Management_App.Payloads.BinaryCreatePayloadApp;
 import Test_Management_App.Payloads.BinaryCreatePayloadDeviceModel;
 import Test_Management_App.Payloads.BinaryUpdatePayload;
-import Test_Management_App.Repository.ApplicationRepository;
+
 import Test_Management_App.Repository.BinaryRepository;
-import Test_Management_App.Service.ApplicationService;
+
 import Test_Management_App.Service.BinaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
