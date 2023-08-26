@@ -2,6 +2,7 @@ package Test_Management_App.Model;
 import javax.persistence.*;
 import Test_Management_App.Model.DeviceModelFeatureStatus;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,7 @@ public class DeviceModel {
     private DeviceModelFeatureStatus rcs;
 
     @OneToMany(mappedBy = "idDevice", cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonIdentityReference(alwaysAsId = true)
     private List<Binary> deviceModelBinaries = new ArrayList<>();
 
     public DeviceModel(){
@@ -114,5 +115,12 @@ public class DeviceModel {
         this.rcs = rcs;
     }
 
+    public List<Binary> getDeviceModelBinaries() {
+        return deviceModelBinaries;
+    }
+
+    public void setDeviceModelBinaries(List<Binary> deviceModelBinaries) {
+        this.deviceModelBinaries = deviceModelBinaries;
+    }
 }
 

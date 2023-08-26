@@ -10,7 +10,7 @@ public class BinaryCreatePayloadDeviceModel {
     private String binaryName;
     private String binaryDescription;
     private String binaryLink;
-    private DeviceModel idDevice;
+    private int idDevice;
     private BinaryStatusType binaryStatusType;
 
     public BinaryCreatePayloadDeviceModel(){}
@@ -39,11 +39,11 @@ public class BinaryCreatePayloadDeviceModel {
         this.binaryLink = binaryLink;
     }
 
-    public DeviceModel getIdDevice() {
+    public int getIdDevice() {
         return idDevice;
     }
 
-    public void setIdDevice(DeviceModel idDevice) {
+    public void setIdDevice(int idDevice) {
         this.idDevice = idDevice;
     }
 

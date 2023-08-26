@@ -4,18 +4,15 @@ import Test_Management_App.Model.Application;
 import Test_Management_App.Model.Binary;
 import Test_Management_App.Model.BinaryStatusType;
 import Test_Management_App.Model.DeviceModel;
-import Test_Management_App.Payloads.ApplicationUpdatePayload;
 import Test_Management_App.Payloads.BinaryCreatePayloadApp;
 import Test_Management_App.Payloads.BinaryCreatePayloadDeviceModel;
 import Test_Management_App.Payloads.BinaryUpdatePayload;
+import Test_Management_App.Repository.ApplicationRepository;
 import Test_Management_App.Repository.BinaryRepository;
+import Test_Management_App.Repository.DeviceModelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -25,34 +22,41 @@ import java.util.Optional;
 public class BinaryServiceImpl implements BinaryService {
 
     private final BinaryRepository binaryRepository;
+    private final ApplicationRepository applicationRepository;
+    private final DeviceModelRepository deviceModelRepository;
 
+    //TODO czy chce takie managed back reference?
     @Autowired
-    public  BinaryServiceImpl(BinaryRepository binaryRepository) {
+    public  BinaryServiceImpl(BinaryRepository binaryRepository, ApplicationRepository applicationRepository, DeviceModelRepository deviceModelRepository) {
         this.binaryRepository = binaryRepository;
+        this.applicationRepository = applicationRepository;
+        this.deviceModelRepository = deviceModelRepository;
     }
 
-    @Override
     public Binary createBinaryApp(BinaryCreatePayloadApp binaryCreatePayloadApp) {
         if (binaryCreatePayloadApp.getBinaryName() == null || isEmptyOrBlank(binaryCreatePayloadApp.getBinaryName())
                 || binaryCreatePayloadApp.getBinaryDescription() == null || isEmptyOrBlank(binaryCreatePayloadApp.getBinaryDescription())
                 || binaryCreatePayloadApp.getBinaryLink() == null||  isEmptyOrBlank(binaryCreatePayloadApp.getBinaryLink())
-                || binaryCreatePayloadApp.getIdApplication().getAppName() == null || isEmptyOrBlank(binaryCreatePayloadApp.getIdApplication().getAppName())
-                || binaryCreatePayloadApp.getBinaryStatusType().toString() == null || isEmptyOrBlank(binaryCreatePayloadApp.getBinaryStatusType().toString()))
-
-                {
+                || binaryCreatePayloadApp.getBinaryStatusType() == null || isEmptyOrBlank(binaryCreatePayloadApp.getBinaryStatusType().toString())) {
             throw new IllegalArgumentException("One or more fields are empty or blank");
-        }else {
+        } else {
             Binary binary = new Binary();
             binary.setBinaryName(binaryCreatePayloadApp.getBinaryName());
             binary.setBinaryDescription(binaryCreatePayloadApp.getBinaryDescription());
             binary.setBinaryLink(binaryCreatePayloadApp.getBinaryLink());
-            binary.setIdApplication(binaryCreatePayloadApp.getIdApplication());
+
+
+            Application application = applicationRepository.findById(binaryCreatePayloadApp.getIdApplication())
+                    .orElseThrow(() -> new EntityNotFoundException("Application with id " + binaryCreatePayloadApp.getIdApplication() + " not found"));
+
+            binary.setIdApplication(application);
+
             binary.setBinaryStatusType(binaryCreatePayloadApp.getBinaryStatusType());
 
             return binaryRepository.save(binary);
         }
     }
-//TODO poprawić create binary dla device niże -> dodać wszędzie funkcję isEmptyOrBlank
+
 
 
     @Override
@@ -60,7 +64,6 @@ public class BinaryServiceImpl implements BinaryService {
         if (binaryCreatePayloadDeviceModel.getBinaryName() == null || isEmptyOrBlank(binaryCreatePayloadDeviceModel.getBinaryName())
                 || binaryCreatePayloadDeviceModel.getBinaryDescription() ==null || isEmptyOrBlank(binaryCreatePayloadDeviceModel.getBinaryDescription())
                 || binaryCreatePayloadDeviceModel.getBinaryLink() == null || isEmptyOrBlank(binaryCreatePayloadDeviceModel.getBinaryLink())
-                || binaryCreatePayloadDeviceModel.getIdDevice().getModelName() == null || isEmptyOrBlank(binaryCreatePayloadDeviceModel.getIdDevice().getModelName())
                 || binaryCreatePayloadDeviceModel.getBinaryStatusType().toString() == null || isEmptyOrBlank(binaryCreatePayloadDeviceModel.getBinaryStatusType().toString()))
         {
             throw new IllegalArgumentException("One or more fields are empty or blank");
@@ -69,7 +72,11 @@ public class BinaryServiceImpl implements BinaryService {
             binary.setBinaryName(binaryCreatePayloadDeviceModel.getBinaryName());
             binary.setBinaryDescription(binaryCreatePayloadDeviceModel.getBinaryDescription());
             binary.setBinaryLink(binaryCreatePayloadDeviceModel.getBinaryLink());
-            binary.setIdDevice(binaryCreatePayloadDeviceModel.getIdDevice());
+
+            DeviceModel deviceModel = deviceModelRepository.findById(binaryCreatePayloadDeviceModel.getIdDevice())
+                    .orElseThrow(() -> new EntityNotFoundException("DeviceModel with id " + binaryCreatePayloadDeviceModel.getIdDevice() + " not found"));
+
+            binary.setIdDevice(deviceModel);
             binary.setBinaryStatusType(binaryCreatePayloadDeviceModel.getBinaryStatusType());
 
             return binaryRepository.save(binary);}

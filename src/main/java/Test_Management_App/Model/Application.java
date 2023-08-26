@@ -1,6 +1,7 @@
 package Test_Management_App.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class Application {
     private String functionalityDescription;
 
     @OneToMany(mappedBy = "idApplication", cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonIdentityReference(alwaysAsId = true)
     private List<Binary> applicationBinaries = new ArrayList<>();
 
     public Application() {
@@ -57,5 +58,13 @@ public class Application {
 
     public void setFunctionalityDescription(String functionalityDescription) {
         this.functionalityDescription = functionalityDescription;
+    }
+
+    public List<Binary> getApplicationBinaries() {
+        return applicationBinaries;
+    }
+
+    public void setApplicationBinaries(List<Binary> applicationBinaries) {
+        this.applicationBinaries = applicationBinaries;
     }
 }

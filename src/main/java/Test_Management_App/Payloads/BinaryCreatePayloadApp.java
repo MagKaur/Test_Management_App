@@ -9,8 +9,7 @@ public class BinaryCreatePayloadApp {
     private String binaryName;
     private String binaryDescription;
     private String binaryLink;
-    private Application idApplication;
-
+    private int idApplication;
     private BinaryStatusType binaryStatusType;
 
     public BinaryCreatePayloadApp(){}
@@ -39,11 +38,11 @@ public class BinaryCreatePayloadApp {
         this.binaryLink = binaryLink;
     }
 
-    public Application getIdApplication() {
+    public int getIdApplication() {
         return idApplication;
     }
 
-    public void setIdApplication(Application idApplication) {
+    public void setIdApplication(int idApplication) {
         this.idApplication = idApplication;
     }
 

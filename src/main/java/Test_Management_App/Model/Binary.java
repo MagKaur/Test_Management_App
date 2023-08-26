@@ -1,6 +1,8 @@
 package Test_Management_App.Model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 
@@ -20,12 +22,12 @@ public class Binary {
 
     @ManyToOne
     @JoinColumn(name = "id_application")
-    @JsonManagedReference
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idApplication")
     private Application idApplication;
 
     @ManyToOne
     @JoinColumn(name = "id_device")
-    @JsonManagedReference
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idDevice")
     private DeviceModel idDevice;
 
     @Enumerated(EnumType.STRING)
