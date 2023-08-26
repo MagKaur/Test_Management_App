@@ -98,6 +98,7 @@ public class BinaryController {
         }
     }
 
+
     @GetMapping("/find/byBinaryStatus/{binaryStatusType}")
     public ResponseEntity<List<Binary>> getBinaryByBinaryStatusType(@PathVariable BinaryStatusType binaryStatusType) {
         List<Binary> binaryList = binaryService.getBinaryByBinaryStatusType(binaryStatusType);
