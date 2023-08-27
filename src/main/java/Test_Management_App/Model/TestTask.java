@@ -31,4 +31,54 @@ public class TestTask {
     @JoinColumn(name = "id_binary")
     @JsonIgnore
     private Binary idBinary;
+
+
+    public TestTask(){};
+    public int getIdTestTask() {
+        return idTestTask;
+    }
+
+    public void setIdTestTask(int idTestTask) {
+        this.idTestTask = idTestTask;
+    }
+
+    public String getTestTaskName() {
+        return testTaskName;
+    }
+
+    public void setTestTaskName(String testTaskName) {
+        this.testTaskName = testTaskName;
+    }
+
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
+    }
+
+    public TestTaskStatus getTestTaskStatus() {
+        return testTaskStatus;
+    }
+
+    public void setTestTaskStatus(TestTaskStatus testTaskStatus) {
+        this.testTaskStatus = testTaskStatus;
+    }
+
+    public UserEmployee getIdUserEmployee() {
+        return idUserEmployee;
+    }
+
+    public void setIdUserEmployee(UserEmployee idUserEmployee) {
+        this.idUserEmployee = idUserEmployee;
+    }
+
+    public Binary getIdBinary() {
+        return idBinary;
+    }
+
+    public void setIdBinary(Binary idBinary) {
+        this.idBinary = idBinary;
+    }
 }
