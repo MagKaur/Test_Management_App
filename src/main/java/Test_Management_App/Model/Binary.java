@@ -1,11 +1,12 @@
 package Test_Management_App.Model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "binary")
@@ -34,6 +35,9 @@ public class Binary {
     @Enumerated(EnumType.STRING)
     @Column(name = "binary_status_type")
     private BinaryStatusType binaryStatusType;
+
+    @OneToMany(mappedBy = "idBinary", cascade = CascadeType.ALL)
+    private List<TestTask> binaryTestTasks = new ArrayList<>();
 
     public Binary(){}
 
@@ -91,5 +95,13 @@ public class Binary {
 
     public void setBinaryStatusType(BinaryStatusType binaryStatusType) {
         this.binaryStatusType = binaryStatusType;
+    }
+
+    public List<TestTask> getBinaryTestTasks() {
+        return binaryTestTasks;
+    }
+
+    public void setBinaryTestTasks(List<TestTask> binaryTestTasks) {
+        this.binaryTestTasks = binaryTestTasks;
     }
 }

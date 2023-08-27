@@ -1,6 +1,6 @@
 package Test_Management_App.Model;
 
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -18,10 +18,17 @@ public class TestTask {
     @Temporal(TemporalType.DATE)
     @Column(name = "deadline")
     private Date deadline;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "test_task_status")
     private TestTaskStatus testTaskStatus;
-    private int idUser;
-    private int idBinary;
+
+    @ManyToOne
+    @JoinColumn(name = "id_user")
+    @JsonIgnore
+    private UserEmployee idUserEmployee;
+
+    @ManyToOne
+    @JoinColumn(name = "id_binary")
+    @JsonIgnore
+    private Binary idBinary;
 }

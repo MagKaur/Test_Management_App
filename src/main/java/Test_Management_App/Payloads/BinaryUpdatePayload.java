@@ -11,8 +11,8 @@ public class BinaryUpdatePayload {
         private String binaryName;
         private String binaryDescription;
         private String binaryLink;
-        private Application idApplication;
-        private DeviceModel idDevice;
+        private int idApplication;
+        private int idDevice;
         private BinaryStatusType binaryStatusType;
 
         public BinaryUpdatePayload() {
@@ -39,19 +39,19 @@ public class BinaryUpdatePayload {
             this.binaryLink = binaryLink;
         }
 
-        public Application getIdApplication() {
+        public int getIdApplication() {
             return idApplication;
         }
 
-        public void setIdApplication(Application idApplication) {
+        public void setIdApplication(int idApplication) {
             this.idApplication = idApplication;
         }
 
-        public DeviceModel getIdDevice() {
+        public int getIdDevice() {
             return idDevice;
         }
 
-        public void setIdDevice(DeviceModel idDevice) {
+        public void setIdDevice(int idDevice) {
             this.idDevice = idDevice;
         }
 

@@ -14,7 +14,7 @@ public interface UserEmployeeService {
 
     UserEmployee createUserEmployee(UserEmployeeCreatePayload userEmployeeCreatePayload);
     UserEmployee partialUpdateUserEmployee(int idUserEmployee, UserEmployeeUpdatePayload userEmployeeUpdatePayload);
-    UserEmployee getUserEmployeeById(int idUserEmployee);
+    UserEmployee getUserEmployeeByIdUserEmployee(int idUserEmployee);
     UserEmployee getUserEmployeeByUserName(String userName);
     UserEmployee getUserEmployeeByUserSurname(String userSurname);
     UserEmployee getUserEmployeeByUserLogin(String userLogin);

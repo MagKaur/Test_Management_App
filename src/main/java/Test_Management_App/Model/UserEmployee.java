@@ -23,13 +23,14 @@ public class UserEmployee {
     @Column(name = "user_password")
     private String userPassword;
 
-
+    @OneToMany(mappedBy = "idUserEmployee", cascade = CascadeType.ALL)
+    private List<TestTask> userTestTasks = new ArrayList<>();
     public UserEmployee(){}
 
-    public int getId() {
+    public int getIdUserEmployee() {
         return idUserEmployee;
     }
-    public void setId(int idUserEmployee) {this.idUserEmployee = idUserEmployee;
+    public void setIdUserEmployee(int idUserEmployee) {this.idUserEmployee = idUserEmployee;
     }
     public String getUserName() {
         return userName;
@@ -62,7 +63,11 @@ public class UserEmployee {
         this.userPassword = userPassword;
     }
 
+    public List<TestTask> getUserTestTasks() {
+        return userTestTasks;
+    }
 
-
-
+    public void setUserTestTasks(List<TestTask> userTestTasks) {
+        this.userTestTasks = userTestTasks;
+    }
 }

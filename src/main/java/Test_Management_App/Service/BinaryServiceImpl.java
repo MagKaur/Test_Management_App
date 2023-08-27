@@ -37,6 +37,7 @@ public class BinaryServiceImpl implements BinaryService {
         if (binaryCreatePayloadApp.getBinaryName() == null || isEmptyOrBlank(binaryCreatePayloadApp.getBinaryName())
                 || binaryCreatePayloadApp.getBinaryDescription() == null || isEmptyOrBlank(binaryCreatePayloadApp.getBinaryDescription())
                 || binaryCreatePayloadApp.getBinaryLink() == null||  isEmptyOrBlank(binaryCreatePayloadApp.getBinaryLink())
+                || binaryCreatePayloadApp.getIdApplication() == 0
                 || binaryCreatePayloadApp.getBinaryStatusType() == null || isEmptyOrBlank(binaryCreatePayloadApp.getBinaryStatusType().toString())) {
             throw new IllegalArgumentException("One or more fields are empty or blank");
         } else {
@@ -64,6 +65,7 @@ public class BinaryServiceImpl implements BinaryService {
         if (binaryCreatePayloadDeviceModel.getBinaryName() == null || isEmptyOrBlank(binaryCreatePayloadDeviceModel.getBinaryName())
                 || binaryCreatePayloadDeviceModel.getBinaryDescription() ==null || isEmptyOrBlank(binaryCreatePayloadDeviceModel.getBinaryDescription())
                 || binaryCreatePayloadDeviceModel.getBinaryLink() == null || isEmptyOrBlank(binaryCreatePayloadDeviceModel.getBinaryLink())
+                || binaryCreatePayloadDeviceModel.getIdDevice() == 0
                 || binaryCreatePayloadDeviceModel.getBinaryStatusType().toString() == null || isEmptyOrBlank(binaryCreatePayloadDeviceModel.getBinaryStatusType().toString()))
         {
             throw new IllegalArgumentException("One or more fields are empty or blank");
@@ -75,8 +77,8 @@ public class BinaryServiceImpl implements BinaryService {
 
             DeviceModel deviceModel = deviceModelRepository.findById(binaryCreatePayloadDeviceModel.getIdDevice())
                     .orElseThrow(() -> new EntityNotFoundException("DeviceModel with id " + binaryCreatePayloadDeviceModel.getIdDevice() + " not found"));
-
             binary.setIdDevice(deviceModel);
+
             binary.setBinaryStatusType(binaryCreatePayloadDeviceModel.getBinaryStatusType());
 
             return binaryRepository.save(binary);}
@@ -102,13 +104,20 @@ public class BinaryServiceImpl implements BinaryService {
                 binary.get().setBinaryLink(binaryUpdatePayload.getBinaryLink());
             }
 
-            if (binaryUpdatePayload.getIdApplication() != null) {
-                binary.get().setIdApplication(binaryUpdatePayload.getIdApplication());
+            if (binaryUpdatePayload.getIdApplication() >= 0){
+                Application application = applicationRepository.findById(binaryUpdatePayload.getIdApplication())
+                        .orElseThrow(() -> new EntityNotFoundException("Application with id " + binaryUpdatePayload.getIdApplication() + " not found"));
+
+                binary.get().setIdApplication(application);;
             }
 
-            if (binaryUpdatePayload.getIdDevice() != null) {
-                binary.get().setIdDevice(binaryUpdatePayload.getIdDevice());
+            if (binaryUpdatePayload.getIdDevice() >= 0){
+                DeviceModel deviceModel = deviceModelRepository.findById(binaryUpdatePayload.getIdDevice())
+                        .orElseThrow(() -> new EntityNotFoundException("Application with id " + binaryUpdatePayload.getIdDevice() + " not found"));
+
+                binary.get().setIdDevice(deviceModel);;
             }
+
 
             if (binaryUpdatePayload.getBinaryStatusType() != null) {
                 binary.get().setBinaryStatusType(binaryUpdatePayload.getBinaryStatusType());

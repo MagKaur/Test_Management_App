@@ -74,7 +74,7 @@ public class UserEmployeeServiceImpl implements UserEmployeeService {
     }
 
     @Override
-    public UserEmployee getUserEmployeeById(int idUserEmployee) {
+    public UserEmployee getUserEmployeeByIdUserEmployee(int idUserEmployee) {
         return userEmployeeRepository.findById(idUserEmployee)
                 .orElseThrow(() -> new EntityNotFoundException("DeviceModel with id " + idUserEmployee + " not found"));
     }

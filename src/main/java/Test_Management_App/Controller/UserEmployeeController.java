@@ -56,8 +56,8 @@ public class UserEmployeeController {
     }
 
     @GetMapping("/find/id/{id}")
-    public ResponseEntity<UserEmployee> getUserEmployeeById(@PathVariable int id) {
-        UserEmployee userEmployee = userEmployeeService.getUserEmployeeById(id);
+    public ResponseEntity<UserEmployee> getUserEmployeeByIdUserEmployee(@PathVariable int id) {
+        UserEmployee userEmployee = userEmployeeService.getUserEmployeeByIdUserEmployee(id);
         return ResponseEntity.ok(userEmployee);
     }
 
