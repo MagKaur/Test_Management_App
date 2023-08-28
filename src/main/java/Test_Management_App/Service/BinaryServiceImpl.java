@@ -66,7 +66,7 @@ public class BinaryServiceImpl implements BinaryService {
                 || binaryCreatePayloadDeviceModel.getBinaryDescription() ==null || isEmptyOrBlank(binaryCreatePayloadDeviceModel.getBinaryDescription())
                 || binaryCreatePayloadDeviceModel.getBinaryLink() == null || isEmptyOrBlank(binaryCreatePayloadDeviceModel.getBinaryLink())
                 || binaryCreatePayloadDeviceModel.getIdDevice() == 0
-                || binaryCreatePayloadDeviceModel.getBinaryStatusType().toString() == null || isEmptyOrBlank(binaryCreatePayloadDeviceModel.getBinaryStatusType().toString()))
+                || binaryCreatePayloadDeviceModel.getBinaryStatusType() == null || isEmptyOrBlank(binaryCreatePayloadDeviceModel.getBinaryStatusType().toString()))
         {
             throw new IllegalArgumentException("One or more fields are empty or blank");
         }else {
@@ -108,14 +108,14 @@ public class BinaryServiceImpl implements BinaryService {
                 Application application = applicationRepository.findById(binaryUpdatePayload.getIdApplication())
                         .orElseThrow(() -> new EntityNotFoundException("Application with id " + binaryUpdatePayload.getIdApplication() + " not found"));
 
-                binary.get().setIdApplication(application);;
+                binary.get().setIdApplication(application);
             }
 
             if (binaryUpdatePayload.getIdDevice() >= 0){
                 DeviceModel deviceModel = deviceModelRepository.findById(binaryUpdatePayload.getIdDevice())
-                        .orElseThrow(() -> new EntityNotFoundException("Application with id " + binaryUpdatePayload.getIdDevice() + " not found"));
+                        .orElseThrow(() -> new EntityNotFoundException("DeviceModel with id " + binaryUpdatePayload.getIdDevice() + " not found"));
 
-                binary.get().setIdDevice(deviceModel);;
+                binary.get().setIdDevice(deviceModel);
             }
 
 

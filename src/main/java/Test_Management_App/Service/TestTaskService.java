@@ -1,10 +1,8 @@
 package Test_Management_App.Service;
 
-import Test_Management_App.Model.Binary;
-import Test_Management_App.Model.TestTask;
-import Test_Management_App.Model.TestTaskStatus;
-import Test_Management_App.Model.UserEmployee;
+import Test_Management_App.Model.*;
 import Test_Management_App.Payloads.TestTaskCreatePayload;
+import Test_Management_App.Payloads.TestTaskDetailsUpdatePayload;
 import Test_Management_App.Payloads.TestTaskUpdatePayload;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +20,5 @@ public interface TestTaskService {
     List<TestTask>getTestTaskByIdUserEmployee(UserEmployee idUserEmployee);
     List<TestTask>getTestTaskByIdBinary(Binary idBinary);
     List<TestTask>getTestTaskByTestTaskStatus(TestTaskStatus testTaskStatus);
-
 
 }
