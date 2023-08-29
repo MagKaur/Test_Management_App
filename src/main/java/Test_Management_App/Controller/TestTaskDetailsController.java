@@ -69,15 +69,7 @@ public class TestTaskDetailsController {
             return ResponseEntity.noContent().build();
         }
     }
-    @GetMapping("/find/byTestCase/{idTestCase}")
-    public ResponseEntity<TestTaskDetails> getTestTaskDetailsByIdTestCase(@PathVariable TestCase idTestCase) {
-        TestTaskDetails testTaskDetails = testTaskDetailsService.getTestTaskDetailsByIdTestCase(idTestCase);
-        if (testTaskDetails == null) {
-            return ResponseEntity.notFound().build();
-        } else {
-            return ResponseEntity.ok(testTaskDetails);
-        }
-    }
+
     @GetMapping("/find/byTestTaskStatus/{testCaseStatus}")
     public ResponseEntity<List<TestTaskDetails>> getTestTaskDetailsByTestCaseStatus(@PathVariable TestCaseStatus testCaseStatus) {
         List<TestTaskDetails> testTaskDetailsList = testTaskDetailsService.getTestTaskDetailsByTestCaseStatus(testCaseStatus);

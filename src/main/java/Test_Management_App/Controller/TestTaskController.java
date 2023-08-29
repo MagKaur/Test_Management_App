@@ -90,7 +90,7 @@ public class TestTaskController {
     }
 
     @GetMapping("/find/byTestTaskStatus/{testTaskStatus}")
-    public ResponseEntity<List<TestTask>> getTestTaskByTesttaskStatus(@PathVariable TestTaskStatus testTaskStatus) {
+    public ResponseEntity<List<TestTask>> getTestTaskByTestTaskStatus(@PathVariable TestTaskStatus testTaskStatus) {
         List<TestTask> testTaskList = testTaskService.getTestTaskByTestTaskStatus(testTaskStatus);
         if (!testTaskList.isEmpty()) {
             return ResponseEntity.ok().body(testTaskList);

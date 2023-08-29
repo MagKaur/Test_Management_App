@@ -30,10 +30,10 @@ public class TestTaskServiceImpl implements TestTaskService{
         if (TestTaskCreatePayload.getTestTaskName() == null || isEmptyOrBlank(TestTaskCreatePayload.getTestTaskName())
                 || TestTaskCreatePayload.getDeadline() == null || isEmptyOrBlank(TestTaskCreatePayload.getDeadline().toString())
                 || TestTaskCreatePayload.getTestTaskStatus() == null||  isEmptyOrBlank(TestTaskCreatePayload.getTestTaskStatus().toString())
-                || TestTaskCreatePayload.getIdUserEmployee() == 0
-                || TestTaskCreatePayload.getIdBinary() == 0)
+                || TestTaskCreatePayload.getIdUserEmployee() <= 0
+                || TestTaskCreatePayload.getIdBinary() <= 0)
                 {
-                        throw new IllegalArgumentException("One or more fields are empty or blank");
+                    throw new IllegalArgumentException("One or more fields are empty or blank");
         } else {
             TestTask testTask = new TestTask();
             testTask.setTestTaskName(TestTaskCreatePayload.getTestTaskName());
@@ -69,17 +69,17 @@ public class TestTaskServiceImpl implements TestTaskService{
                 testTask.get().setTestTaskStatus(testTaskUpdatePayload.getTestTaskStatus());
             }
 
-            if (testTaskUpdatePayload.getIdUserEmployee() >= 0){
+            if (testTaskUpdatePayload.getIdUserEmployee() > 0){
                 UserEmployee userEmployee = userEmployeeRepository.findById(testTaskUpdatePayload.getIdUserEmployee())
                         .orElseThrow(() -> new EntityNotFoundException("UserEmployee with id " + testTaskUpdatePayload.getIdUserEmployee() + " not found"));
-                testTask.get().setIdUserEmployee(userEmployee);;
+                testTask.get().setIdUserEmployee(userEmployee);
             }
 
-            if (testTaskUpdatePayload.getIdBinary() >= 0){
+            if (testTaskUpdatePayload.getIdBinary() > 0){
                 Binary binary = binaryRepository.findById(testTaskUpdatePayload.getIdBinary())
                         .orElseThrow(() -> new EntityNotFoundException("Binary with id " + testTaskUpdatePayload.getIdBinary() + " not found"));
 
-                testTask.get().setIdBinary(binary);;
+                testTask.get().setIdBinary(binary);
             }
 
 

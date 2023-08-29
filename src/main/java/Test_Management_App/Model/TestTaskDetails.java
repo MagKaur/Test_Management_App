@@ -12,14 +12,13 @@ public class TestTaskDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTestTaskDetails;
     @ManyToOne
-    @Column(name = "id_test_task")
-    @JsonIgnore
+    @JoinColumn(name = "id_test_task")
     private TestTask idTestTask;
     @ManyToOne
-    @Column(name = "id_test_case")
-    @JsonIgnore
+    @JoinColumn(name = "id_test_case")
     private TestCase idTestCase;
     @Column(name = "test_case_status")
+    @Enumerated(EnumType.STRING)
     private TestCaseStatus testCaseStatus;
 
     public TestTaskDetails() {

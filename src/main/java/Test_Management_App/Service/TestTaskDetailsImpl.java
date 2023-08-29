@@ -3,7 +3,6 @@ package Test_Management_App.Service;
 import Test_Management_App.Model.*;
 import Test_Management_App.Payloads.*;
 import Test_Management_App.Repository.*;
-import javassist.NotFoundException;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +24,8 @@ public class TestTaskDetailsImpl implements TestTaskDetailsService{
     }
 
     public TestTaskDetails createTestTaskDetails(TestTaskDetailsCreatePayload testTaskDetailsCreatePayload) {
-        if (testTaskDetailsCreatePayload.getIdTestTask() >= 0
-                || testTaskDetailsCreatePayload.getIdTestCase() >= 0
+        if (testTaskDetailsCreatePayload.getIdTestTask() <= 0
+                || testTaskDetailsCreatePayload.getIdTestCase() <= 0
                 || testTaskDetailsCreatePayload.getTestCaseStatus() == null || isEmptyOrBlank(testTaskDetailsCreatePayload.getTestCaseStatus().toString()))
         {
             throw new IllegalArgumentException("One or more fields are empty or blank");
@@ -53,13 +52,13 @@ public class TestTaskDetailsImpl implements TestTaskDetailsService{
         if (!testTaskDetails.isPresent()) {
             throw new ResourceNotFoundException("TestTaskDetails not found with this id ::"+ idTestTaskDetails);
         }else {
-            if (testTaskDetailsUpdatePayload.getIdTestTask() >= 0 ) {
+            if (testTaskDetailsUpdatePayload.getIdTestTask() > 0 ) {
                 TestTask testTask = testTaskRepository.findById(testTaskDetailsUpdatePayload.getIdTestTask())
                         .orElseThrow(() -> new EntityNotFoundException("Test Task with id " + testTaskDetailsUpdatePayload.getIdTestTask() + " not found"));
                 testTaskDetails.get().setIdTestTask(testTask);
             }
 
-            if (testTaskDetailsUpdatePayload.getIdTestCase() >= 0 ) {
+            if (testTaskDetailsUpdatePayload.getIdTestCase() > 0 ) {
                 TestCase testCase = testCaseRepository.findById(testTaskDetailsUpdatePayload.getIdTestCase())
                         .orElseThrow(() -> new EntityNotFoundException("Test Case with id " + testTaskDetailsUpdatePayload.getIdTestCase() + " not found"));
                 testTaskDetails.get().setIdTestCase(testCase);
