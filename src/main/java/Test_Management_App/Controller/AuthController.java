@@ -21,7 +21,7 @@ public class AuthController {
         this.userEmployeeService = userEmployeeService;
 
     }
-
+/*
     @PostMapping ("/login")
     public ResponseEntity<String> login(@RequestBody UserEmployeeLoginPayload loginPayload) {
         UserEmployee userEmployee = userEmployeeService.getUserEmployeeByUserLogin(loginPayload.getUserLogin());
@@ -30,7 +30,7 @@ public class AuthController {
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed");
         }
-    }
+    }*/
 }
 
 
