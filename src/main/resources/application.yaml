@@ -18,6 +18,9 @@ spring:
         enabled: true
         bootstrap-mode: default
 
+logging:
+  level:
+    root: debug
 
 
 
