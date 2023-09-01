@@ -15,7 +15,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Collections;
@@ -32,10 +33,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return NoOpPasswordEncoder.getInstance(); // Używa braku szyfrowania (dla celów testowych jedynie)
     }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -45,14 +45,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 throw new UsernameNotFoundException("User not found");
             }
 
+            String userPassword = userEmployee.getUserPassword();
+
             return new org.springframework.security.core.userdetails.User(
                     username,
-                    userEmployee.getUserPassword(),
+                    userPassword,
                     Collections.emptyList() // Pusta lista nie jest konieczna
             );
-        }).passwordEncoder(passwordEncoder());
-
-
+        });
     }
     protected void configure(HttpSecurity http) throws Exception {
         http

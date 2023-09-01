@@ -98,4 +98,5 @@ public class UserEmployeeServiceImpl implements UserEmployeeService {
     public List<UserEmployee> getAllUserEmployee() {
         return userEmployeeRepository.findAll();
     }
+
 }
