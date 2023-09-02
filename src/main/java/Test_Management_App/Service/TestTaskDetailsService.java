@@ -22,7 +22,6 @@ public interface TestTaskDetailsService {
     TestTaskDetails partialUpdateTestTaskDetails(int idTestTaskDetails, TestTaskDetailsUpdatePayload testTaskDetailsUpdatePayload);
     TestTaskDetails getTestTaskDetailsByIdTestTaskDetails(int idTestTaskDetails);
     List<TestTaskDetails> getTestTaskDetailsByIdTestTask(TestTask idTestTask);
-    TestTaskDetails getTestTaskDetailsByIdTestCase(TestCase idTestCase);
     List<TestTaskDetails> getTestTaskDetailsByTestCaseStatus(TestCaseStatus testCaseStatus);
     List<TestTaskDetails> getAllTestTaskDetails();
     TestTaskDetails deleteTestTaskDetails(int idTestTaskDetails);
