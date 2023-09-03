@@ -18,6 +18,7 @@ public interface UserEmployeeService {
     UserEmployee getUserEmployeeByUserName(String userName);
     UserEmployee getUserEmployeeByUserSurname(String userSurname);
     UserEmployee getUserEmployeeByUserLogin(String userLogin);
+    UserEmployee deleteUserEmployee(int idUserEmployee);
     List<UserEmployee> getAllUserEmployee();
 
 }

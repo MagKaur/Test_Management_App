@@ -86,11 +86,6 @@ public class TestTaskDetailsImpl implements TestTaskDetailsService{
     }
 
     @Override
-    public TestTaskDetails getTestTaskDetailsByIdTestCase(TestCase idTestCase) {
-        return testTaskDetailsRepository.findByIdTestCase(idTestCase);
-    }
-
-    @Override
     public List<TestTaskDetails> getTestTaskDetailsByTestCaseStatus(TestCaseStatus testCaseStatus) {
         return testTaskDetailsRepository.findByTestCaseStatus(testCaseStatus);
     }

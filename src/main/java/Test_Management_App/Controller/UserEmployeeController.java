@@ -79,4 +79,15 @@ public class UserEmployeeController {
         return ResponseEntity.of(optionalUserEmployee);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteUserEmployee(@PathVariable int id) {
+
+        UserEmployee userEmployee = userEmployeeService.deleteUserEmployee(id);
+        if (userEmployee == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok("UserEmployee with ID " + id + " deleted");
+        }
+    }
+
 }

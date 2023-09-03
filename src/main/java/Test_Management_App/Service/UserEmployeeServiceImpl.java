@@ -2,6 +2,7 @@ package Test_Management_App.Service;
 
 
 import Test_Management_App.Model.TestCase;
+import Test_Management_App.Model.TestTaskDetails;
 import Test_Management_App.Model.UserEmployee;
 
 import Test_Management_App.Payloads.UserEmployeeCreatePayload;
@@ -9,7 +10,10 @@ import Test_Management_App.Payloads.UserEmployeeUpdatePayload;
 import Test_Management_App.Repository.UserEmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -94,6 +98,16 @@ public class UserEmployeeServiceImpl implements UserEmployeeService {
         return userEmployeeRepository.findByUserLogin(userLogin);
     }
 
+    @Override
+    public UserEmployee deleteUserEmployee (int idUserEmployee) {
+        Optional<UserEmployee> user = userEmployeeRepository.findById(idUserEmployee);
+        if (!user.isEmpty()) {
+            throw new ResourceNotFoundException("UserEmployee with ID " + idUserEmployee + " not found");
+        } else {
+            userEmployeeRepository.delete(user.get());
+            return user.get();
+        }
+    }
     @Override
     public List<UserEmployee> getAllUserEmployee() {
         return userEmployeeRepository.findAll();
