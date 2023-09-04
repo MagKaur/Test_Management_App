@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             return new org.springframework.security.core.userdetails.User(
                     username,
                     userPassword,
-                    Collections.emptyList() // Pusta lista nie jest konieczna
+                    Collections.emptyList()
             );
         });
     }
