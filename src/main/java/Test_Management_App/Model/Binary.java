@@ -21,21 +21,17 @@ public class Binary {
     private String binaryDescription;
     @Column(name = "binary_link")
     private String binaryLink;
-
     @ManyToOne
     @JoinColumn(name = "id_application")
     @JsonIgnore
     private Application idApplication;
-
     @ManyToOne
     @JoinColumn(name = "id_device")
     @JsonIgnore
     private DeviceModel idDevice;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "binary_status_type")
     private BinaryStatusType binaryStatusType;
-
     @OneToMany(mappedBy = "idBinary", cascade = CascadeType.ALL)
     private List<TestTask> binaryTestTasks = new ArrayList<>();
 
@@ -44,63 +40,48 @@ public class Binary {
     public int getIdBinary() {
         return idBinary;
     }
-
     public void setIdBinary(int idBinary) {
         this.idBinary = idBinary;
     }
-
     public String getBinaryName() {
         return binaryName;
     }
-
     public void setBinaryName(String binaryName) {
         this.binaryName = binaryName;
     }
-
     public String getBinaryDescription() {
         return binaryDescription;
     }
-
     public void setBinaryDescription(String binaryDescription) {
         this.binaryDescription = binaryDescription;
     }
-
     public String getBinaryLink() {
         return binaryLink;
     }
-
     public void setBinaryLink(String binaryLink) {
         this.binaryLink = binaryLink;
     }
-
     public Application getIdApplication() {
         return idApplication;
     }
-
     public void setIdApplication(Application idApplication) {
         this.idApplication = idApplication;
     }
-
     public DeviceModel getIdDevice() {
         return idDevice;
     }
-
     public void setIdDevice(DeviceModel idDevice) {
         this.idDevice = idDevice;
     }
-
     public BinaryStatusType getBinaryStatusType() {
         return binaryStatusType;
     }
-
     public void setBinaryStatusType(BinaryStatusType binaryStatusType) {
         this.binaryStatusType = binaryStatusType;
     }
-
     public List<TestTask> getBinaryTestTasks() {
         return binaryTestTasks;
     }
-
     public void setBinaryTestTasks(List<TestTask> binaryTestTasks) {
         this.binaryTestTasks = binaryTestTasks;
     }

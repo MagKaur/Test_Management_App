@@ -1,9 +1,12 @@
 package Test_Management_App.Model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "test_task")
@@ -31,6 +34,15 @@ public class TestTask {
     @JoinColumn(name = "id_binary")
     @JsonIgnore
     private Binary idBinary;
+
+    @OneToMany(mappedBy = "idTestTask", cascade = CascadeType.ALL)
+    @JsonIdentityReference(alwaysAsId = true)
+    private List<TestTaskDetails> TestTaskDetailsList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "idTestCase", cascade = CascadeType.ALL)
+    @JsonIdentityReference(alwaysAsId = true)
+    private List<TestTaskDetails> TestCaseDetailsList = new ArrayList<>();
+
 
 
     public TestTask(){};
@@ -80,5 +92,18 @@ public class TestTask {
 
     public void setIdBinary(Binary idBinary) {
         this.idBinary = idBinary;
+    }
+
+    public List<TestTaskDetails> getTestTaskDetailsList() {
+        return TestTaskDetailsList;
+    }
+    public void setTestTaskDetailsList(List<TestTaskDetails> testTaskDetailsList) {
+        TestTaskDetailsList = testTaskDetailsList;
+    }
+    public List<TestTaskDetails> getTestCaseDetailsList() {
+        return TestCaseDetailsList;
+    }
+    public void setTestCaseDetailsList(List<TestTaskDetails> testCaseDetailsList) {
+        TestCaseDetailsList = testCaseDetailsList;
     }
 }

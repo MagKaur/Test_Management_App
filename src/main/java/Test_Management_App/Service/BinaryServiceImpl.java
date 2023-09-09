@@ -24,15 +24,12 @@ public class BinaryServiceImpl implements BinaryService {
     private final BinaryRepository binaryRepository;
     private final ApplicationRepository applicationRepository;
     private final DeviceModelRepository deviceModelRepository;
-
-    //TODO czy chce takie managed back reference?
     @Autowired
     public  BinaryServiceImpl(BinaryRepository binaryRepository, ApplicationRepository applicationRepository, DeviceModelRepository deviceModelRepository) {
         this.binaryRepository = binaryRepository;
         this.applicationRepository = applicationRepository;
         this.deviceModelRepository = deviceModelRepository;
     }
-
     public Binary createBinaryApp(BinaryCreatePayloadApp binaryCreatePayloadApp) {
         if (binaryCreatePayloadApp.getBinaryName() == null || isEmptyOrBlank(binaryCreatePayloadApp.getBinaryName())
                 || binaryCreatePayloadApp.getBinaryDescription() == null || isEmptyOrBlank(binaryCreatePayloadApp.getBinaryDescription())
@@ -49,17 +46,11 @@ public class BinaryServiceImpl implements BinaryService {
 
             Application application = applicationRepository.findById(binaryCreatePayloadApp.getIdApplication())
                     .orElseThrow(() -> new EntityNotFoundException("Application with id " + binaryCreatePayloadApp.getIdApplication() + " not found"));
-
             binary.setIdApplication(application);
-
             binary.setBinaryStatusType(binaryCreatePayloadApp.getBinaryStatusType());
-
             return binaryRepository.save(binary);
         }
     }
-
-
-
     @Override
     public Binary createBinaryDeviceModel(BinaryCreatePayloadDeviceModel binaryCreatePayloadDeviceModel) {
         if (binaryCreatePayloadDeviceModel.getBinaryName() == null || isEmptyOrBlank(binaryCreatePayloadDeviceModel.getBinaryName())
@@ -78,11 +69,8 @@ public class BinaryServiceImpl implements BinaryService {
             DeviceModel deviceModel = deviceModelRepository.findById(binaryCreatePayloadDeviceModel.getIdDevice())
                     .orElseThrow(() -> new EntityNotFoundException("DeviceModel with id " + binaryCreatePayloadDeviceModel.getIdDevice() + " not found"));
             binary.setIdDevice(deviceModel);
-
             binary.setBinaryStatusType(binaryCreatePayloadDeviceModel.getBinaryStatusType());
-
             return binaryRepository.save(binary);}
-
     }  private boolean isEmptyOrBlank(String value) {
         return value == null || value.isEmpty();
     }
@@ -157,8 +145,5 @@ public class BinaryServiceImpl implements BinaryService {
     public List<Binary> getBinaryByBinaryStatusType(BinaryStatusType binaryStatusType) {
         return binaryRepository.findByBinaryStatusType(binaryStatusType);
     }
-
-
-
 
 }

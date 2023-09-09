@@ -1,8 +1,11 @@
 package Test_Management_App.Model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "test_task_details")
@@ -13,6 +16,7 @@ public class TestTaskDetails {
     private int idTestTaskDetails;
     @ManyToOne
     @JoinColumn(name = "id_test_task")
+    @JsonIgnore
     private TestTask idTestTask;
     @ManyToOne
     @JoinColumn(name = "id_test_case")
@@ -20,6 +24,7 @@ public class TestTaskDetails {
     @Column(name = "test_case_status")
     @Enumerated(EnumType.STRING)
     private TestCaseStatus testCaseStatus;
+
 
     public TestTaskDetails() {
     }

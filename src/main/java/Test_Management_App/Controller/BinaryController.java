@@ -22,22 +22,18 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/binary")
 public class BinaryController {
-
     private BinaryService binaryService;
     private BinaryRepository binaryRepository;
-
     @Autowired
     public BinaryController(BinaryService binaryService, BinaryRepository binaryRepository) {
         this.binaryService = binaryService;
         this.binaryRepository = binaryRepository;
     }
-
     @PostMapping("/createBinaryApp")
     public ResponseEntity<String> createBinaryApp(@RequestBody BinaryCreatePayloadApp binaryCreatePayloadApp) {
         Binary createdBinary = binaryService.createBinaryApp(binaryCreatePayloadApp);
         return ResponseEntity.ok("Binary created");
     }
-
     @PostMapping("/createBinaryDevice")
     public ResponseEntity<String> createBinaryDeviceModel(@RequestBody BinaryCreatePayloadDeviceModel binaryCreatePayloadDeviceModel) {
         Binary createdBinary = binaryService.createBinaryDeviceModel(binaryCreatePayloadDeviceModel);
@@ -47,7 +43,6 @@ public class BinaryController {
     public ResponseEntity<String> UpdateBinary(
             @PathVariable("id") int idBinary,
             @RequestBody BinaryUpdatePayload partialUpdate) {
-
         Binary updatedBinary = binaryService.partialUpdateBinary(idBinary, partialUpdate);
         return ResponseEntity.ok("Binary updated");
     }
