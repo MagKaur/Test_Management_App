@@ -31,7 +31,4 @@ public class Main extends SpringBootServletInitializer implements ApplicationRun
 
     }
 
-
-    //TODO change path to ojdbc from C:/ to variable
-
 }
