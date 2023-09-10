@@ -13,6 +13,5 @@ import java.util.List;
 public interface TestTaskDetailsRepository extends JpaRepository<TestTaskDetails, Integer> {
 
     List<TestTaskDetails> findByIdTestTask(TestTask idTestTask);
-    TestTaskDetails findByIdTestCase(TestCase idTestCase);
     List<TestTaskDetails> findByTestCaseStatus(TestCaseStatus testCaseStatus);
 }
