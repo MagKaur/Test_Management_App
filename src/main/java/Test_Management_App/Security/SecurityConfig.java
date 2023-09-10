@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance(); // Używa braku szyfrowania (dla celów testowych jedynie)
+        return NoOpPasswordEncoder.getInstance();
     }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
